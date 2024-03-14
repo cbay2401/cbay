@@ -1,34 +1,34 @@
-const db = require("./client");
-const { createUser } = require("./users");
+const db = require('./client');
+const { createUser } = require('./users');
 
 const users = [
   {
-    name: "Emily Johnson",
-    email: "emily@example.com",
-    password: "securepass",
+    name: 'Emily Johnson',
+    email: 'emily@example.com',
+    password: 'securepass',
   },
   {
-    name: "Liu Wei",
-    email: "liu@example.com",
-    password: "strongpass",
+    name: 'Liu Wei',
+    email: 'liu@example.com',
+    password: 'strongpass',
   },
   {
-    name: "Isabella García",
-    email: "bella@example.com",
-    password: "pass1234",
+    name: 'Isabella García',
+    email: 'bella@example.com',
+    password: 'pass1234',
   },
   {
-    name: "Mohammed Ahmed",
-    email: "mohammed@example.com",
-    password: "mysecretpassword",
+    name: 'Mohammed Ahmed',
+    email: 'mohammed@example.com',
+    password: 'mysecretpassword',
   },
   {
-    name: "John Smith",
-    email: "john@example.com",
-    password: "password123",
+    name: 'John Smith',
+    email: 'john@example.com',
+    password: 'password123',
   },
   // Add more user objects as needed
-];
+];  
 
 const dropTables = async () => {
   try {
@@ -44,8 +44,8 @@ const dropTables = async () => {
 };
 
 const createTables = async () => {
-  try {
-    await db.query(`
+    try{
+        await db.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) DEFAULT 'name',
@@ -156,15 +156,11 @@ async function testRecord() {
 const insertUsers = async () => {
   try {
     for (const user of users) {
-      await createUser({
-        name: user.name,
-        email: user.email,
-        password: user.password,
-      });
+      await createUser({name: user.name, email: user.email, password: user.password});
     }
-    console.log("Seed data inserted successfully.");
+    console.log('Seed data inserted successfully.');
   } catch (error) {
-    console.error("Error inserting seed data:", error);
+    console.error('Error inserting seed data:', error);
   }
 };
 
@@ -187,4 +183,4 @@ const seedDatabse = async () => {
   }
 };
 
-seedDatabse();
+seedDatabse()
