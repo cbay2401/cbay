@@ -8,6 +8,16 @@ const volleyball = require('volleyball')
 apiRouter.use(volleyball)
 
 
+apiRouter.get('/', (req,res)=>{
+  res.send('In the /api routes, dude!')
+})
+
+
+apiRouter.get('/records', require ('./records'))
+apiRouter.use('/records', require('./records'))
+
+apiRouter.post('/records', require('./records'))
+
 apiRouter.use(async (req, res, next) => {
   const prefix = "Bearer "
   const auth = req.header('Authorization');
@@ -46,18 +56,10 @@ apiRouter.use(async (req, res, next) => {
 });
 
 
-apiRouter.get('/', (req,res)=>{
-  res.send('In the /api routes, dude!')
-})
-
-
-apiRouter.get('/records', require ('./records'))
 
 const usersRouter = require('./users');
 const { getUserByEmail } = require('../db');
-const recordsRouter = require('./records');
 apiRouter.use('/users', usersRouter);
-apiRouter.use('/records', require('./records'))
 
 apiRouter.use((err, req, res, next) => {
     res.status(500).send(err)

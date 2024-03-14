@@ -31,10 +31,11 @@ const users = [
 ];
 
 const dropTables = async () => {
-  try {
-    await db.query(`
-        DROP TABLE IF EXISTS users;
+    try {
+        await db.query(`
         DROP TABLE IF EXISTS records;
+        DROP TABLE IF EXISTS orders;
+        DROP TABLE IF EXISTS users;
         `)
     }
     catch(err) {
@@ -57,6 +58,67 @@ const createTables = async () => {
     }
 }
 
+const createRecordsTables = async () => {
+  try{
+      await db.query(`
+      CREATE TABLE records(
+          id SERIAL PRIMARY KEY,
+          artist VARCHAR(255) DEFAULT 'name',
+          albumname VARCHAR (225) UNIQUE NOT NULL,
+          genre VARCHAR(255) UNIQUE NOT NULL,
+          year INT NOT NULL,
+          imageurl TEXT,
+          price DECIMAL
+      )`)
+  }
+  catch(err) {
+      throw err;
+  }
+}
+
+const createOrdersTable = async () => {
+  try {
+    await db.query(`
+    CREATE TABLE orders(
+      id SERIAL PRIMARY KEY,
+      FOREIGN KEY (id) REFERENCES users(id),
+      orderdate DATE,
+      shippingaddress VARCHAR(225) UNIQUE NOT NULL,
+      status BOOL
+    )
+    `)
+  } catch(err) {
+    throw err;
+  }
+}
+
+const createOrdersProducts = async () => {
+  try {
+    await db.query(`
+    CREATE TABLE orders_products(
+      FOREIGN KEY (orderid) REFERENCES orders(id)
+      FOREIGN KEY (productid) REFERENCES records(id)
+      quantity INT NOT NULL
+    )
+    `)
+  } catch(err) {
+    throw err
+  }
+}
+
+
+async function testRecord(){
+  await db.query(`
+  INSERT INTO records (artist, albumname, genre, year, imageurl, price)
+  VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 12.99 )`)
+
+
+}
+
+
+
+
+
 const insertUsers = async () => {
   try {
     for (const user of users) {
@@ -78,6 +140,10 @@ const seedDatabse = async () => {
         await dropTables();
         await createTables();
         await insertUsers();
+        await createRecordsTables();
+        await testRecord();
+        await createOrdersTable();
+        await createOrdersProducts()
     }
     catch (err) {
         throw err;
