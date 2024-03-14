@@ -34,6 +34,7 @@ const dropTables = async () => {
     try {
         await db.query(`
         DROP TABLE IF EXISTS users;
+        DROP TABLE IF EXISTS records;
         `)
     }
     catch(err) {
@@ -56,20 +57,33 @@ const createTables = async () => {
     }
 }
 
-const createShoeTables = async () => {
+const createRecordsTables = async () => {
   try{
       await db.query(`
-      CREATE TABLE shoes(
+      CREATE TABLE records(
           id SERIAL PRIMARY KEY,
-          name VARCHAR(255) DEFAULT 'name',
-          email VARCHAR(255) UNIQUE NOT NULL,
-          password VARCHAR(255) NOT NULL
+          artist VARCHAR(255) DEFAULT 'name',
+          "album name" VARCHAR (225) UNIQUE NOT NULL,
+          genre VARCHAR(255) UNIQUE NOT NULL,
+          year INT NOT NULL,
+          imageurl TEXT,
+          price DECIMAL
       )`)
   }
   catch(err) {
       throw err;
   }
 }
+
+
+async function testRecord(){
+  await db.query(`
+  INSERT INTO records (artist, "album name", genre, year, imageurl, price)
+  VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 12.99 )`)
+
+
+}
+
 
 
 
@@ -91,7 +105,8 @@ const seedDatabse = async () => {
         await dropTables();
         await createTables();
         await insertUsers();
-        await createShoeTables();
+        await createRecordsTables();
+        await testRecord();
     }
     catch (err) {
         throw err;

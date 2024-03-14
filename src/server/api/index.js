@@ -3,10 +3,11 @@ const apiRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env
 
+
 const volleyball = require('volleyball')
 apiRouter.use(volleyball)
 
-// TO BE COMPLETED - set `req.user` if possible, using token sent in the request header
+
 apiRouter.use(async (req, res, next) => {
   const prefix = "Bearer "
   const auth = req.header('Authorization');
@@ -15,12 +16,11 @@ apiRouter.use(async (req, res, next) => {
     next();
   } 
   else if (auth.startsWith(prefix)) {
-    // TODO - Get JUST the token out of 'auth'
+    
     const token = auth.slice(prefix.length);
     
     try {
-      // const parsedToken = 'REPLACE_ME';
-      // TODO - Call 'jwt.verify()' to see if the token is valid. If it is, use it to get the user's 'id'. Look up the user with their 'id' and set 'req.user'
+     
       const { email } = jwt.verify(token, JWT_SECRET)
 
       if (email) {
@@ -45,9 +45,19 @@ apiRouter.use(async (req, res, next) => {
   }
 });
 
+
+apiRouter.get('/', (req,res)=>{
+  res.send('In the /api routes, dude!')
+})
+
+
+apiRouter.get('/records', require ('./records'))
+
 const usersRouter = require('./users');
 const { getUserByEmail } = require('../db');
+const recordsRouter = require('./records');
 apiRouter.use('/users', usersRouter);
+apiRouter.use('/records', require('./records'))
 
 apiRouter.use((err, req, res, next) => {
     res.status(500).send(err)
