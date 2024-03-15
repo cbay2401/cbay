@@ -96,8 +96,8 @@ const createOrdersProducts = async () => {
   try {
     await db.query(`
     CREATE TABLE orders_products(
-      FOREIGN KEY (orderid) REFERENCES orders(id)
-      FOREIGN KEY (productid) REFERENCES records(id)
+      FOREIGN KEY (id) REFERENCES orders(id),
+      FOREIGN KEY (id) REFERENCES records(id),
       quantity INT NOT NULL
     )
     `)
