@@ -33,6 +33,7 @@ const users = [
 const dropTables = async () => {
     try {
         await db.query(`
+        DROP TABLE IF EXISTS orders_records;
         DROP TABLE IF EXISTS records;
         DROP TABLE IF EXISTS orders;
         DROP TABLE IF EXISTS users;
@@ -81,7 +82,7 @@ const createOrdersTable = async () => {
     await db.query(`
     CREATE TABLE orders(
       id SERIAL PRIMARY KEY,
-      FOREIGN KEY (id) REFERENCES users(id),
+      user_id INT REFERENCES users(id),
       orderdate DATE,
       shippingaddress VARCHAR(225) UNIQUE NOT NULL,
       status BOOL
@@ -92,12 +93,13 @@ const createOrdersTable = async () => {
   }
 }
 
-const createOrdersProducts = async () => {
+const createOrdersRecords = async () => {
   try {
     await db.query(`
-    CREATE TABLE orders_products(
-      FOREIGN KEY (id) REFERENCES orders(id),
-      FOREIGN KEY (id) REFERENCES records(id),
+    CREATE TABLE orders_records(
+      id SERIAL PRIMARY KEY,
+      order_id INT REFERENCES orders(id),
+      records_id INT REFERENCES records(id),
       quantity INT NOT NULL
     )
     `)
@@ -143,7 +145,7 @@ const seedDatabse = async () => {
         await createRecordsTables();
         await testRecord();
         await createOrdersTable();
-        await createOrdersProducts()
+        await createOrdersRecords()
     }
     catch (err) {
         throw err;
