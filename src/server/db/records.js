@@ -8,12 +8,6 @@ async function getAllRecords(){
     
 }
 
-
-
-
-
-
-
 async function addNewRecord(record){
     const { artist, albumname, year, genre, imageurl, price } = record
 
@@ -26,9 +20,17 @@ async function addNewRecord(record){
         
 }
 
+async function getRecordById( id ) {
+    const { rows } = await db.query(`
+      SELECT * FROM records
+      WHERE id = $1
+    `, [ id ] )
+
+    return rows [0]
+}
 
 
-module.exports = {addNewRecord, getAllRecords}
+module.exports = {addNewRecord, getAllRecords, getRecordById}
 
 
 

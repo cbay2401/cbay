@@ -84,7 +84,7 @@ const createOrdersTable = async () => {
       id SERIAL PRIMARY KEY,
       user_id INT REFERENCES users(id),
       orderdate DATE,
-      shippingaddress VARCHAR(225) UNIQUE NOT NULL,
+      shippingaddress VARCHAR(225),
       status BOOL
     )
     `)
@@ -108,11 +108,35 @@ const createOrdersRecords = async () => {
   }
 }
 
+async function testOrder() {
+  await db.query(`
+  INSERT INTO orders (user_id, orderdate, shippingaddress, status)
+  VALUES (1, '2024-03-15', '123 Easy St', true),
+  (2, '2024-03-15', '456 Easy St', true),
+  (3, '2024-03-15', '789 Easy St', true),
+  (3, '2024-03-15', '789 Easy St', true)
+  `)
+}
+
+async function testOrdersRecords() {
+  await db.query(`
+  INSERT INTO orders_records (order_id, records_id, quantity)
+  VALUES (1, 1, 2),
+  (2, 2, 1),
+  (2, 1, 1),
+  (3, 3, 3)
+  `)
+}
 
 async function testRecord(){
   await db.query(`
   INSERT INTO records (artist, albumname, genre, year, imageurl, price)
-  VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 12.99 )`)
+  VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 12.99 ),
+  ('Queen', 'Flash Gordon Soundtrack', 'Rock', 1980, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 15.99 ),
+  ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 10.99 )
+  `
+  
+  )
 
 
 }
@@ -145,7 +169,9 @@ const seedDatabse = async () => {
         await createRecordsTables();
         await testRecord();
         await createOrdersTable();
-        await createOrdersRecords()
+        await createOrdersRecords();
+        await testOrder();
+        await testOrdersRecords()
     }
     catch (err) {
         throw err;
