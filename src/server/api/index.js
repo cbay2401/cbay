@@ -18,6 +18,11 @@ apiRouter.use('/records', require('./records'))
 
 apiRouter.post('/records', require('./records'))
 
+// apiRouter.get('/orders', require('./orders'))
+// apiRouter.use('/orders', require('./orders'))
+
+// apiRouter.post('/orders', require('./orders'))
+
 apiRouter.use(async (req, res, next) => {
   const prefix = "Bearer "
   const auth = req.header('Authorization');
@@ -55,6 +60,11 @@ apiRouter.use(async (req, res, next) => {
   }
 });
 
+
+// apiRouter.get('/orders', require('./orders'))
+// apiRouter.use('/orders', require('./orders'))
+
+// apiRouter.post('/orders', require('./orders'))
 
 
 const usersRouter = require('./users');

@@ -105,4 +105,9 @@ usersRouter.get('/:id', async (req, res, next) => {
     }
   })
 
+usersRouter.get('/orders', require('./orders'))
+usersRouter.use('/orders', require('./orders'))
+
+usersRouter.post('/orders', require('./orders'))
+
 module.exports = usersRouter;
