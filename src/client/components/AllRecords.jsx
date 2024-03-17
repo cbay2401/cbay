@@ -24,6 +24,11 @@ function AllRecords(){
         <h2>Records:</h2>
         {records.map(r => <div key={(r.id)} className='records'>
             <h1>{r.artist}</h1>
+            <h2> {r.albumname}</h2>
+            <img className='albumcover' src={r.imageurl} alt="Album Cover"/>
+            <p>{r.genre}</p>
+            <p>{r.year}</p>
+
         </div>)}
 
 
