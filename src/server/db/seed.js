@@ -66,7 +66,7 @@ const createRecordsTables = async () => {
           id SERIAL PRIMARY KEY,
           artist VARCHAR(255) DEFAULT 'name',
           albumname VARCHAR (225) UNIQUE NOT NULL,
-          genre VARCHAR(255) UNIQUE NOT NULL,
+          genre TEXT,
           year INT NOT NULL,
           imageurl TEXT,
           price DECIMAL
@@ -133,7 +133,11 @@ async function testRecord(){
   INSERT INTO records (artist, albumname, genre, year, imageurl, price)
   VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 12.99 ),
   ('Queen', 'Flash Gordon Soundtrack', 'Rock', 1980, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 15.99 ),
-  ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 10.99 )
+  ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 10.99 ),
+  ('Weather Report', 'Heavy Weather', 'Jazz Fusion', 1977, 'https://upload.wikimedia.org/wikipedia/en/6/66/Weather_Report-Heavy_Weather.jpg', 13.99),
+  ('Miles Davis', 'Kinda Blue', 'Jazz', 1959, 'https://upload.wikimedia.org/wikipedia/en/9/9c/MilesDavisKindofBlue.jpg', 15.00),
+  ('Pat Matheny', 'From This Place', 'Jazz Fsion', 2020, 'https://upload.wikimedia.org/wikipedia/en/b/b5/From_This_Place.jpg', 12.99 ),
+  ('Snarky Puppy', 'Immigrance', 'Jazz Fusion', 2019, 'https://www.thejazzmann.com/images/uploads/cover_art/immigrance.jpg', 11.00 )
   `
   
   )
