@@ -130,13 +130,11 @@ async function testRecord() {
   INSERT INTO records (artist, albumname, genre, year, imageurl, price)
   VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 12.99 ),
   ('Queen', 'Flash Gordon Soundtrack', 'Rock', 1980, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 15.99 ),
-
   ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 10.99 ), 
   ('Feid', 'Feliz Cumpleanos Ferxxo Te Pirateamos el Album', 'Reggaeton', 2022,'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Feliz_Cumplea%C3%B1os_Ferxxo_Te_Pirateamos_el_%C3%81lbum.jpg/220px-Feliz_Cumplea%C3%B1os_Ferxxo_Te_Pirateamos_el_%C3%81lbum.jpg', 12.99),
   ('Peso Pluma','Genesis', 'Regional Mexican', 2023, 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Peso_Pluma_-_Genesis.png/220px-Peso_Pluma_-_Genesis.png', 13.99),
   ('Post Malone', 'Stoney', 'Hip-Hop', 2016, 'https://upload.wikimedia.org/wikipedia/en/thumb/7/72/Stoneyalbum.jpg/220px-Stoneyalbum.jpg', 10.99), 
   ('Midland', 'On the Rocks', 'Country', 2017,'https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Midland_on_the_rocks.jpg/220px-Midland_on_the_rocks.jpg', 9.99),
-  ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 10.99 ),
   ('Weather Report', 'Heavy Weather', 'Jazz Fusion', 1977, 'https://upload.wikimedia.org/wikipedia/en/6/66/Weather_Report-Heavy_Weather.jpg', 13.99),
   ('Miles Davis', 'Kinda Blue', 'Jazz', 1959, 'https://upload.wikimedia.org/wikipedia/en/9/9c/MilesDavisKindofBlue.jpg', 15.00),
   ('Pat Matheny', 'From This Place', 'Jazz Fsion', 2020, 'https://upload.wikimedia.org/wikipedia/en/b/b5/From_This_Place.jpg', 12.99 ),
