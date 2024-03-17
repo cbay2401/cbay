@@ -29,6 +29,10 @@ function AllRecords() {
 
   return (
     <section>
+        <input id="searchbar" type="text"
+        placeholder = "Search Artist or Album Name"
+        value={searchQuery}
+        onChange={(e)=> setSearchQuery(e.target.value)}/>
       <div className="records-container">
         {filteredRecords.map((record) => (
           <Link to={`/records/${record.id}`} key={record.id} className="singlerecord">

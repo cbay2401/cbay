@@ -1,4 +1,40 @@
-
+.albumcover{
+    width: 200px;
+    }
+    
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      height: 200px;
+      border: 2px solid black;
+    }
+    
+    header > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    #logo {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      height: 100%;
+    }
+    
+    header nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 2em;
+      max-width: 100%;
+    }
+    
+    header nav>a {
+      margin: .2em;
+    }
 
 
 
