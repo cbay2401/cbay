@@ -2,3 +2,122 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.records-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+}
+
+.records {
+  border-radius: 8px;
+  padding: 10px;
+  text-decoration: none; 
+}
+
+.records h1,
+.records h2,
+.records p {
+  text-decoration: none;
+}
+
+.records h1 {
+  font-size: 24px;
+  margin-bottom: 3px;
+}
+
+.records h2 {
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+
+.albumcover {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  box-shadow: 2px 3px 2px black;
+}
+
+.records p {
+  margin: 5px 0;
+  font-size: 16px;
+}
