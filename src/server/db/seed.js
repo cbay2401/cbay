@@ -129,8 +129,13 @@ async function testRecord() {
   await db.query(`
   INSERT INTO records (artist, albumname, genre, year, imageurl, price)
   VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 12.99 ),
-  ('Queen', 'Flash Gordon Soundtrack', 'Rock', 1980, 'https://upload.wikimedia.org/wikipedia/en/c/cc/Queen_Flash_Gordon.png', 15.99 ),
-  ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://upload.wikimedia.org/wikipedia/en/f/fd/Coldplay_-_Parachutes.png', 10.99 ),
+  ('Queen', 'Flash Gordon Soundtrack', 'Rock', 1980, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 15.99 ),
+  ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 10.99 ),
+  ('Blink-182', 'Blink-182', 'Rock/Punk', 2003, 'https://i.scdn.co/image/ab67616d0000b2730538b48c180256e0bdd8363f', 15.99 ),
+  ('Sublime', 'Sublime', 'Rock/Punk', 1996, 'https://upload.wikimedia.org/wikipedia/en/9/94/Sublime_Self-Titled.jpg', 10.99 ),
+  ('Eminem', 'The Marshall Mathers LP', 'Rap', 2000, 'https://www.rollingstone.com/wp-content/uploads/2018/06/rs-146432-6b725a8c7cad1a0414c5a33f06299e9d2730ae2e.jpg', 13.99 ),
+  ('Logic', 'The Incredible True Story', 'Rap', 2015, 'https://upload.wikimedia.org/wikipedia/en/e/ea/TheIncredibleTrueStory.jpg', 18.99 ),
+  ('Fall Out Boy', 'Take This to Your Grave', 'Rock/Punk', 2003, 'https://i.scdn.co/image/ab67616d0000b273b3e13979bf4f6515020fbaea', 10.99 ),
   ('Big Garden', 'To The Rind', 'Rock', 2023, 'https://f4.bcbits.com/img/a1058465060_65', 20.00),
   ('Thou', 'Inconsolable', 'Quiet', 2018, 'https://f4.bcbits.com/img/a2458719443_10.jpg', 15.00),
   ('J.R.C.G', 'Ajo Sunshine', 'Psych/Punk', 2021, 'https://f4.bcbits.com/img/a2709749750_65', 20.00),
