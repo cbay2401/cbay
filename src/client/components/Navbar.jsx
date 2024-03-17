@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 function Navbar(){
     return(
       <header>
-        <div className="cbaylogo">
+        <div>
         <img id='logo' src='../../../media/cbay.png'></img>
         </div>
         <nav>
