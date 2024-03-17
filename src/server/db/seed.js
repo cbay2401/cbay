@@ -64,7 +64,7 @@ const createRecordsTables = async () => {
           id SERIAL PRIMARY KEY,
           artist VARCHAR(255) DEFAULT 'name',
           albumname VARCHAR (225) UNIQUE NOT NULL,
-          genre VARCHAR(255) UNIQUE NOT NULL,
+          genre TEXT,
           year INT NOT NULL,
           imageurl TEXT,
           price DECIMAL
@@ -129,12 +129,12 @@ async function testRecord() {
   await db.query(`
   INSERT INTO records (artist, albumname, genre, year, imageurl, price)
   VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 12.99 ),
-  ('Queen', 'Flash Gordon Soundtrack', 'Rock', 1980, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 15.99 ),
-  ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 10.99 ),
-  ('Big Garden', 'To The Rind', 'Rock', 2023, 'https://f4.bcbits.com/img/a1058465060_65'),
-  ('Thou', 'Inconsolable', 'Quiet', 2018, 'https://f4.bcbits.com/img/a2458719443_10.jpg'),
-  ('J.R.C.G', 'Ajo Sunshine', 'Psych/Punk', 2021, 'https://f4.bcbits.com/img/a2709749750_65'),
-  ('Fiona Apple', 'When The Pawn', 'Alt Rock', 1999, 'https://media.pitchfork.com/photos/6596f3a1cf7bb5fb106222ab/master/pass/Fiona-Apple.jpg5'),
+  ('Queen', 'Flash Gordon Soundtrack', 'Rock', 1980, 'https://upload.wikimedia.org/wikipedia/en/c/cc/Queen_Flash_Gordon.png', 15.99 ),
+  ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://upload.wikimedia.org/wikipedia/en/f/fd/Coldplay_-_Parachutes.png', 10.99 ),
+  ('Big Garden', 'To The Rind', 'Rock', 2023, 'https://f4.bcbits.com/img/a1058465060_65', 20.00),
+  ('Thou', 'Inconsolable', 'Quiet', 2018, 'https://f4.bcbits.com/img/a2458719443_10.jpg', 15.00),
+  ('J.R.C.G', 'Ajo Sunshine', 'Psych/Punk', 2021, 'https://f4.bcbits.com/img/a2709749750_65', 20.00),
+  ('Fiona Apple', 'When The Pawn', 'Alt Rock', 1999, 'https://media.pitchfork.com/photos/6596f3a1cf7bb5fb106222ab/master/pass/Fiona-Apple.jpg5', 24.99)
   `);
 }
 
