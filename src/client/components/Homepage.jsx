@@ -28,7 +28,7 @@ const Slideshow = () => {
             index === currentImageIndex ? 'slide active' : 'slide inactive'
           }
         >
-          <img src={image} alt={`Slide ${index}`} />
+          <img className='slide-images' src={image} alt={`Slide ${index}`} />
         </div>
       ))}
     </div>
