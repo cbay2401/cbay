@@ -67,9 +67,16 @@ header nav > a {
       align-items: center;
       height: 65vh;
       width: 80vw;
+      box-shadow: 7px 7px 7px black;
     }
 
-
+    #homepage-button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20em;
+      position: absolute;
+    }
 
 
 
