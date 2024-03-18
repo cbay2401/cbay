@@ -75,7 +75,8 @@ header nav > a {
       justify-content: center;
       align-items: center;
       width: 20em;
-      position: absolute;
+      position: relative;
+      margin-bottom: -35rem;
     }
 
 
