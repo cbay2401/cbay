@@ -127,6 +127,7 @@
   border-radius: 8px;
   padding: 10px;
   text-decoration: none; 
+  max-width: 200px;
 }
 
 .records h1,
