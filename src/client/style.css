@@ -42,11 +42,15 @@
     .slideshow-container {
       display: flex;
       justify-content: center;
+      align-items: center;
       position: relative;
-      height: 100; /* Adjust height as needed */
+      height: 100vh; /* Adjust height as needed */
     }
     
     .slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: absolute;
       top: 0;
       left: 0;
@@ -61,6 +65,9 @@
     }
 
     .slide-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 65vh;
       width: 80vw;
     }
