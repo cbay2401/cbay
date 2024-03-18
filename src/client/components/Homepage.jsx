@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Slideshow = () => {
-
-  const navigate = useNavigate()
-  const images = [
-    'https://media.pitchfork.com/photos/6596f3a1cf7bb5fb106222ab/master/pass/Fiona-Apple.jpg5',
-    'https://www.rollingstone.com/wp-content/uploads/2018/06/rs-146432-6b725a8c7cad1a0414c5a33f06299e9d2730ae2e.jpg',
-    'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Feliz_Cumplea%C3%B1os_Ferxxo_Te_Pirateamos_el_%C3%81lbum.jpg/220px-Feliz_Cumplea%C3%B1os_Ferxxo_Te_Pirateamos_el_%C3%81lbum.jpg',
-  ];
+  const navigate = useNavigate();
+  const [images, setImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
+    axios.get('http://localhost:3000/api/records')
+      .then(response => {
+        setImages(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching images:', error);
+      });
+
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
+      setCurrentImageIndex(prevIndex =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change slide every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
-    <>
     <div className="slideshow-container">
       {images.map((image, index) => (
         <div
@@ -31,12 +34,13 @@ const Slideshow = () => {
             index === currentImageIndex ? 'slide active' : 'slide inactive'
           }
         >
-          <img className='slide-images' src={image} alt={`Slide ${index}`} />
+          <img className="slide-images" src={image.imageurl} alt={`Slide ${index}`} />
         </div>
       ))}
-      <button id='homepage-button' onClick={() => navigate("/records")}>See All Records</button>
+      <button id="homepage-button" onClick={() => navigate('/records')}>
+        See All Records
+      </button>
     </div>
-    </>
   );
 };
 

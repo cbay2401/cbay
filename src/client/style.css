@@ -2,12 +2,14 @@
   width: 200px;
 }
 
+body {
+  background: url("https://hips.hearstapps.com/hmg-prod/images/thejoyofrummagingthroughrecordbins-index-1634329815.jpeg");
+}
 
 header {
   display: flex;
   justify-content: space-between;
   height: 200px;
-  border: 2px solid black;
 }
 
 header > div {
@@ -34,7 +36,19 @@ header nav {
 
 header nav > a {
   margin: 0.2em;
+  color: white;
+  text-decoration: none;
 }
+
+header nav > a:hover {
+  cursor: pointer;
+}
+
+header nav > a.active {
+  color: gold;
+  text-decoration: underline;
+}
+
 
     .slideshow-container {
       display: flex;
@@ -77,6 +91,12 @@ header nav > a {
       width: 20em;
       position: relative;
       margin-bottom: -35rem;
+      box-shadow: 5px 5px 5px black;
+      background-color: gold;
+    }
+
+    #homepage-button:hover {
+      cursor: pointer;
     }
 
 
