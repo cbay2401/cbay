@@ -40,8 +40,10 @@
 
 
     .slideshow-container {
+      display: flex;
+      justify-content: center;
       position: relative;
-      height: 100%; /* Adjust height as needed */
+      height: 100; /* Adjust height as needed */
     }
     
     .slide {
@@ -58,6 +60,10 @@
       opacity: 1;
     }
 
+    .slide-images {
+      height: 65vh;
+      width: 80vw;
+    }
 
 
 
