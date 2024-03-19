@@ -37,7 +37,7 @@ const Slideshow = () => {
           <img className="slide-images" src={image.imageurl} alt={`Slide ${index}`} />
         </div>
       ))}
-      <button id="homepage-button" onClick={() => navigate('/records')}>
+      <button className="glow-on-hover" onClick={() => navigate('/records')}>
         See All Records
       </button>
     </div>
