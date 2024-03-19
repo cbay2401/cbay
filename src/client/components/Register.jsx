@@ -4,8 +4,10 @@ function Register({setToken}) {
   const[name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [successMessage, setSuccessMessage] = useState("")
 
   const [error, setError] = useState(null);
+
   async function handleSubmit (event){ 
     event.preventDefault(); 
 
@@ -31,6 +33,7 @@ function Register({setToken}) {
         console.log('Registration successful', result)
          setToken(result.token)
          localStorage.setItem('jwtToken', result.token)
+         setSuccessMessage("Registration successful! Please Login!")
     }catch(error){ 
         console.error(error.message)
     }
@@ -39,6 +42,7 @@ function Register({setToken}) {
   <main className="register">
       <h2> Register! </h2> 
       {error && <p>{error}</p>}
+      {successMessage && <p>{successMessage}</p>}
       <form onSubmit={handleSubmit}>
               <div>
               <label> 
