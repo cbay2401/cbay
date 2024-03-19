@@ -1,6 +1,12 @@
 const express = require("express");
 const ordersRouter = express.Router();
-const { getAllOrders, createOrder, createCart } = require("../db/orders");
+const requireToken = require("./requireToken");
+const {
+  updateOrder,
+  getAllOrders,
+  createOrder
+  
+} = require("../db/orders");
 
 ordersRouter.get("/admin/orders", async (req, res, next) => {
   try {
@@ -21,12 +27,14 @@ ordersRouter.post("/orders", async (req, res, next) => {
   }
 });
 
-ordersRouter.patch("/orders/orderId", async (req, res, next) => {
-  const order_Id = req.params.order_Id;
+ordersRouter.patch("/:orderId", requireToken, async (req, res, next) => {
+  console.log("anything");
+  const orderId = req.params.orderId;
   const update = req.body;
+
   try {
-    const updateOrder = await updateOrder(order_Id, update);
-    res.json(updateOrder);
+    const updatedOrder = await updateOrder(orderId, update);
+    res.json(updatedOrder);
   } catch (error) {
     next(error);
   }

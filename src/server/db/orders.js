@@ -37,13 +37,13 @@ async function createCart(order_Id, records_Id, quantity) {
   }
 }
 
-async function updateOrder(order_Id, updates){
+async function updateOrder(orderRecordId, updates){
 
-  const {status, shippingAddress} = updates 
+  const {quantity} = updates 
   try{
     const {rows} =  await db.query
-    (`UPDATE orders SET status=$1 ,shippingaddress=$2 WHERE id= $3 RETURNING *`,
-    [status, shippingAddress, order_Id])
+    (`UPDATE orders_records SET quantity=$1  WHERE id= $2 RETURNING *`,
+    [quantity, orderRecordId])
     return rows[0];
   }catch (err){
     console.log("Error in updating the Order")

@@ -25,7 +25,7 @@ function AccountInfo({ token }) {
   }, [token]);
   console.log(userData);
   return (
-    <div>
+    <div className="account-info">
       <h1>Account Information</h1>
       {userData ? (
         <div>

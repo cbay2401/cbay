@@ -2,9 +2,7 @@
   width: 200px;
 }
 
-body {
-  background: url("https://hips.hearstapps.com/hmg-prod/images/thejoyofrummagingthroughrecordbins-index-1634329815.jpeg");
-}
+
 
 header {
   display: flex;
@@ -36,7 +34,7 @@ header nav {
 
 header nav > a {
   margin: 0.2em;
-  color: white;
+  color: black
   text-decoration: none;
 }
 
@@ -207,15 +205,109 @@ header nav > a.active {
 
 
 
+.login-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: 300px;
+  background-color: #F5AF02;
+  border: 3px solid red;
+  border-radius: 8px;
+
+}
+
+.login-form input{
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1.5px solid #002bff;
+  border-radius: 4px;
+}
+.login-form button{
+  background-color: 	#86B817;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #EEC759;
+}
+
+.login-form label{
+  color: #EEC759;
+  text-shadow: 1px 1px 1px black;
+}
 
 
 
 
+.register{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: 300px;
+  background-color: 	#86B817;
+  border: 3px solid 	#0064D2;
+  border-radius: 8px;
+
+}
+
+.register input{
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1.5px solid	#F5AF02;
+  border-radius: 4px;
+}
+.register button{
+  background-color:	#E53238;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.register button:hover {
+  background-color: #EEC759;
+}
+
+.register label{
+  color: #EEC759;
+  text-shadow: 1px 1px 1px black;
+}
 
 
+.login-text{
+  color: #86B817;
+  text-shadow: 1px 1px 1px #0064D2;
+}
 
+.register-text{
+  color: 	#E53238;
+  text-shadow: 1px 1px 1px #0064D2;
+}
 
-
+.account-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: 300px;
+  background-color: 	#86B817;
+  border: 3px solid 	#0064D2;
+  border-radius: 8px;
+}
 
 
 
