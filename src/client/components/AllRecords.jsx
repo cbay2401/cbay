@@ -30,7 +30,7 @@ function AllRecords() {
   return (
     <section>
         <input id="searchbar" type="text"
-        placeholder = "Search Artist or Album Name"
+        placeholder = "Search Artist/Album Name/Genre"
         value={searchQuery}
         onChange={(e)=> setSearchQuery(e.target.value)}/>
       <div className="records-container">
