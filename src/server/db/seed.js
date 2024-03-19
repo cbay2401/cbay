@@ -160,7 +160,7 @@ async function testRecord() {
   ('Aminé', 'Limbo', 'Hip Hop', 2020, 'https://m.media-amazon.com/images/I/71KPxCqrWjL._UF1000,1000_QL80_.jpg', 19.99), 
   ('Grupo Frontera', 'El Comienzo', 'Regional Mexican', 2023,'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/72/31/00/7231009e-bae9-23d4-cb3f-c8e60203502d/cover.jpg/316x316bb.webp', 16.99),
   ('Mora', 'Paraiso', 'Reggaeton', 2022,'https://static.qobuz.com/images/covers/8b/3z/t4dsafcg33z8b_600.jpg', 14.99),
-  ('Morgan Wallen', 'If I Know Me', 'Country', 2018,https://m.media-amazon.com/images/I/518u-bE1k8L._SX300_SY300_QL70_FMwebp_.jpg', 13.99),
+  ('Morgan Wallen', 'If I Know Me', 'Country', 2018,'https://m.media-amazon.com/images/I/518u-bE1k8L._SX300_SY300_QL70_FMwebp_.jpg', 13.99),
   ('Joyner Lucas', 'ADHD', 'Rap', 2020,'https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Joyner_Lucas_-_ADHD.jpg/220px-Joyner_Lucas_-_ADHD.jpg', 15.99),
   ('Linkin Park', 'Hybrid Theory', 'Rock', 2000,'https://m.media-amazon.com/images/I/61XbzKcJqNL._SX300_SY300_QL70_FMwebp_.jpg', 11.99)
   `);
