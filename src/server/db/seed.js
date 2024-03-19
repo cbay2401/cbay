@@ -157,7 +157,12 @@ async function testRecord() {
   ('*NSYNC', 'No Strings Attached', 'Pop', 2000, 'https://www.billboard.com/wp-content/uploads/media/nsync-no-strings-attached-2000-album-cover-billboard-650-hero.jpg?w=650', 12.99),
   ('Drake', 'Take Care (Deluxe)', 'Rap', 2011, 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Drake_-_Take_Care_cover.jpg/220px-Drake_-_Take_Care_cover.jpg', 19.99),
   ('Lin-Manuel Miranda', 'Hamilton (Original Broadway Cast Recording)', 'Show Tunes', 2015, 'https://upload.wikimedia.org/wikipedia/en/5/5b/Hamilton_cast_recording_cover.jpeg', 14.99),
-  ('Aminé', 'Limbo', 'Hip Hop', 2020, 'https://m.media-amazon.com/images/I/71KPxCqrWjL._UF1000,1000_QL80_.jpg', 19.99)
+  ('Aminé', 'Limbo', 'Hip Hop', 2020, 'https://m.media-amazon.com/images/I/71KPxCqrWjL._UF1000,1000_QL80_.jpg', 19.99), 
+  ('Grupo Frontera', 'El Comienzo', 'Regional Mexican', 2023,'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/72/31/00/7231009e-bae9-23d4-cb3f-c8e60203502d/cover.jpg/316x316bb.webp', 16.99),
+  ('Mora', 'Paraiso', 'Reggaeton', 2022,'https://static.qobuz.com/images/covers/8b/3z/t4dsafcg33z8b_600.jpg', 14.99),
+  ('Morgan Wallen', 'If I Know Me', 'Country', 2018,https://m.media-amazon.com/images/I/518u-bE1k8L._SX300_SY300_QL70_FMwebp_.jpg', 13.99),
+  ('Joyner Lucas', 'ADHD', 'Rap', 2020,'https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Joyner_Lucas_-_ADHD.jpg/220px-Joyner_Lucas_-_ADHD.jpg', 15.99),
+  ('Linkin Park', 'Hybrid Theory', 'Rock', 2000,'https://m.media-amazon.com/images/I/61XbzKcJqNL._SX300_SY300_QL70_FMwebp_.jpg', 11.99)
   `);
 }
 
