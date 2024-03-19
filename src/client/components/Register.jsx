@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 function Register({setToken}) {
-  const[firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const[name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,8 +19,7 @@ function Register({setToken}) {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({ 
-                firstname: firstName,
-                lastname: lastName,
+                name: name,
                 email: email,
                 password: password,
             })
@@ -44,16 +42,11 @@ function Register({setToken}) {
       <form onSubmit={handleSubmit}>
               <div>
               <label> 
-                  First Name:
-              <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+                  Full Name: 
+              <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
               </label>
               </div>
-              <div>
-              <label>
-                  Last Name: 
-              <input type="text" value={lastName} onChange={(e)=> setLastName(e.target.value)}/>
-              </label>
-              </div>
+              
               <div>
               <label>
                   Email:
