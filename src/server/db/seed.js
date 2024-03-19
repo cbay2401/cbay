@@ -1,34 +1,34 @@
-const db = require('./client');
-const { createUser } = require('./users');
+const db = require("./client");
+const { createUser } = require("./users");
 
 const users = [
   {
-    name: 'Emily Johnson',
-    email: 'emily@example.com',
-    password: 'securepass',
+    name: "Emily Johnson",
+    email: "emily@example.com",
+    password: "securepass",
   },
   {
-    name: 'Liu Wei',
-    email: 'liu@example.com',
-    password: 'strongpass',
+    name: "Liu Wei",
+    email: "liu@example.com",
+    password: "strongpass",
   },
   {
-    name: 'Isabella García',
-    email: 'bella@example.com',
-    password: 'pass1234',
+    name: "Isabella García",
+    email: "bella@example.com",
+    password: "pass1234",
   },
   {
-    name: 'Mohammed Ahmed',
-    email: 'mohammed@example.com',
-    password: 'mysecretpassword',
+    name: "Mohammed Ahmed",
+    email: "mohammed@example.com",
+    password: "mysecretpassword",
   },
   {
-    name: 'John Smith',
-    email: 'john@example.com',
-    password: 'password123',
+    name: "John Smith",
+    email: "john@example.com",
+    password: "password123",
   },
   // Add more user objects as needed
-];  
+];
 
 const dropTables = async () => {
   try {
@@ -44,8 +44,8 @@ const dropTables = async () => {
 };
 
 const createTables = async () => {
-    try{
-        await db.query(`
+  try {
+    await db.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) DEFAULT 'name',
@@ -147,20 +147,32 @@ async function testRecord() {
   ('Big Garden', 'To The Rind', 'Rock', 2023, 'https://f4.bcbits.com/img/a1058465060_65', 20.00),
   ('Thou', 'Inconsolable', 'Quiet', 2018, 'https://f4.bcbits.com/img/a2458719443_10.jpg', 15.00),
   ('J.R.C.G', 'Ajo Sunshine', 'Psych/Punk', 2021, 'https://f4.bcbits.com/img/a2709749750_65', 20.00),
-  ('Fiona Apple', 'When The Pawn', 'Alt Rock', 1999, 'https://media.pitchfork.com/photos/6596f3a1cf7bb5fb106222ab/master/pass/Fiona-Apple.jpg5', 24.99)
+  ('Fiona Apple', 'When The Pawn', 'Alt Rock', 1999, 'https://media.pitchfork.com/photos/6596f3a1cf7bb5fb106222ab/master/pass/Fiona-Apple.jpg5', 24.99),
+  ('Billie Eilish', 'WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?', 'Pop', 2019, 'https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce', 24.99),
+  ('Olivia Rodrigo', 'SOUR', 'Pop', 2021, 'https://upload.wikimedia.org/wikipedia/en/b/b2/Olivia_Rodrigo_-_SOUR.png', 19.99),
+  ('Paramore', 'Brand New Eyes', 'Alt Rock', 2009, 'https://upload.wikimedia.org/wikipedia/en/9/9b/Paramore_-_Brand_New_Eyes.png', 12.99),
+  ('J. Cole', '2014 Forest Hills Drive', 'Rap', 2014, 'https://upload.wikimedia.org/wikipedia/en/2/2a/2014ForestHillsDrive.jpg', 14.99),
+  ('Evanescence', 'Fallen', 'Alt Rock', 2003, 'https://upload.wikimedia.org/wikipedia/en/2/25/Evanescence_-_Fallen.png', 12.99),
+  ('Beyonce', 'Lemonade', 'Pop/Hip Hop', 2016, 'https://upload.wikimedia.org/wikipedia/en/5/53/Beyonce_-_Lemonade_%28Official_Album_Cover%29.png', 24.99),
+  ('*NSYNC', 'No Strings Attached', 'Pop', 2000, 'https://www.billboard.com/wp-content/uploads/media/nsync-no-strings-attached-2000-album-cover-billboard-650-hero.jpg?w=650', 12.99),
+  ('Drake', 'Take Care (Deluxe)', 'Rap', 2011, 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Drake_-_Take_Care_cover.jpg/220px-Drake_-_Take_Care_cover.jpg', 19.99),
+  ('Lin-Manuel Miranda', 'Hamilton (Original Broadway Cast Recording)', 'Show Tunes', 2015, 'https://upload.wikimedia.org/wikipedia/en/5/5b/Hamilton_cast_recording_cover.jpeg', 14.99),
+  ('Aminé', 'Limbo', 'Hip Hop', 2020, 'https://m.media-amazon.com/images/I/71KPxCqrWjL._UF1000,1000_QL80_.jpg', 19.99)
   `);
-
-
 }
 
 const insertUsers = async () => {
   try {
     for (const user of users) {
-      await createUser({name: user.name, email: user.email, password: user.password});
+      await createUser({
+        name: user.name,
+        email: user.email,
+        password: user.password,
+      });
     }
-    console.log('Seed data inserted successfully.');
+    console.log("Seed data inserted successfully.");
   } catch (error) {
-    console.error('Error inserting seed data:', error);
+    console.error("Error inserting seed data:", error);
   }
 };
 
@@ -183,4 +195,4 @@ const seedDatabse = async () => {
   }
 };
 
-seedDatabse()
+seedDatabse();
