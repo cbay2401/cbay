@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register({setToken}) {
+  const navigate = useNavigate()
   const[name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -60,8 +62,7 @@ function Register({setToken}) {
               </label>
               </div>
 
-              <button className="btn4" type="submit">Register</button>
-              
+              <button className="btn4" type="submit" onClick={() => navigate("/login")}>Register</button>
       </form>
   </main>
   </>
