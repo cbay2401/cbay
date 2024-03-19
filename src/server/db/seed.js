@@ -162,7 +162,13 @@ async function testRecord() {
   ('Mora', 'Paraiso', 'Reggaeton', 2022,'https://static.qobuz.com/images/covers/8b/3z/t4dsafcg33z8b_600.jpg', 14.99),
   ('Morgan Wallen', 'If I Know Me', 'Country', 2018,'https://m.media-amazon.com/images/I/518u-bE1k8L._SX300_SY300_QL70_FMwebp_.jpg', 13.99),
   ('Joyner Lucas', 'ADHD', 'Rap', 2020,'https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Joyner_Lucas_-_ADHD.jpg/220px-Joyner_Lucas_-_ADHD.jpg', 15.99),
-  ('Linkin Park', 'Hybrid Theory', 'Rock', 2000,'https://m.media-amazon.com/images/I/61XbzKcJqNL._SX300_SY300_QL70_FMwebp_.jpg', 11.99)
+  ('Linkin Park', 'Hybrid Theory', 'Rock', 2000,'https://m.media-amazon.com/images/I/61XbzKcJqNL._SX300_SY300_QL70_FMwebp_.jpg', 11.99),
+  ('X-Ray Spex', 'Germ Free Adolescents', 'Punk', 1978, 'https://upload.wikimedia.org/wikipedia/en/f/f3/X-Ray_Spex_-_Germfree_Adolescents_album_cover.jpg', 15.00),
+  ('Danny Brown', 'Atrocity Exhibition', 'Hip Hop', 2016, 'https://upload.wikimedia.org/wikipedia/en/b/ba/AtrocityExhibition.jpg', 25.99),
+  ('Busman's Holiday', 'Good Songs', 'Indie', 2022, 'https://f4.bcbits.com/img/a3387053468_65', 12.99),
+  ('Busman's Holiday', 'Popular Cycles', 'Indie', 2016, 'https://f4.bcbits.com/img/a3234474471_65', 13.99),
+  ('Gorillaz', 'Gorillaz', 'Hip Hop', 2001, 'https://upload.wikimedia.org/wikipedia/en/4/41/GorillazAlbum.jpg', 23.99),
+
   `);
 }
 
