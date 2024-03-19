@@ -37,7 +37,7 @@ function Register({ setToken }) {
   return (
     <>
       <main className="register">
-        <h2> Register! </h2>
+        <h2>Register!</h2>
         {error && <p>{error}</p>}
         {successMessage && <p>{successMessage}</p>}
         <form onSubmit={handleSubmit}>
