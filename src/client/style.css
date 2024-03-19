@@ -169,7 +169,15 @@ header nav > a.active {
     margin-bottom: 20em;
   }
 
+ .searchbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
 
+ #searchbar {
+  width: 15em
+ }
 
 
 
