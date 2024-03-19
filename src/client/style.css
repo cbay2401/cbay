@@ -56,6 +56,7 @@ header nav > a.active {
       align-items: center;
       position: relative;
       height: 100vh; /* Adjust height as needed */
+      object-fit: contain;
     }
     
     .slide {
@@ -81,7 +82,7 @@ header nav > a.active {
       align-items: center;
       height: 65vh;
       width: 80vw;
-      box-shadow: 7px 7px 7px black;
+      object-fit: contain;
     }
 
     #homepage-button{
@@ -149,7 +150,7 @@ header nav > a.active {
       position: absolute;
       width: 100%;
       height: 100%;
-      background: gold;
+      background: black;
       left: 0;
       top: 0;
       border-radius: 10px;
