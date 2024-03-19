@@ -30,7 +30,7 @@ function App() {
   <Route path="/login" element={<LoginForm setToken={setToken}/>} />
   <Route path="/register" element={<Register />} />
   <Route path="records/:id" element={<SingleRecord />} />
-  <Route path="/users/:id" element={<AccountInfo token={token} />} />
+  <Route path="/users/account" element={<AccountInfo token={token} />} />
 
   </Routes>
 </main>

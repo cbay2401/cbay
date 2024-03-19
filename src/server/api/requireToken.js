@@ -1,16 +1,12 @@
 const jwt = require('jsonwebtoken')
-const { getUserById } = require('../db/users')
 
 const requireToken = async (req, res, next) => {
   try {
-    // Verify the user is logged in, otherwise throw an error
-    const payload = jwt.verify(req.headers.authorization, process.env.JWT)
-
-    // Find the user data in the database
-    const user = await getUserById(payload.id)
+    // Verify the user is logged in, otherwise throw an error)
+    const payload = jwt.verify(req.headers.authorization.replace('Bearer ', ''), process.env.JWT_SECRET)
 
     // Add the user data to the `req` object for easy reference in our routes
-    req.user = user
+    req.user = payload
 
     // next() means we are not done processing the request - on to our route code!
     next()

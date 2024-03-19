@@ -1,44 +1,43 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router";
 
 function AccountInfo({ token }) {
-  const [data, setData] = useState(null);
-  const { id } = useParams();
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    
-
-    console.log("Token: ", token);
-
     async function fetchUserData() {
-        const token = localStorage.getItem("jwtToken");
+      console.log("new token log", token);
       try {
-        const { data } = await axios.get(`/api/users/${id}`, {
+        const response = await axios.get(`/api/users/account`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-
-        setData(data);
-       
+        console.log("response!", response)
+        setUserData(response.data); // Set user data received from the API
       } catch (error) {
-        console.error("Can't Get Your User Data, Bozo", error);
+        console.error("Error fetching user data:", error);
       }
-      
     }
-    if (data) {
-      fetchUserData();
+    console.log("token::::", token)
+    if (token) {
+      fetchUserData(); // Fetch user data only if token is present
     }
-  }, [token, id]);
 
+  }, [token]);
+  console.log(userData);
   return (
-    <>
-      <div id="accountinfo">
-        <h1>Account Info</h1>
-        <p>{data ? `${data.name}'s Information` : "Loading..."}</p>
-        <hr />
-        {/* <h2>{data.name}</h2>     */}
-      </div>
-    </>
+    <div>
+      <h1>Account Information</h1>
+      {userData ? (
+        <div>
+          <p>ID: {userData.id}</p>
+          <p>Name: {userData.name}</p>
+          <p>Email: {userData.email}</p>
+          {/* Add more user information as needed */}
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
   );
 }
 
