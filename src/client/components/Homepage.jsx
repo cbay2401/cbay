@@ -27,6 +27,7 @@ const Slideshow = () => {
 
   return (
     <>
+    <div className='home-container'>
     <div className="slideshow-container">
       {images.map((image, index) => (
         <div
@@ -43,6 +44,7 @@ const Slideshow = () => {
         See All Records
       </button>
       </div>
+    </div>
     </div>
    </>
   );
