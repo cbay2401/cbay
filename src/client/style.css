@@ -1,54 +1,114 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  padding-top: 68px;
+}
+
 .albumcover{
   width: 200px;
 }
 
-body {
-  background: url("https://hips.hearstapps.com/hmg-prod/images/thejoyofrummagingthroughrecordbins-index-1634329815.jpeg");
+
+/* Navbar begins */
+
+/* logo img  */
+#logo {
+  height: 100%;
+  /* border: 1px solid #1c201f; */
 }
 
 header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+}
+
+.header-content {
+  /* border: 1px solid #00ffd5; */
   display: flex;
   justify-content: space-between;
-  height: 200px;
+  height: 68px;
+  padding: 0px 40px;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-header > div {
+/* Nav-container  */
+
+.nav-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+  font-size: 1.5em;
+  /* width: 400px; */
+  padding: 0 10px;
+  /* border: 1px solid #191b1b; */
+  border-radius: 10px;
+
+  margin: 10px 0;
+  background-color: #f2f1f1;
+ 
 }
 
-#logo {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  height: 100%;
-}
-
-header nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: 2em;
-  max-width: 100%;
-}
-
-header nav > a {
-  margin: 0.2em;
-  color: white;
+/* NavLink */
+ .nav-container > a {
+  /* border: 2px solid #a17e50; */
+  color:  #94C5CC;
   text-decoration: none;
+  text-align: center;
+  font-size: 0.8em;
+  font-family: sans-serif;
+  
 }
 
-header nav > a:hover {
+.nav-container > a > span {
+    /* border: 1px solid red ; */
+  background-color: #B4D2E7;
+  color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  justify-content: center;
+  font-weight: 10em;
+  /* box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff; */
+}
+
+
+.nav-container > a:hover {
   cursor: pointer;
+  border-top: 2px solid rgb(122, 198, 242);
+  border-bottom: 2px solid rgb(225, 220, 220) ;
+  
+ 
 }
 
-header nav > a.active {
-  color: gold;
-  text-decoration: underline;
+.nav-container > a.active {
+  text-decoration: none;
+  border: 2px solid rgb(255, 255, 255) ;
+  border-radius: 10px 0 10px 10px;
+  padding: 5px;
+
 }
 
+/* Navbar ends */
+
+
+/* Home Begins*/
+  .home-container {
+    position: relative;
+    height:888px;
+    /* border: 1px solid #000; */
+    
+    bottom: 68px;
+   
+  }
+/* Home Ends*/
 
     .slideshow-container {
       display: flex;

@@ -3,20 +3,24 @@ import { NavLink } from "react-router-dom";
 
 
 
+
 function Navbar(){
+  
     return(
       <header>
-        <div>
-        <img id='logo' src='../../../media/cbay.png'></img>
-        </div>
-        <nav>
+        <div className="header-content">
             
-            <NavLink to ="/">Home</NavLink>
-            <NavLink to ="/records">Records</NavLink>
-            <NavLink to ="/Login">Login</NavLink>
-            <NavLink to ="/Register">Register</NavLink>
+            <div className="logo-container">
+                <img id='logo' src='../../../media/cbay.png'></img>
+            </div>
 
-        </nav>
+            <nav className=" nav-container">
+                <NavLink to ="/">Home</NavLink>
+                <NavLink to ="/records">Records</NavLink>
+                <NavLink to ="/Register"><span>Register</span></NavLink>
+                <NavLink to ="/Login"><span>Login</span></NavLink>
+            </nav>
+        </div>
         </header>
 
     )

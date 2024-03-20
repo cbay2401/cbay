@@ -27,6 +27,7 @@ const Slideshow = () => {
 
   return (
     <>
+    <div className='home-container'>
     <div className="slideshow-container">
       {images.map((image, index) => (
         <div
@@ -41,6 +42,7 @@ const Slideshow = () => {
       <button className="glow-on-hover" onClick={() => navigate('/records')}>
         See All Records
       </button>
+    </div>
     </div>
    </>
   );
