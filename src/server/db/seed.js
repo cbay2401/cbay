@@ -165,9 +165,9 @@ async function testRecord() {
   ('Linkin Park', 'Hybrid Theory', 'Rock', 2000,'https://m.media-amazon.com/images/I/61XbzKcJqNL._SX300_SY300_QL70_FMwebp_.jpg', 11.99),
   ('X-Ray Spex', 'Germ Free Adolescents', 'Punk', 1978, 'https://upload.wikimedia.org/wikipedia/en/f/f3/X-Ray_Spex_-_Germfree_Adolescents_album_cover.jpg', 15.00),
   ('Danny Brown', 'Atrocity Exhibition', 'Hip Hop', 2016, 'https://upload.wikimedia.org/wikipedia/en/b/ba/AtrocityExhibition.jpg', 25.99),
-  ('Busman's Holiday', 'Good Songs', 'Indie', 2022, 'https://f4.bcbits.com/img/a3387053468_65', 12.99),
-  ('Busman's Holiday', 'Popular Cycles', 'Indie', 2016, 'https://f4.bcbits.com/img/a3234474471_65', 13.99),
-  ('Gorillaz', 'Gorillaz', 'Hip Hop', 2001, 'https://upload.wikimedia.org/wikipedia/en/4/41/GorillazAlbum.jpg', 23.99),
+  ('Busmans Holiday', 'Good Songs', 'Indie', 2022, 'https://f4.bcbits.com/img/a3387053468_65', 12.99),
+  ('Busmans Holiday', 'Popular Cycles', 'Indie', 2016, 'https://f4.bcbits.com/img/a3234474471_65', 13.99),
+  ('Gorillaz', 'Gorillaz', 'Hip Hop', 2001, 'https://upload.wikimedia.org/wikipedia/en/4/41/GorillazAlbum.jpg', 23.99)
 
   `);
 }
