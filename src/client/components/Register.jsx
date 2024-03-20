@@ -6,7 +6,7 @@ function Register({ setToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-
+  const navigate = useNavigate()
   const [error, setError] = useState(null);
 
   async function handleSubmit(event) {
@@ -26,15 +26,22 @@ function Register({ setToken }) {
       });
 
       const result = await response.json();
-
+      if (response.ok){
       console.log("Registration successful", result);
       setToken(result.token);
       localStorage.setItem("jwtToken", result.token);
       setSuccessMessage("Registration successful! Please Login!");
-    } catch (error) {
+      navigate('/users/account');
+    } else {  
+        setError ("User with this email already exists. Please use a different email.");
+    } 
+    }   catch (error) {
       console.error(error.message);
     }
   }
+  
+    
+
   return (
     <>
       <main className="register">
