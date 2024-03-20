@@ -7,6 +7,7 @@ import Homepage from './components/Homepage';
 import Register from './components/Register';
 import SingleRecord from './components/SingleRecord';
 import AccountInfo from './components/Account';
+import Cart from './components/Cart';
 
 
 
@@ -29,8 +30,9 @@ function App() {
   <Route path="/records" element={<AllRecords />} />
   <Route path="/login" element={<LoginForm setToken={setToken}/>} />
   <Route path="/register" element={<Register setToken={setToken} />} />
-  <Route path="records/:id" element={<SingleRecord />} />
+  <Route path="/records/:id" element={<SingleRecord />} />
   <Route path="/users/account" element={<AccountInfo token={token} />} />
+  <Route path="/cart" element={<Cart />}/>
 
   </Routes>
 </main>

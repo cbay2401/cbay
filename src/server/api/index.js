@@ -62,7 +62,7 @@ apiRouter.use(async (req, res, next) => {
 
 
 // apiRouter.get('/orders', require('./orders'))
-// apiRouter.use('/orders', require('./orders'))
+apiRouter.use('/orders', require('./orders'))
 
 // apiRouter.post('/orders', require('./orders'))
 

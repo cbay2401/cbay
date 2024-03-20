@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -25,7 +26,7 @@ function AccountInfo({ token }) {
   }, [token]);
   console.log(userData);
   return (
-    <div>
+    <div className="account-info">
       <h1>Account Information</h1>
       {userData ? (
         <div>

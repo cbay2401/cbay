@@ -40,8 +40,8 @@ const LoginForm = ({ setToken }) => {
     }
   }
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="login-form">
+      <h2 className="login-text">Login</h2>
       <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="email">Email:</label>
