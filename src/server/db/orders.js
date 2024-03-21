@@ -37,23 +37,56 @@ async function createCart(order_Id, records_Id, quantity) {
   }
 }
 
-async function updateOrder(orderRecordId, updates){
-
-  const {quantity} = updates 
-  try{
-    const {rows} =  await db.query
-    (`UPDATE orders_records SET quantity=$1  WHERE id= $2 RETURNING *`,
-    [quantity, orderRecordId])
+async function updateOrder(orderRecordId, updates) {
+  const { quantity } = updates;
+  try {
+    const { rows } = await db.query(
+      `UPDATE orders_records SET quantity=$1  WHERE id= $2 RETURNING *`,
+      [quantity, orderRecordId]
+    );
     return rows[0];
-  }catch (err){
-    console.log("Error in updating the Order")
-    throw err
+  } catch (err) {
+    console.log("Error in updating the Order");
+    throw err;
   }
 }
+
+async function addItemToCart(user_id, record_id) {
+  try {
+    const { rows } = await db.query(
+      `SELECT *
+       FROM orders
+       JOIN orders_records ON order_id = orders_records.order_id
+       JOIN records ON records_id = orders_records.records_id
+       WHERE user_id = $1 AND records_id = $2 AND status = true`,
+      [user_id, record_id]
+    );
+    return rows;
+  } catch (err) {
+    console.log("Error adding record to cart in addItemToCart function");
+    throw err;
+  }
+}
+
+const getCartByUserId = async (userId) => {
+  try {
+    const { rows } = await db.query(
+      `SELECT * from orders_products
+    WHERE "userId" = $1;
+    `,
+      [userId]
+    );
+  } catch (err) {
+    console.log("Error getting cart by userId");
+    throw err;
+  }
+};
 
 module.exports = {
   getAllOrders,
   createOrder,
   createCart,
-  updateOrder
+  updateOrder,
+  getCartByUserId,
+  addItemToCart,
 };
