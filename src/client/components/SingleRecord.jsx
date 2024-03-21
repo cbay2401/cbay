@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 
 
 function SingleRecord() {
   
   const { id } = useParams();
   const [record, setRecord] = useState({});
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getRecord() {
@@ -23,10 +24,11 @@ function SingleRecord() {
 
   const addToCart = async () => {
     try {
-      await axios.post(`/api/orders/${id}`);
+      await axios.patch(`/api/orders/${id}`, 
+     );
       alert("You Got It!");
-      // Navigate to cart page
-      history.push("/cart");
+      
+      navigate("/cart");
     } catch (err) {
       console.error("Error adding record to cart:", err);
     }

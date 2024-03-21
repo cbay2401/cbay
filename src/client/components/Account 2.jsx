@@ -8,6 +8,9 @@
 
 //   useEffect(() => {
 
+    
+
+
 //     console.log("Token: ", token);
 
 //     async function fetchUserData() {
@@ -19,9 +22,17 @@
 
 //         setData(data);
 
+
 //       } catch (error) {
 //         console.error("Can't Get Your User Data, Bozo", error);
 //       }
+
+
+       
+//       } catch (error) {
+//         console.error("Can't Get Your User Data, Bozo", error);
+//       }
+      
 
 //     }
 //     if (data) {
