@@ -1,22 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
+    const [recordDetails, setRecordDetails] = useState({}); // State to store record details
+    let {cartId} = useParams();
 
     useEffect(() => {
         async function fetchCartItems() {
             try {
-                const { data } = await axios.get('/api/orders/records'); 
+                const { data } = await axios.get(`/api/orders/cart/${cartId}`); 
                 setCartItems(data);
+                console.log("DATA:", data)
+
+                data.forEach(async (item) => {
+                    const recordData = await fetchRecordDetails(item.records_id);
+                    setRecordDetails(prevState => ({
+                        ...prevState,
+                        [item.records_id]: recordData
+                    }));
+                });
             } catch (error) {
                 console.error('Error fetching cart items:', error);
             }
         }
 
         fetchCartItems();
-    }, []);
+    }, [cartId]);
+
+    const fetchRecordDetails = async (recordId) => {
+        try {
+            const { data } = await axios.get(`/api/records/${recordId}`); // Assuming the endpoint is /api/records/:recordId
+            return data;
+        } catch (error) {
+            console.error(`Error fetching record details for record ID ${recordId}:`, error);
+            return {};
+        }
+    };
+
 
     console.log("CART ITEMS:", cartItems); 
 
@@ -31,6 +54,7 @@ function Cart() {
     };
     
 
+
     return (
         <div className="cart">
             <h1>Shopping Cart</h1>
@@ -40,11 +64,15 @@ function Cart() {
                 <ul>
                     {cartItems.map(item => (
                         <li key={item.id}>
-                            <img src={item.imageurl} alt="Album Cover" />
                             <div>
-                                <h2>{item.artist}</h2>
-                                <p>{item.albumname}</p>
-                                <p>${item.price}</p>
+                                {recordDetails[item.records_id] && (
+                                    <>
+                                        <img className='albumcover' src={recordDetails[item.records_id].imageurl} alt="Album Cover" />
+                                        <p>{recordDetails[item.records_id].albumname}</p>
+                                        <p>${recordDetails[item.records_id].price}</p>
+                                        <p>Quantity:{item.quantity}</p>
+                                    </>
+                                )}
                                 <button onClick={() => removeFromCart(item.id)}>Remove</button>
                             </div>
                         </li>

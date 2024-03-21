@@ -34,8 +34,8 @@ function App() {
   <Route path="/register" element={<Register setToken={setToken} />} />
   <Route path="/records/:id" element={<SingleRecord />} />
   <Route path="/users/account" element={<AccountInfo token={token} />} />
-  <Route path="/cart" element={<Cart />}/>
-  <Route path="/admin" element={<AdminDashboard />} />
+  <Route path="/cart/:cartId" element={<Cart />}/>
+  <Route path="/admin" element={<AdminDashboard token={token}/>} />
   </Routes>
 </main>
    

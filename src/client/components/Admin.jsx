@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ token }) => {
     const [users, setUsers] = useState([]);
     const [records, setRecords] = useState([]);
     const [showUsers, setShowUsers] = useState(null);

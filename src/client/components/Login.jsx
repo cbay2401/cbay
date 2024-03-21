@@ -31,6 +31,7 @@ const LoginForm = ({ setToken }) => {
       const token = response.data.token;
       localStorage.setItem("jwtToken", token);
       setToken(token);
+      // localStorage.setItem(token)
       
 
       console.log("login Successful, Dude!", response);

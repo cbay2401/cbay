@@ -6,6 +6,7 @@ const {
   createOrder,
   createCart,
   updateCartItem,
+  getCartItems
   
 } = require("../db/orders");
 
@@ -46,6 +47,16 @@ ordersRouter.patch("/cart/:cartItemId", requireToken, async (req, res, next) => 
   try {
     const updatedCartItem = await updateCartItem(cartItemId, quantity);
     res.json(updatedCartItem);
+  } catch (error) {
+    next(error);
+  }
+});
+
+ordersRouter.get("/cart/:cartId", async (req, res, next) => {
+  const cartId = req.params.cartId;
+  try {
+    const cartItems = await getCartItems(cartId);
+    res.json(cartItems);
   } catch (error) {
     next(error);
   }

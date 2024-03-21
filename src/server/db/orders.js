@@ -49,9 +49,21 @@ async function updateCartItem(cartItemId, quantity) {
   }
 }
 
+async function getCartItems (orderId) {
+  try {
+    const { rows } = await db.query(`
+    SELECT * FROM orders_records WHERE order_id = $1
+    `, [orderId])
+    return rows
+  } catch(err){
+    throw err
+  }
+}
+
 module.exports = {
   getAllOrders,
   createOrder,
   createCart,
-  updateCartItem
+  updateCartItem,
+  getCartItems
 };

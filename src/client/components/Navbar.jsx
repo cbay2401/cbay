@@ -19,6 +19,7 @@ function Navbar(){
                 <NavLink to ="/records">Records</NavLink>
                 <NavLink to ="/Register"><span>Register</span></NavLink>
                 <NavLink to ="/Login"><span>Login</span></NavLink>
+                <NavLink to ="/account"><span>Account</span></NavLink>
             </nav>
         </div>
         </header>
