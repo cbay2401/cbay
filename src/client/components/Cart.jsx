@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
 
@@ -17,15 +18,18 @@ function Cart() {
         fetchCartItems();
     }, []);
 
+    console.log("CART ITEMS:", cartItems); 
+
     const removeFromCart = async (recordId) => {
         try {
             await axios.delete(`/api/orders/${recordId}`);
-            setCartItems(cartItems.filter(item => item.id !== recordId));
+            setCartItems(prevCartItems => prevCartItems.filter(item => item.id !== recordId));
             alert('Record removed from cart successfully!');
         } catch (error) {
             console.error('Error removing record from cart:', error);
         }
     };
+    
 
     return (
         <div className="cart">
