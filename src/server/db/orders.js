@@ -23,13 +23,28 @@ async function createOrder(userId, orderDate, shippingAddress, status) {
   }
 }
 
+async function getCartOrderId(userId) {
+  try {
+    const { rows } = await db.query(
+      `SELECT id
+       FROM orders
+       WHERE user_id = $1
+       AND status = true`,
+      [userId]
+    );
+    return rows[0].id; 
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function createCart(order_Id, records_Id, quantity) {
   try {
     const { rows } = await db.query(
-      `INSERT INTO orders_records ( order_id, records_id, quantity)
+      `INSERT INTO orders_records (order_id, records_id, quantity)
       VALUES ($1, $2, $3)
       RETURNING *`,
-      [(order_Id, records_Id, quantity)]
+      [order_Id, records_Id, quantity]
     );
     return rows[0];
   } catch (err) {
@@ -55,5 +70,6 @@ module.exports = {
   getAllOrders,
   createOrder,
   createCart,
-  updateOrder
+  updateOrder,
+  getCartOrderId
 };
