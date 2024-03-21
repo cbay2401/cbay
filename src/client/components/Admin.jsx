@@ -47,7 +47,6 @@ const AdminDashboard = () => {
             });
     };
 
-
     const filteredRecords = records.filter(
         (record) =>
           record.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -59,6 +58,7 @@ const AdminDashboard = () => {
             <h2>Admin Dashboard</h2>
             <button onClick={handleViewUsers}>View All Users</button>
             <button onClick={handleViewRecords}>View All Records</button>
+            <button>Add New Record</button>
             {showUsers === true && users.length > 0 && (
                 <div>
                     <h3>All Users</h3>
