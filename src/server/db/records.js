@@ -29,8 +29,15 @@ async function getRecordById( id ) {
     return rows [0]
 }
 
+const deleteRecord = async (recordId) => {
+    await db.query(`
+    DELETE FROM records
+    WHERE id = $1
+    `, [recordId])
+}
 
-module.exports = {addNewRecord, getAllRecords, getRecordById}
+
+module.exports = {addNewRecord, getAllRecords, getRecordById, deleteRecord}
 
 
 

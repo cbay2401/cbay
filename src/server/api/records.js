@@ -1,6 +1,6 @@
 const express = require ('express')
 const recordsRouter = express.Router()
-const {getAllRecords, addNewRecord, getRecordById} = require('../db/records')
+const {getAllRecords, addNewRecord, getRecordById, deleteRecord} = require('../db/records')
 
 
 
@@ -55,5 +55,15 @@ recordsRouter.get('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+recordsRouter.delete('/:id', async (req, res, next) => {
+  try {
+      const { id } = req.params;
+      await deleteRecord(id);
+      res.sendStatus(204); // No content
+  } catch (err) {
+      next(err);
+  }
+});
 
 module.exports = recordsRouter

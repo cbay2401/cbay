@@ -8,6 +8,8 @@ import Register from './components/Register';
 import SingleRecord from './components/SingleRecord';
 import AccountInfo from './components/Account';
 import Cart from './components/Cart';
+// import PrivateRoute from './components/PrivateRoute';
+import AdminDashboard from './components/Admin';
 
 
 
@@ -33,7 +35,7 @@ function App() {
   <Route path="/records/:id" element={<SingleRecord />} />
   <Route path="/users/account" element={<AccountInfo token={token} />} />
   <Route path="/cart" element={<Cart />}/>
-
+  <Route path="/admin" element={<AdminDashboard />} />
   </Routes>
 </main>
    

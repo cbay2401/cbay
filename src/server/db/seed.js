@@ -6,6 +6,7 @@ const users = [
     name: "Emily Johnson",
     email: "emily@example.com",
     password: "securepass",
+    role: "admin"
   },
   {
     name: "Liu Wei",
@@ -27,7 +28,12 @@ const users = [
     email: "john@example.com",
     password: "password123",
   },
-  // Add more user objects as needed
+  {
+    name: "Admin3",
+    email: "admin3@example.com",
+    password: "admin3",
+    role: "admin"
+  }
 ];
 
 const dropTables = async () => {
@@ -45,12 +51,14 @@ const dropTables = async () => {
 
 const createTables = async () => {
   try {
+    console.log("Creating users table...")
     await db.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) DEFAULT 'name',
             email VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL
+            password VARCHAR(255) NOT NULL,
+            role VARCHAR(20) DEFAULT 'user'
         )`);
   } catch (err) {
     throw err;
@@ -179,6 +187,7 @@ const insertUsers = async () => {
         name: user.name,
         email: user.email,
         password: user.password,
+        role: user.role || "user"
       });
     }
     console.log("Seed data inserted successfully.");

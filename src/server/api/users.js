@@ -2,7 +2,7 @@ const express = require("express");
 const usersRouter = express.Router();
 const requireToken = require("./requireToken");
 
-const { createUser, getUser, getUserByEmail, getUserById } = require("../db");
+const { createUser, getUser, getUserByEmail, getUserById, getAllUsers } = require("../db");
 
 const jwt = require("jsonwebtoken");
 
@@ -33,6 +33,7 @@ usersRouter.post("/login", async (req, res, next) => {
         {
           id: user.id,
           email,
+          role: user.role,
         },
         process.env.JWT_SECRET,
         {
@@ -43,6 +44,7 @@ usersRouter.post("/login", async (req, res, next) => {
       res.send({
         message: "Login successful, Cool dude!",
         token,
+        role: user.role,
       });
     } else {
       next({
