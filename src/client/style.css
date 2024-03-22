@@ -510,3 +510,113 @@ p {
 .link-back:hover {
   color: #0056b3; /* Adjust hover color as needed */
 }
+
+
+
+/* --------CART PAGE-------- */
+
+
+.cart {
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  justify-content: space-evenly;
+}
+
+.cart h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cart p {
+  margin: 10px 0;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart li {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+
+/* .cart li:last-child {
+  border-bottom: none;
+} */
+
+.cart .album-container {
+  display: flex;
+  align-items: center;
+}
+
+.cart .albumcover {
+  width: 150px;
+  height: 150px;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.cart .item-details {
+  flex: 1;
+}
+
+
+
+.cart .quantity-controls button, .cart .remove-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: .5em;
+}
+
+.cart .quantity-controls button:hover, .cart .remove-button:hover {
+  background-color: #0056b3;
+}
+
+.shoppingCartH1{
+
+  text-align: center;
+  margin: 1em auto;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 40px;
+}
+
+.cart .quantity-controls input {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.cart .quantity-controls input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.cart h4{
+  margin: .5em;
+  text-align: left;
+}
+
+.total-price{
+  text-align: right;
+}
+
+
+
+
