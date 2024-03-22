@@ -45,7 +45,7 @@ const LoginForm = ({ setToken }) => {
         console.log("Redirecting to admin page...");
         navigate("/admin")
       } else {
-      navigate("/account");
+      navigate("/users/account");
       }
       
     } catch (err) {
