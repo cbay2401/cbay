@@ -53,21 +53,7 @@ function AllRecords() {
         ))}
       </div>
     </div>
-      {/* <div className="records-container">
-        {filteredRecords.map((record) => (
-          <Link to={`/records/${record.id}`} key={record.id} className="singlerecord">
-            <div key={record.id} className="records">
-              <img className="albumcover" src={record.imageurl} alt="Album Cover" />
-              <div className="records-text">
-                <h4>{record.artist}</h4>
-                <h5>{record.albumname}</h5>
-                <p>${record.price}</p>
-              </div>
-              
-            </div>
-          </Link>
-        ))}
-      </div> */}
+      
     </>
   );
 }

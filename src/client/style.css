@@ -427,27 +427,10 @@ header nav > a {
 /* -------------ALL RECORDS-------------  */
 
 .records-container {
-  /* border: 1px solid red; */
   display: flex;
   flex-wrap: wrap;
-  /* align-content: flex-start;
-  justify-content: space-around; */
   gap: 20px 20px;
-
-  
-  /* align-items: center; */
   margin: auto 10em;
- /* justify-content: center; */
-  
-
-  /* width: 80vw;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-evenly;
-  display: flex; */
-  /* flex-direction: row; */
-  /* flex-wrap: wrap;
-  gap: 20px; */
 }
 
 /* This helps center all content */
@@ -458,7 +441,7 @@ header nav > a {
 }
 
 .records {
-  /* border: 1px solid red; */
+  
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -475,14 +458,6 @@ header nav > a {
   user-select: none;
   font-weight: bolder;
   color: black;
-
-
-  /* justify-content: space-between; */
-  /* text-align: center;
-  border-radius: px;
-  padding: 10px;
-  text-decoration: none;
-  max-width: 200px; */
 }
 
 .records-text {
@@ -498,30 +473,10 @@ header nav > a {
 
 }
 
-/* .records {
-  box-sizing: border-box;
-  width: 200px;
-  height: 254px;
-  background: rgba(217, 217, 217, 0.58);
-  border: 1px solid white;
-  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(6px);
-  border-radius: 17px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.5s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-  font-weight: bolder;
-  color: black;
-}  */
-
 .records:hover {
   border: 1px solid black;
   transform: scale(1.05);
-  /* border-radius: 17px 0 17px 17px; */
+
 }
 
 .records:active {
