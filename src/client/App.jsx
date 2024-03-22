@@ -1,6 +1,6 @@
 // app.jsx
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {Routes, Route}  from "react-router-dom";
 import LoginForm from './components/Login';
 import AllRecords from './components/AllRecords';
@@ -22,21 +22,15 @@ import Footer from './components/Footer.jsx';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("jwtToken"));
 
-  useEffect(() => {
-    // Check if token exists in localStorage when component mounts
-    const storedToken = localStorage.getItem('jwtToken');
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
-
-  const handleSetToken = (token) => {
-    setToken(token);
-    // Store token in localStorage when it changes
-    localStorage.setItem('jwtToken', token);
-  };
+  // useEffect(() => {
+  //   // Check if token exists in localStorage when component mounts
+  //   const storedToken = localStorage.getItem('jwtToken');
+  //   if (storedToken) {
+  //     setToken(storedToken);
+  //   }
+  // }, []);
 
   return (
     <>
@@ -50,7 +44,7 @@ function App() {
   <Route path="/login" element={<LoginForm setToken={setToken}/>} />
   <Route path="/register" element={<Register setToken={setToken} />} />
   <Route path="/records/:id" element={<SingleRecord />} />
-  <Route path="/account" element={<AccountInfo token={token} />} />
+  <Route path="/users/account" element={<AccountInfo token={token} />} />
   <Route path="/cart/:cartId" element={<Cart />}/>
   <Route path="/admin" element={<AdminDashboard token={token}/>} />
   </Routes>

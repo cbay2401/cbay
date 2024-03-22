@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+// components/Admin.jsx
+
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const AdminDashboard = ({ token }) => {
+const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
     const [records, setRecords] = useState([]);
     const [showUsers, setShowUsers] = useState(null);
@@ -16,7 +18,7 @@ const AdminDashboard = ({ token }) => {
     });
 
     const handleViewUsers = () => {
-        axios.get('/api/users', { headers: { Authorization: `Bearer ${token}` } })
+        axios.get('/api/users', { headers: { Authorization: localStorage.getItem('token') } })
             .then(response => {
                 if (Array.isArray(response.data.users)) {
                     setUsers(response.data.users); // Access "users" key
@@ -31,7 +33,7 @@ const AdminDashboard = ({ token }) => {
     };
 
     const handleViewRecords = () => {
-        axios.get('/api/records', { headers: { Authorization: `Bearer ${token}` } })
+        axios.get('/api/records', { headers: { Authorization: localStorage.getItem('token') } })
             .then(response => {
                 setRecords(response.data);
                 setShowUsers(false);
@@ -42,7 +44,7 @@ const AdminDashboard = ({ token }) => {
     };
 
     const handleDeleteRecord = (recordId) => {
-        axios.delete(`/api/records/${recordId}`, { headers: { Authorization: `Bearer ${token}` } })
+        axios.delete(`/api/records/${recordId}`, { headers: { Authorization: localStorage.getItem('token') } })
             .then(response => {
                 // Remove the deleted record from the state
                 setRecords(records.filter(record => record.id !== recordId));
@@ -54,7 +56,7 @@ const AdminDashboard = ({ token }) => {
 
     const handleAddRecord = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
-        axios.post('/api/records', newRecord, { headers: { Authorization: `Bearer ${token}` } })
+        axios.post('/api/records', newRecord, { headers: { Authorization: localStorage.getItem('token') } })
             .then(response => {
                 // Add the new record to the state
                 setRecords([...records, response.data]);
@@ -78,10 +80,6 @@ const AdminDashboard = ({ token }) => {
             record.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
             record.albumname.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
-    if (!token) {
-        return <div>You need to be logged in as Admin to view this page.</div>;
-    }
 
     return (
         <div>
@@ -111,8 +109,8 @@ const AdminDashboard = ({ token }) => {
                         />
                     </section>
                     <section className="records-container">
+                        {/* Form for adding new record */}
                         <form onSubmit={handleAddRecord}>
-                            {/* Form for adding new record */}
                             <label>
                                 Artist:
                                 <input
@@ -121,7 +119,46 @@ const AdminDashboard = ({ token }) => {
                                     onChange={(e) => setNewRecord({ ...newRecord, artist: e.target.value })}
                                 />
                             </label>
-                            {/* Other input fields */}
+                            <label>
+                                Album Name:
+                                <input
+                                    type="text"
+                                    value={newRecord.albumname}
+                                    onChange={(e) => setNewRecord({ ...newRecord, albumname: e.target.value })}
+                                />
+                            </label>
+                            <label>
+                                Genre:
+                                <input
+                                    type="text"
+                                    value={newRecord.genre}
+                                    onChange={(e) => setNewRecord({ ...newRecord, genre: e.target.value })}
+                                />
+                            </label>
+                            <label>
+                                Year:
+                                <input
+                                    type="text"
+                                    value={newRecord.year}
+                                    onChange={(e) => setNewRecord({ ...newRecord, year: e.target.value })}
+                                />
+                            </label>
+                            <label>
+                                Image URL:
+                                <input
+                                    type="text"
+                                    value={newRecord.imageurl}
+                                    onChange={(e) => setNewRecord({ ...newRecord, imageurl: e.target.value })}
+                                />
+                            </label>
+                            <label>
+                                Price:
+                                <input
+                                    type="text"
+                                    value={newRecord.price}
+                                    onChange={(e) => setNewRecord({ ...newRecord, price: e.target.value })}
+                                />
+                            </label>
                             <button type="submit">Add Record</button>
                         </form>
                         {/* Display existing records */}
