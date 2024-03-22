@@ -443,6 +443,10 @@ header nav > a {
   max-width: 200px;
 }
 
+.singlerecord{
+  text-decoration: none;
+}
+
 /* ----------SINGLE RECORD----------  */
 
 .single-record {
