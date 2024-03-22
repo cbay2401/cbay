@@ -470,6 +470,7 @@ header nav > a {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  text-decoration: none;
 }
 
 .albumcover {
