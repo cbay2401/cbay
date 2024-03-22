@@ -24,7 +24,7 @@ function SingleRecord() {
 
   const addToCart = async () => {
     try {
-      await axios.patch(`/api/orders/${id}`);
+      await axios.post(`api/records/${id}`);
       alert("You Got It!");
 
       navigate("/cart");
@@ -64,3 +64,5 @@ function SingleRecord() {
 }
 
 export default SingleRecord;
+
+s

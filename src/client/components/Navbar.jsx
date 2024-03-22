@@ -22,6 +22,7 @@ function Navbar(){
                 <NavLink to ="/Register"><span>Register</span></NavLink>
                 <NavLink to ="/login"><span>Login</span></NavLink>
                 <NavLink to ="/users/account"><span>Account</span></NavLink>
+
             </nav>
         </div>
         </header>
