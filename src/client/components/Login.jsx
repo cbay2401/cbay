@@ -1,5 +1,3 @@
-// components/Login.jsx
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -29,29 +27,44 @@ const LoginForm = ({ setToken }) => {
         }
       );
 
-      console.log("Response data:", response.data); // Log the entire response data object
       const token = response.data.token;
       localStorage.setItem("jwtToken", token);
       setToken(token);
-      // localStorage.setItem(token)
-      
 
       console.log("login Successful, Dude!", response);
 
-      const userRole = response.data.role
+      const userId = response.data.userId;
+      localStorage.setItem("userId", userId);
+      console.log("firstBlah:", userId)
+
+      const userRole = response.data.role;
       console.log("User role:", userRole);
 
       if (userRole === "admin") {
         console.log("Redirecting to admin page...");
-        navigate("/admin")
+        navigate("/admin");
       } else {
-      navigate("/users/account");
+        await createOrderForUser(userId);
+        console.log("Blah",userId)
+        navigate("/users/account");
       }
-      
     } catch (err) {
       console.error("Error in login ", err.message);
+      setMessage("Invalid email or password. Please try again.");
     }
   }
+
+  async function createOrderForUser(userId) {
+    try {
+      await axios.post("http://localhost:3000/api/orders", {
+        userId: userId,
+        // You may include other order details here
+      });
+    } catch (error) {
+      console.error("Error creating order for user:", error.message);
+    }
+  }
+
   return (
     <div className="login-form">
       <h2 className="login-text">Login</h2>

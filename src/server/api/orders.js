@@ -22,9 +22,10 @@ ordersRouter.get("/admin/orders", async (req, res, next) => {
 });
 
 ordersRouter.post("/", async (req, res, next) => {
-  const { userId, orderDate, shippingAddress, status } = req.body;
+  const { userId} = req.body;
+  console.log("Received userId:", userId)
   try {
-    const order = await createOrder(userId, orderDate, shippingAddress, status);
+    const order = await createOrder(userId);
     res.status(201).json(order);
   } catch (error) {
     next(error);
@@ -58,6 +59,7 @@ ordersRouter.get("/cart/:cartId", async (req, res, next) => {
   const cartId = req.params.cartId;
   try {
     const cartItems = await getCartItems(cartId);
+    console.log(cartId)
     res.json(cartItems);
   } catch (error) {
     next(error);
