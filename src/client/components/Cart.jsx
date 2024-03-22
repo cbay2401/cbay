@@ -52,15 +52,30 @@ function Cart() {
             console.error('Error removing record from cart:', error);
         }
     };
-    
+    const increaseQuantity = (itemId) => {
+        setCartItems(prevCartItems =>
+            prevCartItems.map(item =>
+                item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+            )
+        );
+    };
 
-
+    const decreaseQuantity = (itemId) => {
+                    setCartItems(prevCartItems =>
+                        prevCartItems.map(item =>
+                            item.id === itemId && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+                        )
+                    );
+                };
+            
+                const totalPrice = cartItems.reduce((total, item) => total + (item.quantity * recordDetails[item.records_id]?.price || 0), 0);
     return (
         <div className="cart">
             <h1>Shopping Cart</h1>
             {cartItems.length === 0 ? (
                 <p>Your cart is empty.</p>
             ) : (
+                <> 
                 <ul>
                     {cartItems.map(item => (
                         <li key={item.id}>
@@ -71,6 +86,9 @@ function Cart() {
                                         <p>{recordDetails[item.records_id].albumname}</p>
                                         <p>${recordDetails[item.records_id].price}</p>
                                         <p>Quantity:{item.quantity}</p>
+                                        
+                                        <button onClick={() => increaseQuantity(item.id)}>+</button>
+                                        <button onClick={() => decreaseQuantity(item.id)}>-</button>
                                     </>
                                 )}
                                 <button onClick={() => removeFromCart(item.id)}>Remove</button>
@@ -78,6 +96,8 @@ function Cart() {
                         </li>
                     ))}
                 </ul>
+                <p>Total Price: ${totalPrice.toFixed(2)}</p>
+                </>
             )}
         </div>
     );
