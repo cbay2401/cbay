@@ -55,7 +55,7 @@ const Slideshow = () => {
             </button>
           </div>
         </div>
-        <div class="newsletter">
+        <div className="newsletter">
   <h1>Subscribe to Our Newsletter</h1>
   <h4>Stay up to date on new releases, sales, and in store events.</h4>
   <form>

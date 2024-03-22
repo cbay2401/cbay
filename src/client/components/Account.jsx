@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AccountInfo({ token, setToken }) {
+  const navigate = useNavigate()
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -22,7 +24,9 @@ function AccountInfo({ token, setToken }) {
 
   const handleLogout = () => {
     localStorage.removeItem('jwtToken');
-    setToken(null);
+    setUserData(null)
+    navigate("/login")
+    window.location.reload()
   };
 
   return (
@@ -33,11 +37,11 @@ function AccountInfo({ token, setToken }) {
           <h4 >ID: {userData.id}</h4>
           <h4 >Name: {userData.name}</h4>
           <h4 >Email: {userData.email}</h4>
+          <button onClick={handleLogout}>Log Out</button>
         </div>
       ) : (
         <p>Loading...</p>
       )}
-      <button onClick={handleLogout}>Log Out</button>
     </div>
   );
 }
