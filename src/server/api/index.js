@@ -72,6 +72,7 @@ const { getUserByEmail } = require('../db');
 apiRouter.use('/users', usersRouter);
 
 apiRouter.use((err, req, res, next) => {
+    console.log(err)
     res.status(500).send(err)
   })
 

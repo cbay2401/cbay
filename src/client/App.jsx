@@ -39,7 +39,7 @@ function App() {
   <Route path="/admin" element={<AdminDashboard token={token}/>} />
   </Routes>
 </main>
-   <Footer />
+   {/* <Footer /> */}
     </>
   );
 }
