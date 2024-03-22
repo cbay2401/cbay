@@ -3,10 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 
-
-
 function SingleRecord() {
-  const { id } = useParams();
+  const { id } = useParams(); 
   const [record, setRecord] = useState({});
   const navigate = useNavigate();
   const {cartId} = useParams()
@@ -87,7 +85,20 @@ function SingleRecord() {
     }
   };
 
-
+  const createNewOrder = async () => {
+    try {
+      const response = await axios.post("/api/orders", {
+        // Assuming you handle user authentication and have the user ID available here
+        orderDate: new Date().toISOString(),
+        shippingAddress: "", // You might want to add the user's shipping address here
+        status: "pending",
+      });
+      return response.data; // Assuming the response contains the newly created order data
+    } catch (err) {
+      console.error("Error creating new order:", err);
+      throw err; // Rethrow the error to handle it in the calling function if needed
+    }
+  };
 
   return (
     <>
