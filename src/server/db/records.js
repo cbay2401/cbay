@@ -34,7 +34,7 @@ const deleteRecord = async (recordId) => {
     DELETE FROM records
     WHERE id = $1
     `, [recordId])
-}
+} 
 
 
 module.exports = {addNewRecord, getAllRecords, getRecordById, deleteRecord}
