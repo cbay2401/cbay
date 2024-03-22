@@ -119,6 +119,35 @@ header nav > a {
 /* Navbar ends */
 
 
+
+/* Search Bar */
+
+.searchbar-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  margin-bottom: 20px; 
+}
+
+#searchbar {
+  width: 300px; /* Adjust the width as needed */
+  padding: 10px; /* Add padding for better aesthetics */
+  border: 1px solid #ccc; /* Add a border for distinction */
+  border-radius: 5px; /* Add rounded corners */
+  font-size: 16px; /* Adjust font size */
+}
+
+#searchbar::placeholder {
+  color: #999; 
+}
+
+#searchbar:focus {
+  outline: none; /* Remove the default focus outline */
+  border-color: #007bff; /* Change border color on focus */
+}
+
+
+
 /* Home Begins*/
   .home-container {
     position: relative;
