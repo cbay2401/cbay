@@ -5,6 +5,8 @@
 }
 body {
   padding-top: 68px;
+  padding-bottom: 50px; 
+  margin-bottom: 50px;
 }
 
 /* .albumcover{
@@ -424,12 +426,17 @@ header nav > a {
 
 
 .records-container {
+  width: 80vw;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-evenly;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
 .records {
+ 
   border-radius: 8px;
   padding: 10px;
   text-decoration: none;
