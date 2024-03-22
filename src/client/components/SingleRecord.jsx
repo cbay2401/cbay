@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 
+
+
 function SingleRecord() {
   const { id } = useParams();
   const [record, setRecord] = useState({});
@@ -84,6 +86,8 @@ function SingleRecord() {
       console.error("Error adding record to cart:", err);
     }
   };
+
+
 
   return (
     <>

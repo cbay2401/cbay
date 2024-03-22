@@ -51,14 +51,35 @@ async function updateCartItem(cartItemId, quantity) {
   }
 }
 
-async function getCartItems (orderId) {
+async function getCartItems(orderId) {
   try {
-    const { rows } = await db.query(`
+    const { rows } = await db.query(
+      `
     SELECT * FROM orders_records WHERE order_id = $1
-    `, [orderId])
-    return rows
-  } catch(err){
-    throw err
+    `,
+      [orderId]
+    );
+    return rows;
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function addToCart(recordId) {
+  try {
+    const { rows } = await db.query(
+      `INSERT recordId INTO orders_records WHERE id = $1
+     `,
+      [recordId]
+    );
+
+    if (!rows.length) {
+      return "The Items In There!";
+    } else {
+      return rows;
+    }
+  } catch (err) {
+    throw err;
   }
 }
 
@@ -69,5 +90,6 @@ module.exports = {
   createOrder,
   createCart,
   updateCartItem,
-  getCartItems
+  getCartItems,
+  addToCart,
 };
