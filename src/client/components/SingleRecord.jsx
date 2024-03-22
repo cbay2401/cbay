@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {useParams, useNavigate} from 'react-router-dom'
-
+import { useParams, useNavigate } from "react-router-dom";
 
 function SingleRecord() {
-  
   const { id } = useParams();
   const [record, setRecord] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getRecord() {
@@ -24,10 +22,9 @@ function SingleRecord() {
 
   const addToCart = async () => {
     try {
-      await axios.patch(`/api/orders/${id}`, 
-     );
+      await axios.patch(`/api/orders/${id}`);
       alert("You Got It!");
-      
+
       navigate("/cart");
     } catch (err) {
       console.error("Error adding record to cart:", err);
@@ -35,16 +32,32 @@ function SingleRecord() {
   };
 
   return (
+    <>
+    
     <div className="single-record">
-      <img className="albumcover" src={record.imageurl} alt="Album Cover" />
+  <div className="album-info">
+    <img
+      className="singleRecordAlbumCover"
+      src={record.imageurl}
+      alt="Album Cover"
+    />
+    <div className="single-record-info">
       <h1>{record.artist}</h1>
       <h2>{record.albumname}</h2>
-      <p>${record.price}</p>
-      <p>{record.year}</p>
-      <p>{record.genre}</p>
-      <button onClick={addToCart}>Add To Cart</button>
-      <Link to="/cart">View Cart</Link>
+      <h4>${record.price}</h4>
+      <h4>{record.year}</h4>
+      <h4>{record.genre}</h4>
     </div>
+  </div>
+  <div className="singleRecordButtons">
+    <button onClick={addToCart}>Add To Cart</button>
+    <Link to="/cart">
+      <button>View Cart</button>
+    </Link>
+  </div>
+</div>
+
+    </>
   );
 }
 

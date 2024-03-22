@@ -69,38 +69,49 @@ function Cart() {
                 };
             
                 const totalPrice = cartItems.reduce((total, item) => total + (item.quantity * recordDetails[item.records_id]?.price || 0), 0);
-    return (
-        <div className="cart">
-            <h1>Shopping Cart</h1>
-            {cartItems.length === 0 ? (
-                <p>Your cart is empty.</p>
-            ) : (
-                <> 
-                <ul>
-                    {cartItems.map(item => (
-                        <li key={item.id}>
-                            <div>
-                                {recordDetails[item.records_id] && (
+                return (
+                    <>
+                    <h1 className='shoppingCartH1'>Cart</h1>
+                    <div className="cart">
+                      
+                      {cartItems.length === 0 ? (
+                        <p>Your cart is empty.</p>
+                      ) : (
+                        <>
+                          <ul>
+                            {cartItems.map(item => (
+                              <li key={item.id} className="cart-item">
+                                <div className="album-container">
+                                  {recordDetails[item.records_id] && (
                                     <>
-                                        <img className='albumcover' src={recordDetails[item.records_id].imageurl} alt="Album Cover" />
-                                        <p>{recordDetails[item.records_id].albumname}</p>
-                                        <p>${recordDetails[item.records_id].price}</p>
-                                        <p>Quantity:{item.quantity}</p>
-                                        
-                                        <button onClick={() => increaseQuantity(item.id)}>+</button>
+                                      <img className="albumcover" src={recordDetails[item.records_id].imageurl} alt="Album Cover" />
+                                      <div className="item-details">
+                                        <h3>{recordDetails[item.records_id].albumname}</h3>
+                                        <h4>${recordDetails[item.records_id].price}</h4>
+                                        <div className="quantity-controls">
                                         <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                                        <input type="number" value={item.quantity} onChange={(e) => updateQuantity(item.id, e.target.value)} />
+                                          <button onClick={() => increaseQuantity(item.id)}>+</button>
+                                          
+                                         
+                                        </div>
+                                        <button className="remove-button" onClick={() => removeFromCart(item.id)}>Remove</button>
+                                      </div>
                                     </>
-                                )}
-                                <button onClick={() => removeFromCart(item.id)}>Remove</button>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-                <p>Total Price: ${totalPrice.toFixed(2)}</p>
-                </>
-            )}
-        </div>
-    );
+                                  )}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                          <h2 className="total-price">Total Price: ${totalPrice.toFixed(2)}</h2>
+                        </>
+                      )}
+                    </div>
+                    </>
+                  );
+                  
+                  
+                  
 }
 
 export default Cart;

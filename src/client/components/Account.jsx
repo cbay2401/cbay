@@ -27,13 +27,12 @@ function AccountInfo({ token }) {
   console.log(userData);
   return (
     <div className="account-info">
-      <h1>Account Information</h1>
+      <h1 className="accountInfoH1">Account Information</h1>
       {userData ? (
-        <div>
-          <p>ID: {userData.id}</p>
-          <p>Name: {userData.name}</p>
-          <p>Email: {userData.email}</p>
-          {/* Add more user information as needed */}
+        <div className="accountInfoCard">
+          <h4 >ID: {userData.id}</h4>
+          <h4 >Name: {userData.name}</h4>
+          <h4 >Email: {userData.email}</h4>
         </div>
       ) : (
         <p>Loading...</p>
