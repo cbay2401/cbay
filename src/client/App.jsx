@@ -32,12 +32,6 @@ function App() {
     }
   }, []);
 
-  const handleSetToken = (token) => {
-    setToken(token);
-    // Store token in localStorage when it changes
-    localStorage.setItem('jwtToken', token);
-  };
-
   return (
     <>
       <Navbar />
@@ -50,7 +44,7 @@ function App() {
   <Route path="/login" element={<LoginForm setToken={setToken}/>} />
   <Route path="/register" element={<Register setToken={setToken} />} />
   <Route path="/records/:id" element={<SingleRecord />} />
-  <Route path="/account" element={<AccountInfo token={token} />} />
+  <Route path="/users/account" element={<AccountInfo token={token} />} />
   <Route path="/cart/:cartId" element={<Cart />}/>
   <Route path="/admin" element={<AdminDashboard token={token}/>} />
   </Routes>
