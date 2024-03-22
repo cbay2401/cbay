@@ -1,5 +1,3 @@
-// components/AdminDashboard.jsx
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -8,9 +6,17 @@ const AdminDashboard = ({ token }) => {
     const [records, setRecords] = useState([]);
     const [showUsers, setShowUsers] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
+    const [newRecord, setNewRecord] = useState({
+        artist: '',
+        albumname: '',
+        genre: '',
+        year: '',
+        imageurl: '',
+        price: ''
+    });
 
     const handleViewUsers = () => {
-        axios.get('/api/users', { headers: { Authorization: localStorage.getItem('token') } })
+        axios.get('/api/users', { headers: { Authorization: `Bearer ${token}` } })
             .then(response => {
                 if (Array.isArray(response.data.users)) {
                     setUsers(response.data.users); // Access "users" key
@@ -25,7 +31,7 @@ const AdminDashboard = ({ token }) => {
     };
 
     const handleViewRecords = () => {
-        axios.get('/api/records', { headers: { Authorization: localStorage.getItem('token') } })
+        axios.get('/api/records', { headers: { Authorization: `Bearer ${token}` } })
             .then(response => {
                 setRecords(response.data);
                 setShowUsers(false);
@@ -35,9 +41,8 @@ const AdminDashboard = ({ token }) => {
             });
     };
 
-
     const handleDeleteRecord = (recordId) => {
-        axios.delete(`/api/records/${recordId}`, { headers: { Authorization: localStorage.getItem('token') } })
+        axios.delete(`/api/records/${recordId}`, { headers: { Authorization: `Bearer ${token}` } })
             .then(response => {
                 // Remove the deleted record from the state
                 setRecords(records.filter(record => record.id !== recordId));
@@ -47,18 +52,42 @@ const AdminDashboard = ({ token }) => {
             });
     };
 
+    const handleAddRecord = (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+        axios.post('/api/records', newRecord, { headers: { Authorization: `Bearer ${token}` } })
+            .then(response => {
+                // Add the new record to the state
+                setRecords([...records, response.data]);
+                // Clear the new record data
+                setNewRecord({
+                    artist: '',
+                    albumname: '',
+                    genre: '',
+                    year: '',
+                    imageurl: '',
+                    price: ''
+                });
+            })
+            .catch(error => {
+                console.error('Error adding record:', error);
+            });
+    };
+
     const filteredRecords = records.filter(
         (record) =>
-          record.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          record.albumname.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+            record.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            record.albumname.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    if (!token) {
+        return <div>You need to be logged in as Admin to view this page.</div>;
+    }
 
     return (
         <div>
             <h2>Admin Dashboard</h2>
             <button onClick={handleViewUsers}>View All Users</button>
             <button onClick={handleViewRecords}>View All Records</button>
-            <button>Add New Record</button>
             {showUsers === true && users.length > 0 && (
                 <div>
                     <h3>All Users</h3>
@@ -73,15 +102,32 @@ const AdminDashboard = ({ token }) => {
                 <div>
                     <h3>All Records</h3>
                     <section className="searchbar-container">
-                        <input id="searchbar" type="text"
-                        placeholder = "Search Artist/Album Name/Genre"
-                        value={searchQuery}
-                        onChange={(e)=> setSearchQuery(e.target.value)}/>
-                    </section>    
+                        <input
+                            id="searchbar"
+                            type="text"
+                            placeholder="Search Artist/Album Name/Genre"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                    </section>
                     <section className="records-container">
+                        <form onSubmit={handleAddRecord}>
+                            {/* Form for adding new record */}
+                            <label>
+                                Artist:
+                                <input
+                                    type="text"
+                                    value={newRecord.artist}
+                                    onChange={(e) => setNewRecord({ ...newRecord, artist: e.target.value })}
+                                />
+                            </label>
+                            {/* Other input fields */}
+                            <button type="submit">Add Record</button>
+                        </form>
+                        {/* Display existing records */}
                         {filteredRecords.map((record) => (
-                            <div key={record.id} className='records'>
-                                <img className='albumcover' src={record.imageurl} alt='Album Cover' />
+                            <div key={record.id} className="records">
+                                <img className="albumcover" src={record.imageurl} alt="Album Cover" />
                                 <h1>{record.artist}</h1>
                                 <h2>{record.albumname}</h2>
                                 <p>${record.price}</p>

@@ -1,3 +1,5 @@
+// components/Login.jsx
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -43,7 +45,7 @@ const LoginForm = ({ setToken }) => {
         console.log("Redirecting to admin page...");
         navigate("/admin")
       } else {
-      navigate("/users/account");
+      navigate("/account");
       }
       
     } catch (err) {

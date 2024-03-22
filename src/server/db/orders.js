@@ -1,3 +1,5 @@
+// server/db/orders.js
+
 const db = require("./client");
 
 async function getAllOrders() {
