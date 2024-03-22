@@ -133,9 +133,11 @@ header nav > a {
 .home-container {
   position: relative;
   height: 888px;
+  
   /* border: 1px solid #000; */
-
+  min-height: calc(100vh - 100px);
   bottom: 68px;
+  margin-bottom: 100px;
 }
 
 .slideshow-container {
@@ -265,6 +267,64 @@ header nav > a {
     background-position: 0 0;
   }
 }
+
+/* ---------NEWSLETTER--------- */
+
+.newsletter {
+  border: 1px solid #ccc; 
+  background-color: #b2d2de; 
+  padding: 20px; 
+  text-align: center; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  width: 800px; 
+  margin: auto; 
+  position: relative;
+}
+
+.newsletter h1 {
+  color: #f4f6f7; 
+  font-size: 24px; 
+  margin-bottom: 10px;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 1px 1px 1px rgb(17, 17, 17);
+}
+
+.newsletter h4 {
+  color: #f9f6f6;
+  font-size: 16px; 
+  margin-bottom: 20px;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 1px 1px 1px rgb(17, 17, 17);
+}
+
+.newsletter input[type="email"] {
+  width: 30%; 
+  padding: 10px; 
+  margin-bottom: 10px; 
+  margin: 10px;
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+}
+
+.newsletter button {
+  background-color: #007bff; 
+  color: #fff; /* White text color */
+  padding: 10px 20px; /* Add padding for button */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.newsletter button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
 
 .button-container {
   display: flex;
@@ -622,7 +682,7 @@ h2 {
   width: 100%;
   bottom: 0;
 
-  background-color: white;
+  /* background-color: white; */
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.08);
 }
 
