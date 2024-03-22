@@ -10,6 +10,7 @@ import AccountInfo from './components/Account';
 import Cart from './components/Cart';
 // import PrivateRoute from './components/PrivateRoute';
 import AdminDashboard from './components/Admin';
+import Footer from './components/Footer.jsx';
 
 
 
@@ -38,7 +39,7 @@ function App() {
   <Route path="/admin" element={<AdminDashboard token={token}/>} />
   </Routes>
 </main>
-   
+   <Footer />
     </>
   );
 }
