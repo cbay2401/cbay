@@ -29,25 +29,21 @@ const LoginForm = ({ setToken }) => {
         }
       );
 
-      console.log("Response data:", response.data); // Log the entire response data object
       const token = response.data.token;
       localStorage.setItem("jwtToken", token);
       setToken(token);
       // localStorage.setItem(token)
-      
 
       console.log("login Successful, Dude!", response);
 
-      const userRole = response.data.role
+      const userRole = response.data.role;
       console.log("User role:", userRole);
 
       if (userRole === "admin") {
-        console.log("Redirecting to admin page...");
-        navigate("/admin")
+        navigate("/users/account");
       } else {
-      navigate("/users/account");
+        navigate("/users/account");
       }
-      
     } catch (err) {
       console.error("Error in login ", err.message);
     }
