@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function AccountInfo({ token, setToken }) {
+function AccountInfo({ token }) {
   const navigate = useNavigate()
   const [userData, setUserData] = useState(null);
 
