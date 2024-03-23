@@ -19,6 +19,7 @@ function App() {
     <>
       <Navbar />
 
+
       <main>
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -41,11 +42,27 @@ function App() {
           <Route path="/cart/:cartId" element={<Cart />} />
           <Route
             path="/admin"
-            element={<AdminDashboard token={token} userData={userData} />}
+            element={<AdminDashboard token={token} />}
           />
         </Routes>
       </main>
       <Footer />
+
+<main>
+
+  <Routes>
+  <Route path="/" element={ <Homepage />}/>  
+  <Route path="/records" element={<AllRecords />} />
+  <Route path="/login" element={<LoginForm setToken={setToken}/>} />
+  <Route path="/register" element={<Register setToken={setToken} />} />
+  <Route path="/records/:id" element={<SingleRecord />} />
+  <Route path="/users/account" element={<AccountInfo token={token} />} />
+  <Route path="/cart/:cartId" element={<Cart />}/>
+  <Route path="/admin" element={<AdminDashboard token={token}/>} />
+  </Routes>
+</main>
+   {/* <Footer /> */}
+
     </>
   );
 }

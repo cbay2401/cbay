@@ -36,8 +36,8 @@ const getUser = async ({ email, password }) => {
     const passwordsMatch = await bcrypt.compare(password, hashedPassword);
     if (!passwordsMatch) return;
     delete user.password;
-    const { role, ...userData} = user;
-    return { ...userData, role };
+    const {id, role, ...userData} = user;
+    return {id, ...userData, role };
   } catch (err) {
     throw err;
   }
@@ -68,9 +68,10 @@ const getUserById = async (id) => {
     console.log({id})
   try {
     const result = await db.query({
-        text: `SELECT * 
+        text: `SELECT users.id as user_id, users.name, users.email, orders.id as order_id
         FROM users
-        WHERE id= $1`,
+        JOIN orders ON  users.id=orders.user_id
+        WHERE users.id= $1`,
       values: [id],
     }
     );
@@ -79,7 +80,14 @@ const getUserById = async (id) => {
     if (!user) {
       return;
     }
-    return user;
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      order: {
+        id: user.order_id,
+      }
+    };
   } catch (err) {
     throw err;
   }

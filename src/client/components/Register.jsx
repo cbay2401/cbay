@@ -33,6 +33,7 @@ function Register({ setToken }) {
       setToken(result.token);
       localStorage.setItem("jwtToken", result.token);
       setSuccessMessage("Registration successful! Please Login!");
+      await createOrderForUser(result.id)
       navigate('/users/account');
     } else {  
         setError ("User with this email already exists. Please use a different email.");
@@ -42,7 +43,23 @@ function Register({ setToken }) {
     }
   }
   
-    
+  
+  async function createOrderForUser(userId) {
+    try {
+      await fetch("http://localhost:3000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userId,
+          // You may include other order details here
+        }),
+      });
+    } catch (error) {
+      console.error("Error creating order for user:", error.message);
+    }
+  }
 
   return (
     <>

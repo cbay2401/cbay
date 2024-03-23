@@ -47,6 +47,7 @@ usersRouter.post("/login", async (req, res, next) => {
         message: "Login successful, Cool dude!",
         token,
         role: user.role,
+        userId: user.id,
       });
     } else {
       next({
