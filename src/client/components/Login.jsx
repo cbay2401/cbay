@@ -31,21 +31,23 @@ const LoginForm = ({ setToken }) => {
       localStorage.setItem("jwtToken", token);
       setToken(token);
 
+      // localStorage.setItem(token)
+
       console.log("login Successful, Dude!", response);
 
       const userId = response.data.userId;
       localStorage.setItem("userId", userId);
       console.log("firstBlah:", userId)
-
       const userRole = response.data.role;
       console.log("User role:", userRole);
 
       if (userRole === "admin") {
-        console.log("Redirecting to admin page...");
-        navigate("/admin");
+
+        navigate("/users/account");
       } else {
         await createOrderForUser(userId);
         console.log("Blah",userId)
+
         navigate("/users/account");
       }
     } catch (err) {

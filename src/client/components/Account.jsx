@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AccountInfo({ token }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -22,11 +22,19 @@ function AccountInfo({ token }) {
     }
   }, [token]);
 
+  const handleAdminDashboard = () => {
+    navigate("/admin");
+  };
+
+  const handleCartButton = () => {
+    navigate("/cart");
+  };
+
   const handleLogout = () => {
-    localStorage.removeItem('jwtToken');
-    setUserData(null)
-    navigate("/login")
-    window.location.reload()
+    localStorage.removeItem("jwtToken");
+    setUserData(null);
+    navigate("/login");
+    window.location.reload();
   };
 
   return (
@@ -34,13 +42,17 @@ function AccountInfo({ token }) {
       <h1 className="accountInfoH1">Account Information</h1>
       {userData ? (
         <div className="accountInfoCard">
-          <h4 >ID: {userData.id}</h4>
-          <h4 >Name: {userData.name}</h4>
-          <h4 >Email: {userData.email}</h4>
+          <h4>ID: {userData.id}</h4>
+          <h4>Name: {userData.name}</h4>
+          <h4>Email: {userData.email}</h4>
+          {userData.role === "admin" && (
+            <button onClick={handleAdminDashboard}>Admin Dashboard</button>
+          )}
           <button onClick={handleLogout}>Log Out</button>
+          <button onClick={handleCartButton}>See Cart</button>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p>Please log in to see account information.</p>
       )}
     </div>
   );

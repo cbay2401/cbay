@@ -173,9 +173,13 @@ const AdminDashboard = () => {
                         ))}
                     </section>
                 </div>
-            )}
-        </div>
+              ))}
+            </section>
+          </div>
+        )}
+      </div>
     );
+  }
 };
 
 export default AdminDashboard;
