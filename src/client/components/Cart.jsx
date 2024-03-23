@@ -43,13 +43,24 @@ function Cart() {
         }
     };
 
-    const removeFromCart = async (recordId) => {
+    const removeFromCart = async (cartItemId) => { // Update parameter name to cartItemId
         try {
-            await axios.delete(`/api/orders/${recordId}`);
-            setCartItems(prevCartItems => prevCartItems.filter(item => item.id !== recordId));
+            console.log('Removing record with ID:', cartItemId); // Log the cartItemId being removed
+            await axios.delete(`/api/orders/cart/${cartItemId}`); // Use cartItemId in the API request
+            console.log('Record removed from cart successfully!')
+            setCartItems(prevCartItems => prevCartItems.filter(item => item.id !== cartItemId));
             alert('Record removed from cart successfully!');
         } catch (error) {
             console.error('Error removing record from cart:', error);
+        }
+    };
+
+    const updateCartItemQuantity = async (cartItemId, newQuantity) => {
+        try {
+            await axios.patch(`/api/orders/cart/${cartItemId}`, { quantity: newQuantity });
+            console.log('Quantity updated successfully!');
+        } catch (error) {
+            console.error('Error updating quantity:', error);
         }
     };
 
@@ -59,6 +70,7 @@ function Cart() {
                 item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
             )
         );
+        updateCartItemQuantity(itemId, cartItems.find(item => item.id === itemId).quantity + 1);
     };
 
     const decreaseQuantity = (itemId) => {
@@ -67,6 +79,7 @@ function Cart() {
                 item.id === itemId && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
             )
         );
+        updateCartItemQuantity(itemId, cartItems.find(item => item.id === itemId).quantity - 1);
     };
 
     const totalPrice = cartItems.reduce((total, item) => total + (item.quantity * recordDetails[item.records_id]?.price || 0), 0);
@@ -94,7 +107,7 @@ function Cart() {
                                                     <h4>${recordDetails[item.records_id].price}</h4>
                                                     <div className="quantity-controls">
                                                         <button onClick={() => decreaseQuantity(item.id)}>-</button>
-                                                        <input type="number" value={item.quantity} onChange={(e) => updateQuantity(item.id, e.target.value)} />
+                                                        <input type="number" value={item.quantity} onChange={(e) => updateCartItemQuantity(item.id, e.target.value)} />
                                                         <button onClick={() => increaseQuantity(item.id)}>+</button>
                                                     </div>
                                                     <button className="remove-button" onClick={() => removeFromCart(item.id)}>Remove</button>

@@ -8,7 +8,8 @@ const {
   createOrder,
   createCart,
   updateCartItem,
-  getCartItems
+  getCartItems,
+  deleteCartItem
   
 } = require("../db/orders");
 
@@ -44,7 +45,7 @@ ordersRouter.post("/cart", async (req, res, next) => {
 });
 
 // Update cart item quantity
-ordersRouter.patch("/cart/:cartItemId", requireToken, async (req, res, next) => {
+ordersRouter.patch("/cart/:cartItemId", async (req, res, next) => {
   const cartItemId = req.params.cartItemId;
   const { quantity } = req.body;
   try {
@@ -66,6 +67,17 @@ ordersRouter.get("/cart/:cartId", async (req, res, next) => {
   }
 });
 
-// Add more routes as needed
 
+ordersRouter.delete("/cart/:cartItemId", async (req, res, next) => {
+  const cartItemId = req.params.cartItemId;
+  try {
+    await deleteCartItem(cartItemId);
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Export the ordersRouter
 module.exports = ordersRouter;
+// Add more routes as needed

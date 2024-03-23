@@ -83,6 +83,17 @@ async function addToCart(recordId) {
   }
 }
 
+async function deleteCartItem(cartItemId) {
+  try {
+    const { rows } = await db.query(
+      `DELETE FROM orders_records WHERE id = $1 RETURNING *`,
+      [cartItemId]
+    );
+    return rows[0];
+  } catch (error) {
+    throw error;
+  }
+}
 
 
 module.exports = {
@@ -92,4 +103,5 @@ module.exports = {
   updateCartItem,
   getCartItems,
   addToCart,
+  deleteCartItem
 };
