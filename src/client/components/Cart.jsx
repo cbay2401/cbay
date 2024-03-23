@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
@@ -11,7 +12,7 @@ function Cart() {
     useEffect(() => {
         async function fetchCartItems() {
             try {
-                if (cartId) { // Ensure cartId is defined
+                if (cartId) { 
                     const { data } = await axios.get(`/api/orders/cart/${cartId}`); 
                     setCartItems(data);
 
@@ -73,6 +74,9 @@ function Cart() {
     return (
         <>
             <h1 className='shoppingCartH1'>Cart</h1>
+            <Link to={"/records"}>
+            <button>Shop</button>
+          </Link>
             <div className="cart">
                 {cartItems.length === 0 ? (
                     <p>Your cart is empty.</p>

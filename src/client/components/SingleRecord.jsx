@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
 
 function SingleRecord() {
-  const { id } = useParams(); 
+  const { id } = useParams();
+  // const { cartId } = useParams(); 
   const [record, setRecord] = useState({});
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const {cartId} = useParams()
+  const [cartId, setCartId] = useState(null); // State variable for cartId
 
   useEffect(() => {
     async function getRecord() {
@@ -15,23 +17,63 @@ function SingleRecord() {
         const { data } = await axios.get(`/api/records/${id}`);
         setRecord(data);
       } catch (err) {
-        console.log("Error: ", err);
+        console.error("Error fetching record:", err);
       }
     }
+    async function fetchCartStuff() {
+      try {
+        if (cartId) {
+          const { data } = await axios.get(`/api/orders/cart/${cartId}`);
+          setCartItems(data);
+
+          data.forEach(async (item) => {
+            const recordData = await fetchRecordDetails(item.records_id);
+            setRecordDetails((prevState) => ({
+              ...prevState,
+              [item.records_id]: recordData,
+            }));
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+      }
+    }
+
+    async function getUserAccount() {
+      try {
+        const token = localStorage.getItem("jwtToken");
+        if (!token) {
+          throw new Error("Sorry, Not Logged In, Bud!");
+        }
+
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+
+        const response = await axios.get(`/api/users/account`, config);
+        if (response.data && response.data.cartId) {
+          setCartId(response.data.cartId); 
+          fetchCartStuff();// Set cartId from response
+        }
+      } catch (err) {
+        console.error("Error fetching user account:", err);
+      }
+    }
+
     getRecord();
+    getUserAccount();
+    
   }, [id]);
 
   const addToCart = async () => {
     try {
-      const userId = localStorage.getItem('userId');
+      const userId = localStorage.getItem("userId");
 
-      console.log("User ID:", userId); // Log the userId
-
-      
       const token = localStorage.getItem("jwtToken");
       if (!token) {
-        console.error("User is not logged in");
-        return;
+        throw new Error("User is not logged in");
       }
 
       const config = {
@@ -40,35 +82,25 @@ function SingleRecord() {
         },
       };
 
-      const response = await axios.get(`/api/users/account`, config);
+      const orderIdResponse = await axios.get(`/api/users/account`, config);
 
-      console.log("User Account Response:", response.data); // Log the response data
-console.log("response!!", response)
-      if (response.data && response.data.order.id) {
-        const orderId = response.data.order.id;
-        
-
-        console.log("Existing Order ID:", orderId); // Log the orderId
+      if (orderIdResponse.data && orderIdResponse.data.order.id) {
+        const orderId = orderIdResponse.data.order.id;
 
         await axios.post(`/api/orders/cart`, {
           orderId: orderId,
-          recordId: record.id, 
+          recordId: record.id,
           quantity: 1,
         });
 
-        // navigate(`/cart/${cartId}`);
+        setMessage("ITEM ADDED TO CART, BUDDY!");
       } else {
-        console.log("Creating new order...");
-
         const orderResponse = await axios.post(`/api/orders`, {
           userId: userId,
         });
-        console.log("New Order Response:", orderResponse.data);
 
         if (orderResponse.data && orderResponse.data.id) {
-
           const orderId = orderResponse.data.id;
-          console.log("New Order ID:", orderId);
 
           await axios.post(`/api/orders/cart`, {
             orderId: orderId,
@@ -76,28 +108,15 @@ console.log("response!!", response)
             quantity: 1,
           });
 
-          navigate(`/cart/${orderId}`); 
+          navigate(`/cart/${orderId}`);
+
+          setMessage("Item added to cart successfully!");
         } else {
-          console.error("Failed to create order for user.");
+          throw new Error("Failed to create order for user.");
         }
       }
     } catch (err) {
       console.error("Error adding record to cart:", err);
-    }
-  };
-
-  const createNewOrder = async () => {
-    try {
-      const response = await axios.post("/api/orders", {
-        // Assuming you handle user authentication and have the user ID available here
-        orderDate: new Date().toISOString(),
-        shippingAddress: "", // You might want to add the user's shipping address here
-        status: "pending",
-      });
-      return response.data; // Assuming the response contains the newly created order data
-    } catch (err) {
-      console.error("Error creating new order:", err);
-      throw err; // Rethrow the error to handle it in the calling function if needed
     }
   };
 
@@ -123,6 +142,10 @@ console.log("response!!", response)
           <Link to={`/cart/${cartId}`}>
             <button>View Cart</button>
           </Link>
+          <Link to={"/records"}>
+            <button>Shop</button>
+          </Link>
+          {message && <h3>{message}</h3>}
         </div>
       </div>
     </>

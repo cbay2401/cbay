@@ -542,6 +542,7 @@ header nav > a {
   transition: background-color 0.3s ease;
   margin: 5px;
   margin-top: 20px; 
+  margin-bottom: 20px;
   
 }
 
