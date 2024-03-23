@@ -34,7 +34,7 @@ function Register({ setToken }) {
       localStorage.setItem("jwtToken", result.token);
       setSuccessMessage("Registration successful! Please Login!");
       await createOrderForUser(result.id)
-      navigate('/users/account');
+      navigate('/login');
     } else {  
         setError ("User with this email already exists. Please use a different email.");
     } 

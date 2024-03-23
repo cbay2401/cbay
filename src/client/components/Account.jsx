@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function AccountInfo({ token }) {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
+  const [orderId, setOrderId] = useState(null)
 
   useEffect(() => {
     async function fetchUserData() {
@@ -13,6 +14,9 @@ function AccountInfo({ token }) {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUserData(response.data); // Set user data received from the API
+        if (response.data.order && response.data.order.id) {
+          setOrderId(response.data.order.id)
+        }
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -27,7 +31,7 @@ function AccountInfo({ token }) {
   };
 
   const handleCartButton = () => {
-    navigate("/cart");
+    navigate(`/cart/${orderId}`);
   };
 
   const handleLogout = () => {
