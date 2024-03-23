@@ -25,7 +25,7 @@ function Cart() {
                     });
                 }
             } catch (error) {
-                console.error('Error fetching cart items:', error);
+                console.error('ERROR IN CART.JSX LINE 28', error);
             }
         }
 

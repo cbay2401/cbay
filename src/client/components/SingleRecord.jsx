@@ -5,11 +5,13 @@ import { useParams, useNavigate } from "react-router-dom";
 
 function SingleRecord() {
   const { id } = useParams();
-  // const { cartId } = useParams(); 
   const [record, setRecord] = useState({});
   const [message, setMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
-  const [cartId, setCartId] = useState(null); // State variable for cartId
+  const [cartId, setCartId] = useState(null);
+  const [orderId, setOrderId] = useState(null); // New state for orderId
 
   useEffect(() => {
     async function getRecord() {
@@ -18,24 +20,6 @@ function SingleRecord() {
         setRecord(data);
       } catch (err) {
         console.error("Error fetching record:", err);
-      }
-    }
-    async function fetchCartStuff() {
-      try {
-        if (cartId) {
-          const { data } = await axios.get(`/api/orders/cart/${cartId}`);
-          setCartItems(data);
-
-          data.forEach(async (item) => {
-            const recordData = await fetchRecordDetails(item.records_id);
-            setRecordDetails((prevState) => ({
-              ...prevState,
-              [item.records_id]: recordData,
-            }));
-          });
-        }
-      } catch (error) {
-        console.error("Error fetching cart items:", error);
       }
     }
 
@@ -54,8 +38,10 @@ function SingleRecord() {
 
         const response = await axios.get(`/api/users/account`, config);
         if (response.data && response.data.cartId) {
-          setCartId(response.data.cartId); 
-          fetchCartStuff();// Set cartId from response
+          setCartId(response.data.cartId);
+        }
+        if (response.data && response.data.order && response.data.order.id) {
+          setOrderId(response.data.order.id); // Setting orderId
         }
       } catch (err) {
         console.error("Error fetching user account:", err);
@@ -64,14 +50,13 @@ function SingleRecord() {
 
     getRecord();
     getUserAccount();
-    
   }, [id]);
 
   const addToCart = async () => {
     try {
       const userId = localStorage.getItem("userId");
-
       const token = localStorage.getItem("jwtToken");
+
       if (!token) {
         throw new Error("User is not logged in");
       }
@@ -82,16 +67,37 @@ function SingleRecord() {
         },
       };
 
-      const orderIdResponse = await axios.get(`/api/users/account`, config);
+      const userOrder = await axios.get(`/api/users/account`, config);
+      console.log("USER ORDER:::", userOrder);
 
-      if (orderIdResponse.data && orderIdResponse.data.order.id) {
-        const orderId = orderIdResponse.data.order.id;
+      if (userOrder.data && userOrder.data.order.id) {
+        const orderId = userOrder.data.order.id;
 
-        await axios.post(`/api/orders/cart`, {
-          orderId: orderId,
-          recordId: record.id,
-          quantity: 1,
+        const stuffInCart = await axios.get(`/api/orders/cart/${orderId}`, {
+          params: {cartId: cartId}
         });
+        console.log("NEWEST CART ID", cartId);
+        const existingCartItem = stuffInCart.data.find(
+          (item) => item.records_id === record.id
+        );
+
+        console.log("STUFF IN CART:", stuffInCart);
+        console.log("STUFF IN CART.DATA", stuffInCart.data);
+        console.log("existing cart item:", existingCartItem);
+
+        if (existingCartItem) {
+          await axios.patch(`/api/orders/cart/${existingCartItem.id}`, {
+            quantity: existingCartItem.quantity + 1,
+            
+          });
+        } else {
+          await axios.post(`/api/orders/cart`, {
+            orderId: orderId,
+            recordId: record.id,
+            quantity: 1,
+          });
+          console.log("NEW NEW ORDER ID:", orderId)
+        }
 
         setMessage("ITEM ADDED TO CART, BUDDY!");
       } else {
@@ -108,7 +114,7 @@ function SingleRecord() {
             quantity: 1,
           });
 
-          navigate(`/cart/${orderId}`);
+          // navigate(`/cart/${orderId}`);
 
           setMessage("Item added to cart successfully!");
         } else {
@@ -116,8 +122,10 @@ function SingleRecord() {
         }
       }
     } catch (err) {
-      console.error("Error adding record to cart:", err);
+      console.error("UH OH, NOPE:", err);
+      setErrorMessage("ALREADY IN CART, JABRONI!")
     }
+    
   };
 
   return (
@@ -139,13 +147,14 @@ function SingleRecord() {
         </div>
         <div className="singleRecordButtons">
           <button onClick={addToCart}>Add To Cart</button>
-          <Link to={`/cart/${cartId}`}>
+          <Link to={`/cart/${orderId}`}>
             <button>View Cart</button>
           </Link>
           <Link to={"/records"}>
             <button>Shop</button>
           </Link>
           {message && <h3>{message}</h3>}
+          {errorMessage && <h3>{errorMessage}</h3>}
         </div>
       </div>
     </>
