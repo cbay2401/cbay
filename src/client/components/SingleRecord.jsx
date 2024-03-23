@@ -43,9 +43,10 @@ function SingleRecord() {
       const response = await axios.get(`/api/users/account`, config);
 
       console.log("User Account Response:", response.data); // Log the response data
-
-      if (response.data && response.data.order) {
+console.log("response!!", response)
+      if (response.data && response.data.order.id) {
         const orderId = response.data.order.id;
+        
 
         console.log("Existing Order ID:", orderId); // Log the orderId
 
@@ -55,7 +56,7 @@ function SingleRecord() {
           quantity: 1,
         });
 
-        navigate("/cart");
+        // navigate(`/cart/${cartId}`);
       } else {
         console.log("Creating new order...");
 
@@ -75,7 +76,7 @@ function SingleRecord() {
             quantity: 1,
           });
 
-          navigate("/cart"); 
+          navigate(`/cart/${orderId}`); 
         } else {
           console.error("Failed to create order for user.");
         }
@@ -119,7 +120,7 @@ function SingleRecord() {
         </div>
         <div className="singleRecordButtons">
           <button onClick={addToCart}>Add To Cart</button>
-          <Link to={`/cart/23`}>
+          <Link to={`/cart/${cartId}`}>
             <button>View Cart</button>
           </Link>
         </div>
