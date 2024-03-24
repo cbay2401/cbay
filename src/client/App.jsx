@@ -13,6 +13,7 @@ import Cart from "./components/Cart";
 import AdminDashboard from "./components/Admin";
 import Footer from "./components/Footer.jsx";
 import CheckoutForm from "./components/Checkout.jsx";
+import Success from "./components/Success.jsx";
 function App() {
   const [count, setCount] = useState(0);
   const [token, setToken] = useState(localStorage.getItem("jwtToken"));
@@ -41,6 +42,7 @@ function App() {
           <Route path="/cart/:cartId" element={<Cart />} />
           <Route path="/admin" element={<AdminDashboard token={token} />} />
           <Route path="/checkout/:cartId" element={<CheckoutForm />} />
+          <Route path="/success" element={<Success/>}/>
         </Routes>
       </main>
       {/* <Footer /> */}

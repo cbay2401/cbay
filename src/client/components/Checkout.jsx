@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function CheckoutForm() {
   const { cartId } = useParams();
@@ -11,6 +11,7 @@ function CheckoutForm() {
     expiryDate: '',
     cvv: ''
   });
+ const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,6 +32,7 @@ function CheckoutForm() {
     }
     // You can handle form submission here, e.g., send other data to backend or perform validation
     console.log('Form submitted:', formData);
+    navigate("/success")
   };
 
   return (
