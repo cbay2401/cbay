@@ -46,7 +46,7 @@ function AccountInfo({ token }) {
       <h1 className="accountInfoH1">Account Information</h1>
       {userData ? (
         <div className="accountInfoCard">
-          <h4>ID: {userData.id}</h4>
+          {/* <h4>ID: {userData.id}</h4> */}
           <h4>Name: {userData.name}</h4>
           <h4>Email: {userData.email}</h4>
           {userData.role === "admin" && (

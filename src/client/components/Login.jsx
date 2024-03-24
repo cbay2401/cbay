@@ -33,7 +33,7 @@ const LoginForm = ({ setToken }) => {
       console.log("User role:", userRole);
       if (userRole === "admin") {
         console.log("Redirecting to admin page...");
-        navigate("/admin");
+        navigate("/users/account");
       } else {
         await createOrderForUser(userId);
         console.log("Blah", userId);
