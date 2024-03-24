@@ -736,3 +736,28 @@ h2 {
 #iglogo {
   height: 40px;
 }
+
+
+
+
+.see-cart {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0.5em;
+}
+
+.log-btn{ 
+  background-color: #ff4632;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0.5em;
+}
