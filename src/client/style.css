@@ -2,11 +2,6 @@
   margin: 0px;
   padding: 0px;
 }
-body {
-  padding-top: 68px;
-  padding-bottom: 50px;
-  margin-bottom: 50px;
-}
 
 .albumcover {
   width: 200px;
@@ -24,7 +19,10 @@ body {
   /* border: 1px solid #1c201f; */
 }
 body {
-  background-image: url("media/background.jpg");
+  padding-top: 68px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  background: url("../media/background.jpg");
 }
 
 header {

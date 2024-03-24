@@ -14,6 +14,8 @@ import AdminDashboard from "./components/Admin";
 import Footer from "./components/Footer.jsx";
 import CheckoutForm from "./components/Checkout.jsx";
 import Success from "./components/Success.jsx";
+import './style.css';
+
 function App() {
   const [count, setCount] = useState(0);
   const [token, setToken] = useState(localStorage.getItem("jwtToken"));

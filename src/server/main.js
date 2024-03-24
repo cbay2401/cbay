@@ -11,6 +11,8 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'))
 
+app.use('/media', express.static('media'));
+
 const db = require('./db/client')
 db.connect()
 

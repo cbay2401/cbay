@@ -11,7 +11,7 @@ function AllRecords() {
   useEffect(() => {
     async function fetchRecords() {
       try {
-        const { data } = await axios.get("/api/records");
+        const { data } = await axios.get("/api/records/records");
         setRecords(data);
       } catch (error) {
         console.error("Error fetching records:", error);
