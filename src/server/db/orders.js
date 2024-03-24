@@ -97,11 +97,11 @@ async function deleteCartItem(cartItemId) {
 
 async function deleteAllCartItems(orderId) {
   try{
-  const { rows } = await db.query(`
-    DELETE FROM orders_records WHERE order_id = $1 RETURNING *
-  `, [orderId])
+  await db.query(`
+    DELETE FROM orders_records WHERE order_id = $1 RETURNING *`,
+    [orderId])
 
-  return rows
+  return rows;
 } catch (error) {
   throw error
 }
