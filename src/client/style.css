@@ -826,3 +826,25 @@ h2 {
   margin: 0.5em;
 
 }
+
+.users-list{ 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+  font-weight: bold;
+}
+
+.users-list{
+  /* border: 1px dotted red; */
+  display: flex;
+  flex-direction: column;
+  bottom: auto 0;
+}
+
