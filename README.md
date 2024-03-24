@@ -1,56 +1,55 @@
-#  🚀 Capstone Boilerplate
+Vinyl Records Store
 
-A template for building web applications using the PERN (PostgreSQL, Express.js, React, Node.js) stack. 
+Vinyl Records Store is a web application for managing and selling vinyl records. It allows users to browse a collection of vinyl records, add new records to the inventory, delete records, and manage user accounts. The application also includes an admin dashboard for administrators to view and manage users and records.
 
-##  🏁 Getting Started
+Features
 
-1. **Don't fork or clone this repo!** Instead, create a new, empty directory on your machine and `git init` (or create an _empty_ repo on GitHub and clone it to your local machine)
-
-2. Add this template as a remote and merge it into your own repository
-
-```bash
-git remote add boilermaker git@github.com:FullstackAcademy/capstone-app-template.git
-git fetch boilermaker
-git merge boilermaker/main
-```
-
-3. Install packages
-
-```bash
-npm i
-```
-
-4. Add a `.env` file with your secret value for auth
-```
-JWT_SECRET='somesecretvalue'
-```
-
-5. Create the database
-
-```bash
-createdb your-database-name
-```
-
-6. Update `src/server/db/client.js` to reflect the name of your database
-
-```js
-const connectionString = process.env.DATABASE_URL || 'https://localhost:5432/your-database-name';
-```
-
-7. Seed the database
-```bash
-npm run seed
-```
-
-8. Start the server
-```bash
-npm run dev
-```
-
-9. Open your browser at `http://localhost:3000`
-
-10. Build something cool! 😎
+User Authentication: Users can sign up, log in, and log out securely.
+Record Management: Admins can add new vinyl records to the inventory, delete records, and view existing records.
+User Management: Admins can view all users, including their details such as name, email, and role.
+Search Functionality: Users can search for records by artist, album name, or genre.
+Responsive Design: The application is responsive and works well on desktop and mobile devices.
 
 
+Technologies Used
 
-# Hello World
+Frontend: React.js, Axios, CSS
+Backend: Node.js, Express.js, PostgreSQL
+Database: PostgreSQL
+Authentication: JSON Web Tokens (JWT)
+
+
+Installation
+
+Clone the repository: git clone <https://github.com/cbay2401/cbay>
+Navigate to the project directory: cd vinyl-records-store
+Install dependencies for the server: npm install
+Navigate to the client directory: cd client
+Install dependencies for the client: npm install
+
+
+Configuration
+
+Set up a PostgreSQL database and configure the connection string in server/db/client.js.
+Configure environment variables for JWT secret key and other sensitive information.
+Update any necessary API endpoint URLs in the client-side code (client/src/api).
+
+
+Usage
+
+Start the server: npm start (from the root directory)
+Start the client: npm start (from the client directory)
+Access the application in your web browser: http://localhost:3000
+
+
+Contributors
+
+Carly Zimmerman (https://github.com/carlyzimm)
+Erik Rodriguez (https://github.com/erik2757)
+Jonathan Bushapa (https://github.com/JSBushapa)
+Mitch Wells (https://github.com/mitchwellss)
+John Perkins (https://github.com/Perkinsj831)
+
+
+
+
