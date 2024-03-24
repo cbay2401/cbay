@@ -4,7 +4,12 @@ const db = require("./client");
 const bcrypt = require("bcrypt");
 const SALT_COUNT = 10;
 
-const createUser = async ({ name = "first last", email, password, role = "user" }) => {
+const createUser = async ({
+  name = "first last",
+  email,
+  password,
+  role = "user",
+}) => {
   console.log("Role parameter received:", role);
   const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
   try {
@@ -36,8 +41,8 @@ const getUser = async ({ email, password }) => {
     const passwordsMatch = await bcrypt.compare(password, hashedPassword);
     if (!passwordsMatch) return;
     delete user.password;
-    const {id, role, ...userData} = user;
-    return {id, ...userData, role };
+    const { id, role, ...userData } = user;
+    return { id, ...userData, role };
   } catch (err) {
     throw err;
   }
@@ -65,18 +70,17 @@ const getUserByEmail = async (email) => {
 };
 
 const getUserById = async (id) => {
-    console.log({id})
+  console.log({ id });
   try {
     const result = await db.query({
-        text: `SELECT users.id as user_id, users.name, users.email, orders.id as order_id
+      text: `SELECT users.id as user_id, users.name, users.email, users.role, orders.id as order_id
         FROM users
         JOIN orders ON  users.id=orders.user_id
         WHERE users.id= $1`,
       values: [id],
-    }
-    );
+    });
 
-    const  [user] = result.rows;
+    const [user] = result.rows;
     if (!user) {
       return;
     }
@@ -84,9 +88,10 @@ const getUserById = async (id) => {
       id: user.id,
       name: user.name,
       email: user.email,
+      role: user.role,
       order: {
         id: user.order_id,
-      }
+      },
     };
   } catch (err) {
     throw err;
@@ -95,21 +100,21 @@ const getUserById = async (id) => {
 
 const getAllUsers = async () => {
   try {
-    const {rows} = await db.query(`
+    const { rows } = await db.query(`
     SELECT id, name, email, role
     FROM users
     `);
 
     return rows;
   } catch (err) {
-    throw err
+    throw err;
   }
-}
+};
 
 module.exports = {
   createUser,
   getUser,
   getUserByEmail,
   getUserById,
-  getAllUsers
+  getAllUsers,
 };

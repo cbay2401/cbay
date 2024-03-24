@@ -12,9 +12,11 @@ import Cart from "./components/Cart";
 // import PrivateRoute from './components/PrivateRoute';
 import AdminDashboard from "./components/Admin";
 import Footer from "./components/Footer.jsx";
+// import CheckoutForm from "./components/Checkout.jsx";
 function App() {
   const [count, setCount] = useState(0);
   const [token, setToken] = useState(localStorage.getItem("jwtToken"));
+
   // useEffect(() => {
   //   // Check if token exists in localStorage when component mounts
   //   const storedToken = localStorage.getItem('jwtToken');
@@ -22,6 +24,7 @@ function App() {
   //     setToken(storedToken);
   //   }
   // }, []);
+
   return (
     <>
       <Navbar />
@@ -38,6 +41,7 @@ function App() {
           />
           <Route path="/cart/:cartId" element={<Cart />} />
           <Route path="/admin" element={<AdminDashboard token={token} />} />
+          {/* <Route path="/checkout/:cartId" element={<CheckoutForm />} /> */}
         </Routes>
       </main>
       {/* <Footer /> */}
