@@ -115,7 +115,7 @@ header nav > a {
 }
 
 #searchbar {
-  width: 300px;
+  width: 500px;
   padding: 10px;
   border: 1px solid rgb(159, 157, 157);
   border-radius: 5px;
@@ -426,8 +426,10 @@ header nav > a {
 .records-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center; /* Center the items horizontally */
   gap: 20px 20px;
-  margin: auto 10em;
+  margin: 0 20px; /* Center the container horizontally */
+  padding: 20px; /* Add padding as needed */
 }
 
 /* This helps center all content */
