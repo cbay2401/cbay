@@ -31,31 +31,39 @@ function AllRecords() {
 
   return (
     <>
-
-    <section className="searchbar-container">
-        <input id="searchbar" type="text"
-        placeholder = "Search by Artist or Album"
-        value={searchQuery}
-        onChange={(e)=> setSearchQuery(e.target.value)}/>
-    </section> 
-    <div className="main-container"> 
-    <div className="records-container">
-        {filteredRecords.map((record) => (
-          <Link to={`/records/${record.id}`} key={record.id} className="singlerecord">
-            <div key={record.id} className="records">
-              <img className="albumcover" src={record.imageurl} alt="Album Cover" />
-              <div className="records-text">
-                <h4>{record.artist}</h4>
-                <h5>{record.albumname}</h5>
-                <p>${record.price}</p>
+      <section className="searchbar-container">
+        <input
+          id="searchbar"
+          type="text"
+          placeholder="Search by Artist or Album"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </section>
+      <div className="main-container">
+        <div className="records-container">
+          {filteredRecords.map((record) => (
+            <Link
+              to={`/records/${record.id}`}
+              key={record.id}
+              className="singlerecord"
+            >
+              <div key={record.id} className="records">
+                <img
+                  className="albumcover"
+                  src={record.imageurl}
+                  alt="Album Cover"
+                />
+                <div className="records-text">
+                  <h4>{record.artist}</h4>
+                  <h5>{record.albumname}</h5>
+                  <p>${record.price}</p>
+                </div>
               </div>
-              
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
-      
     </>
   );
 }

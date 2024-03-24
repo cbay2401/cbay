@@ -98,7 +98,7 @@ function SingleRecord() {
           console.log("NEW NEW ORDER ID:", orderId);
         }
 
-        setMessage("ITEM ADDED TO CART, BUDDY!");
+        setMessage("This item has been added to your cart!");
       } else {
         const orderResponse = await axios.post(`/api/orders`, {
           userId: userId,
@@ -122,7 +122,9 @@ function SingleRecord() {
       }
     } catch (err) {
       console.error("UH OH, NOPE:", err);
-      setErrorMessage("ALREADY IN CART, JABRONI!");
+      setErrorMessage(
+        "We ran into an issue adding this item to your cart. Please refresh and try again."
+      );
     }
   };
 
