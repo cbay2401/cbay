@@ -88,14 +88,14 @@ const AdminDashboard = () => {
   return (
     <div>
       <h2>Admin Dashboard</h2>
-      <button onClick={handleViewUsers}>View All Users</button>
-      <button onClick={handleViewRecords}>View All Records</button>
+      <button className="admin-btn" onClick={handleViewUsers}>View All Users</button>
+      <button className="admin-btn" onClick={handleViewRecords}>View All Records</button>
       {showUsers === true && users.length > 0 && (
         <div>
           <h3>All Users</h3>
           <ul>
             {users.map((user) => (
-              <li key={user.id}>{user.name}</li>
+              <li className="users-list" key={user.id}>{user.name}</li>
             ))}
           </ul>
         </div>
@@ -175,7 +175,7 @@ const AdminDashboard = () => {
                   }
                 />
               </label>
-              <button type="submit">Add Record</button>
+              <button className="admin-sub" type="submit">Add Record</button>
             </form>
             {/* Display existing records */}
             {filteredRecords.map((record) => (
@@ -188,7 +188,7 @@ const AdminDashboard = () => {
                 <h1>{record.artist}</h1>
                 <h2>{record.albumname}</h2>
                 <p>${record.price}</p>
-                <button onClick={() => handleDeleteRecord(record.id)}>
+                <button className="admin-del" onClick={() => handleDeleteRecord(record.id)}>
                   Delete Record
                 </button>
               </div>

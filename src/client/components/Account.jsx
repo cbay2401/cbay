@@ -50,7 +50,7 @@ function AccountInfo({ token }) {
           <h4>Name: {userData.name}</h4>
           <h4>Email: {userData.email}</h4>
           {userData.role === "admin" && (
-            <button onClick={handleAdminDashboard}>Admin Dashboard</button>
+            <button className="admin-btn" onClick={handleAdminDashboard}>Admin Dashboard</button>
           )}
           <button className="log-btn"  onClick={handleLogout}>Log Out</button>
           <button className="see-cart" onClick={handleCartButton}>See Cart</button>
