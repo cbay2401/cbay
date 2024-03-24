@@ -95,6 +95,17 @@ async function deleteCartItem(cartItemId) {
   }
 }
 
+async function deleteAllCartItems(orderId) {
+  try{
+  const { rows } = await db.query(`
+    DELETE FROM orders_records WHERE order_id = $1 RETURNING *
+  `, [orderId])
+
+  return rows
+} catch (error) {
+  throw error
+}
+}
 
 module.exports = {
   getAllOrders,
@@ -103,5 +114,6 @@ module.exports = {
   updateCartItem,
   getCartItems,
   addToCart,
-  deleteCartItem
+  deleteCartItem,
+  deleteAllCartItems
 };

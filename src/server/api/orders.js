@@ -9,7 +9,8 @@ const {
   createCart,
   updateCartItem,
   getCartItems,
-  deleteCartItem
+  deleteCartItem,
+  deleteAllCartItems
   
 } = require("../db/orders");
 
@@ -77,6 +78,16 @@ ordersRouter.delete("/cart/:cartItemId", async (req, res, next) => {
     next(error);
   }
 });
+
+ordersRouter.delete("/:orderId/cart", async (req, res, next) => {
+  const orderId = req.params.orderId
+  try{
+    await deleteAllCartItems(orderId)
+    res.sendStatus(204)
+  } catch (error) {
+    next (error)
+  }
+})
 
 // Export the ordersRouter
 module.exports = ordersRouter;

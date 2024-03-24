@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
     const [recordDetails, setRecordDetails] = useState({});
+    const navigate = useNavigate()
     const { cartId } = useParams(); // Destructure cartId from useParams
     console.log('Cart ID:', cartId);
 
@@ -121,6 +122,7 @@ function Cart() {
                         <h2 className="total-price">Total Price: ${totalPrice.toFixed(2)}</h2>
                     </>
                 )}
+                        <button onClick={() => navigate("/checkout")}>Checkout</button>
             </div>
         </>
     );
