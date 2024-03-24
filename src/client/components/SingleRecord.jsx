@@ -74,7 +74,7 @@ function SingleRecord() {
         const orderId = userOrder.data.order.id;
 
         const stuffInCart = await axios.get(`/api/orders/cart/${orderId}`, {
-          params: {cartId: cartId}
+          params: { cartId: cartId },
         });
         console.log("NEWEST CART ID", cartId);
         const existingCartItem = stuffInCart.data.find(
@@ -88,7 +88,6 @@ function SingleRecord() {
         if (existingCartItem) {
           await axios.patch(`/api/orders/cart/${existingCartItem.id}`, {
             quantity: existingCartItem.quantity + 1,
-            
           });
         } else {
           await axios.post(`/api/orders/cart`, {
@@ -96,7 +95,7 @@ function SingleRecord() {
             recordId: record.id,
             quantity: 1,
           });
-          console.log("NEW NEW ORDER ID:", orderId)
+          console.log("NEW NEW ORDER ID:", orderId);
         }
 
         setMessage("ITEM ADDED TO CART, BUDDY!");
@@ -123,9 +122,8 @@ function SingleRecord() {
       }
     } catch (err) {
       console.error("UH OH, NOPE:", err);
-      setErrorMessage("ALREADY IN CART, JABRONI!")
+      setErrorMessage("ALREADY IN CART, JABRONI!");
     }
-    
   };
 
   return (
