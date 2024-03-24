@@ -89,9 +89,7 @@ function Cart() {
     return (
         <>
             <h1 className='shoppingCartH1'>Cart</h1>
-            <Link to={"/records"}>
-            <button>Shop</button>
-          </Link>
+        
             <div className="cart">
                 {cartItems.length === 0 ? (
                     <p>Your cart is empty.</p>
@@ -123,7 +121,8 @@ function Cart() {
                         <h2 className="total-price">Total Price: ${totalPrice.toFixed(2)}</h2>
                     </>
                 )}
-                        <button onClick={() => navigate(`/checkout/${cartId}`)}>Checkout</button>
+                        <button className='remove-button' onClick={() => navigate(`/checkout/${cartId}`)}>Checkout</button>
+                         <button className='remove-button' onClick={() => navigate("/records")}>Shop</button>
             </div>
         </>
     );
