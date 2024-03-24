@@ -767,9 +767,6 @@ h2 {
   color: black;
 }
 
-
-
-
 .see-cart {
   background-color: #007bff;
   color: #fff;
@@ -781,7 +778,7 @@ h2 {
   margin: 0.5em;
 }
 
-.log-btn{ 
+.log-btn {
   background-color: #ff4632;
   color: #fff;
   border: none;
@@ -791,7 +788,6 @@ h2 {
   transition: background-color 0.3s ease;
   margin: 0.5em;
 }
-
 
 .admin-btn {
   background-color: #007bff;
@@ -804,7 +800,7 @@ h2 {
   margin: 0.5em;
 }
 
-.admin-del{ 
+.admin-del {
   background-color: #ff4632;
   color: #fff;
   border: none;
@@ -815,7 +811,7 @@ h2 {
   margin: 0.5em;
 }
 
-.admin-sub{
+.admin-sub {
   background-color: #14b905;
   color: #fff;
   border: none;
@@ -824,27 +820,40 @@ h2 {
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 0.5em;
-
 }
 
-.users-list{ 
+.users-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 10px;
-      width: 200px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+  border-radius: 8px;
+  padding: 10px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   font-weight: bold;
 }
 
-.users-list{
+.users-list {
   /* border: 1px dotted red; */
   display: flex;
   flex-direction: column;
   bottom: auto 0;
 }
 
+.add-record-form {
+  padding: 20px;
+  width: 100vw;
+  border: 1.5px solid rgb(92, 82, 82);
+  border-radius: 8px;
+}
+
+.add-record-form h2 {
+  text-align: center;
+}
+
+.add-record-form input {
+  margin: 10px;
+}
