@@ -79,15 +79,21 @@ ordersRouter.delete("/cart/:cartItemId", async (req, res, next) => {
   }
 });
 
-ordersRouter.delete("/:orderId/cart", async (req, res, next) => {
-  const orderId = req.params.orderId
-  try{
-    await deleteAllCartItems(orderId)
-    res.sendStatus(204)
-  } catch (error) {
-    next (error)
-  }
-})
+//ordersRouter.delete("/cart/:orderId", async (req, res, next) => {
+  ordersRouter.delete("/cart/ck/:orderId", async (req, res, next) => {
+    const orderId = req.params.orderId;
+    try {
+      const result = await deleteAllCartItems(orderId);
+      if (result.deletedCount === 0) {
+        // No items deleted, return a message or status code accordingly
+        return res.status(404).json({ message: "No items found for deletion." });
+      }
+      res.status(200).json({ message: "Cart items deleted successfully." });
+    } catch (error) {
+      console.error("Error deleting cart items:", error);
+      next(error);
+    }
+  });
 
 // Export the ordersRouter
 module.exports = ordersRouter;

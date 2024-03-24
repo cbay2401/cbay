@@ -24,7 +24,7 @@ function CheckoutForm() {
     e.preventDefault();
     try {
       // Delete all items in the cart
-      await axios.delete(`/api/orders/cart/${cartId}`);
+      await axios.delete(`/api/orders/cart/ck/${cartId}`);
       console.log('All items in the cart have been deleted successfully!');
     } catch (error) {
       console.error('Error deleting items from the cart:', error);

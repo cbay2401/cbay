@@ -16,6 +16,7 @@ import CheckoutForm from "./components/Checkout.jsx";
 function App() {
   const [count, setCount] = useState(0);
   const [token, setToken] = useState(localStorage.getItem("jwtToken"));
+  
   // useEffect(() => {
   //   // Check if token exists in localStorage when component mounts
   //   const storedToken = localStorage.getItem('jwtToken');
@@ -39,7 +40,7 @@ function App() {
           />
           <Route path="/cart/:cartId" element={<Cart />} />
           <Route path="/admin" element={<AdminDashboard token={token} />} />
-          <Route path="/checkout" element={<CheckoutForm />} />
+          <Route path="/checkout/:cartId" element={<CheckoutForm />} />
         </Routes>
       </main>
       {/* <Footer /> */}
