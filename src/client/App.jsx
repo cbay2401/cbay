@@ -16,6 +16,7 @@ import CheckoutForm from "./components/Checkout.jsx";
 function App() {
   const [count, setCount] = useState(0);
   const [token, setToken] = useState(localStorage.getItem("jwtToken"));
+
   // useEffect(() => {
   //   // Check if token exists in localStorage when component mounts
   //   const storedToken = localStorage.getItem('jwtToken');
@@ -23,6 +24,7 @@ function App() {
   //     setToken(storedToken);
   //   }
   // }, []);
+
   return (
     <>
       <Navbar />
