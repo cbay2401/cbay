@@ -132,7 +132,7 @@ header nav > a {
 .home-container {
   position: relative;
   height: 888px;
-  
+
   /* border: 1px solid #000; */
   min-height: calc(100vh - 100px);
   bottom: 68px;
@@ -270,20 +270,20 @@ header nav > a {
 /* ---------NEWSLETTER--------- */
 
 .newsletter {
-  border: 1px solid #ccc; 
-  background-color: #b2d2de; 
-  padding: 20px; 
-  text-align: center; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-  width: 800px; 
-  margin: auto; 
+  border: 1px solid #ccc;
+  background-color: #b2d2de;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 800px;
+  margin: auto;
   position: relative;
 }
 
 .newsletter h1 {
-  color: #f4f6f7; 
-  font-size: 24px; 
+  color: #f4f6f7;
+  font-size: 24px;
   margin-bottom: 10px;
   font-family: "Lilita One", sans-serif;
   font-weight: 400;
@@ -293,7 +293,7 @@ header nav > a {
 
 .newsletter h4 {
   color: #f9f6f6;
-  font-size: 16px; 
+  font-size: 16px;
   margin-bottom: 20px;
   font-family: "Lilita One", sans-serif;
   font-weight: 400;
@@ -302,16 +302,16 @@ header nav > a {
 }
 
 .newsletter input[type="email"] {
-  width: 30%; 
-  padding: 10px; 
-  margin-bottom: 10px; 
+  width: 30%;
+  padding: 10px;
+  margin-bottom: 10px;
   margin: 10px;
-  border: 1px solid #ccc; 
-  border-radius: 4px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .newsletter button {
-  background-color: #007bff; 
+  background-color: #007bff;
   color: #fff; /* White text color */
   padding: 10px 20px; /* Add padding for button */
   border: none; /* Remove border */
@@ -323,7 +323,6 @@ header nav > a {
 .newsletter button:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
-
 
 .button-container {
   display: flex;
@@ -435,11 +434,9 @@ header nav > a {
 .main-container {
   display: flex;
   justify-content: center;
-
 }
 
 .records {
-  
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -463,18 +460,15 @@ header nav > a {
   display: flex;
   flex-direction: column;
   bottom: auto 0;
-  
 }
 
-.singlerecord{
+.singlerecord {
   text-decoration: none;
-
 }
 
 .records:hover {
   border: 1px solid black;
   transform: scale(1.05);
-
 }
 
 .records:active {
@@ -490,16 +484,15 @@ header nav > a {
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
-  
+
   display: flex;
   flex-direction: column;
-  
 }
 .album-info {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 20px;
-  align-items:flex-start;
+  align-items: flex-start;
 }
 
 .single-record-info {
@@ -539,9 +532,8 @@ header nav > a {
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 5px;
-  margin-top: 20px; 
+  margin-top: 20px;
   margin-bottom: 20px;
-  
 }
 
 .single-record .singleRecordButtons button:hover {
@@ -555,27 +547,25 @@ header nav > a {
 h1 {
   font-size: 24px;
   margin-bottom: 10px;
-  color: #333; 
+  color: #333;
 }
 
 h2 {
   font-size: 20px;
   margin-bottom: 10px;
-  color: #555; 
+  color: #555;
 }
-
-
 
 .link-back {
   margin-top: 20px;
   text-decoration: none;
-  color: #007bff; 
+  color: #007bff;
   font-size: 16px;
   transition: color 0.3s ease;
 }
 
 .link-back:hover {
-  color: #0056b3; 
+  color: #0056b3;
 }
 
 /* -----------------CART PAGE--------------- */
@@ -735,6 +725,44 @@ h2 {
 
 #iglogo {
   height: 40px;
+}
+
+/* -------------- CHECKOUT FORM ---------------- */
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: 300px;
+  border: 1.5px solid rgb(92, 82, 82);
+  border-radius: 8px;
+}
+
+.checkout-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid rgb(10, 10, 10);
+  border-radius: 4px;
+}
+.checkout-form button {
+  background-color: #86b817;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkout-form button:hover {
+  background-color: #eec759;
+}
+
+.checkout-form label {
+  color: black;
 }
 
 
