@@ -13,8 +13,9 @@ const Slideshow = () => {
     axios
       .get("http://localhost:3000/api/records")
       .then((response) => {
-        setImages(response.data);
-      })
+        const shuffledImages = response.data.sort(() => Math.random() - 0.5);
+      setImages(shuffledImages);
+    })
       .catch((error) => {
         console.error("Error fetching images:", error);
       });

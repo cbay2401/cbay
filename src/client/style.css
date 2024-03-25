@@ -22,7 +22,7 @@ body {
   padding-top: 68px;
   padding-bottom: 50px;
   margin-bottom: 50px;
-  background: url("../media/background.jpg");
+  background: url("../media/background.jpg"); 
 }
 
 header {
@@ -856,4 +856,15 @@ h2 {
 
 .add-record-form input {
   margin: 10px;
+}
+
+.filter{
+  background-color: #61a9dcb4;
+  color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  padding: 3px 3px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  font-size: 1em;
 }
