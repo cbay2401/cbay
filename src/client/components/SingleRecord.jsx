@@ -122,9 +122,7 @@ function SingleRecord() {
       }
     } catch (err) {
       console.error("UH OH, NOPE:", err);
-      setErrorMessage(
-        "We ran into an issue adding this item to your cart. Please refresh and try again."
-      );
+      setErrorMessage("Please log in to add items to your cart.");
     }
   };
 
