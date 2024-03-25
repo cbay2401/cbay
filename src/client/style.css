@@ -646,6 +646,23 @@ h2 {
 .total-price {
   text-align: right;
 }
+.cartShopButton{
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0.5em;
+  
+}
+
+.cartShopButton:hover {
+  background-color: #0056b3;
+}
+
+
 
 /* -------------ACCOUNT INFORMATION---------------*/
 

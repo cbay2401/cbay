@@ -8,8 +8,13 @@ const {
   createCart,
   updateCartItem,
   getCartItems,
+<<<<<<< HEAD
   deleteCartItem,
   deleteAllCartItems
+=======
+  deleteCartItem
+ 
+>>>>>>> 48bf845 (committing to pull)
   
 } = require("../db/orders");
 
@@ -62,6 +67,7 @@ ordersRouter.get("/cart/:cartId", async (req, res, next) => {
     next(error);
   }
 });
+
 
 
 ordersRouter.delete("/cart/:cartItemId", async (req, res, next) => {
