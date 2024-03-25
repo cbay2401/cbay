@@ -30,7 +30,8 @@ const Slideshow = () => {
   }, [images.length]);
 
   return (
-    <>
+    <> 
+    {/* <div className='home-body'></div> */}
       <div className="home-container">
         <div className="slideshow-container">
           {images.map((image, index) => (
