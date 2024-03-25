@@ -37,6 +37,31 @@ const users = [
     password: "null",
   },
 
+  {
+    name: "John Perkins",
+    email: "johnadmin@example.com",
+    password: "johnadmin",
+  },
+  {
+    name: "Mitch Wells",
+    email: "mitchadmin@example.com",
+    password: "mitchadmin",
+  },
+  {
+    name: "Carly Zimmerman",
+    email: "carlyadmin@example.com",
+    password: "carlyadmin",
+  },
+  {
+    name: "Erik Rodriguez",
+    email: "erikadmin@example.com",
+    password: "erikadmin",
+  },
+  {
+    name: "Johnathan Bushapa",
+    email: "johnathanadmin@example.com",
+    password: "johnathanadmin",
+  },
 ];
 
 const dropTables = async () => {
