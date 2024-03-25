@@ -8,13 +8,13 @@ const {
   createCart,
   updateCartItem,
   getCartItems,
-<<<<<<< HEAD
+
   deleteCartItem,
   deleteAllCartItems
-=======
-  deleteCartItem
+
+
  
->>>>>>> 48bf845 (committing to pull)
+
   
 } = require("../db/orders");
 
