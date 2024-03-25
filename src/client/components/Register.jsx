@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 
 function Register({ setToken }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -61,6 +63,10 @@ function Register({ setToken }) {
     }
   }
 
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <main className="register">
@@ -69,41 +75,49 @@ function Register({ setToken }) {
         {successMessage && <p>{successMessage}</p>}
         <form onSubmit={handleSubmit}>
           <div>
-            <label>
-              Full Name:
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
+            <TextField
+              className="textfield"
+              size="small"
+              label="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
           </div>
 
           <div>
-            <label>
-              Email:
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
+            <TextField
+              className="textfield"
+              size="small"
+              label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
+
           <div>
-            <label>
-              Password:
-              <input
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-            <label for="check">Show Password</label>
-            <input
-              id="check"
-              type="checkbox"
-              value={showPassword}
-              onChange={() => setShowPassword((prev) => !prev)}
+            <TextField
+              className="textfield"
+              size="small"
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
 

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 
 const LoginForm = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -13,6 +16,11 @@ const LoginForm = ({ setToken }) => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   async function handleLogin(event) {
     event.preventDefault();
     try {
@@ -55,26 +63,40 @@ const LoginForm = ({ setToken }) => {
       <h2 className="login-text">Login</h2>
       <form onSubmit={handleLogin}>
         <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
+          <TextField
+            className="textfield"
+            size="small"
+            label="Email"
             value={email}
             onChange={handleEmailChange}
             required
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
+          <TextField
+            className="textfield"
+            size="small"
+            label="Password"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={handlePasswordChange}
             required
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
         </div>
-        <button type="submit">Login</button>
+        <button className="login-btn" type="submit">Login</button>
       </form>
       <p>{message}</p>
     </div>

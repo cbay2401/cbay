@@ -19,7 +19,7 @@ body {
   padding-top: 68px;
   padding-bottom: 50px;
   margin-bottom: 50px;
-  background: url("../media/background.jpg"); 
+  background: url("../media/background.jpg");
 }
 
 header {
@@ -331,24 +331,25 @@ header nav > a {
   border-radius: 8px;
 }
 
-.login-form input {
+/* .login-form input {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
   box-sizing: border-box;
   border: 1px solid rgb(10, 10, 10);
   border-radius: 4px;
-}
-.login-form button {
+} */
+.login-btn {
   background-color: #86b817;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 15px;
 }
 
-.login-form button:hover {
+.login-btn:hover {
   background-color: #eec759;
 }
 
@@ -369,24 +370,25 @@ header nav > a {
   border-radius: 8px;
 }
 
-.register input {
+/* .register input {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
   box-sizing: border-box;
   border: 1px solid rgb(10, 10, 10);
   border-radius: 4px;
-}
-.register button {
+} */
+.btn4 {
   background-color: #86b817;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 16px;
 }
 
-.register button:hover {
+.btn4:hover {
   background-color: #eec759;
 }
 
@@ -400,6 +402,12 @@ header nav > a {
 
 .register-text {
   color: black;
+}
+
+.textfield {
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: white;
 }
 
 /* -------------ALL RECORDS-------------  */
@@ -833,7 +841,7 @@ h2 {
   margin: 10px;
 }
 
-.filter{
+.filter {
   background-color: #61a9dcb4;
   color: #f8f8f8;
   display: flex;
