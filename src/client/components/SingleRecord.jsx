@@ -11,7 +11,7 @@ function SingleRecord() {
 
   const navigate = useNavigate();
   const [cartId, setCartId] = useState(null);
-  const [orderId, setOrderId] = useState(null); // New state for orderId
+  const [orderId, setOrderId] = useState(null);
 
   useEffect(() => {
     async function getRecord() {
@@ -68,7 +68,6 @@ function SingleRecord() {
       };
 
       const userOrder = await axios.get(`/api/users/account`, config);
-      console.log("USER ORDER:::", userOrder);
 
       if (userOrder.data && userOrder.data.order.id) {
         const orderId = userOrder.data.order.id;
@@ -76,14 +75,9 @@ function SingleRecord() {
         const stuffInCart = await axios.get(`/api/orders/cart/${orderId}`, {
           params: { cartId: cartId },
         });
-        console.log("NEWEST CART ID", cartId);
         const existingCartItem = stuffInCart.data.find(
           (item) => item.records_id === record.id
         );
-
-        console.log("STUFF IN CART:", stuffInCart);
-        console.log("STUFF IN CART.DATA", stuffInCart.data);
-        console.log("existing cart item:", existingCartItem);
 
         if (existingCartItem) {
           await axios.patch(`/api/orders/cart/${existingCartItem.id}`, {
@@ -95,7 +89,6 @@ function SingleRecord() {
             recordId: record.id,
             quantity: 1,
           });
-          console.log("NEW NEW ORDER ID:", orderId);
         }
 
         setMessage("This item has been added to your cart!");
@@ -112,8 +105,6 @@ function SingleRecord() {
             recordId: record.id,
             quantity: 1,
           });
-
-          // navigate(`/cart/${orderId}`);
 
           setMessage("Item added to cart successfully!");
         } else {

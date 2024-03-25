@@ -10,7 +10,6 @@ const createUser = async ({
   password,
   role = "user",
 }) => {
-  console.log("Role parameter received:", role);
   const hashedPassword = await bcrypt.hash(password, SALT_COUNT);
   try {
     const {
@@ -70,7 +69,6 @@ const getUserByEmail = async (email) => {
 };
 
 const getUserById = async (id) => {
-  console.log({ id });
   try {
     const result = await db.query({
       text: `SELECT users.id as user_id, users.name, users.email, users.role, orders.id as order_id

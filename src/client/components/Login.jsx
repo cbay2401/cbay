@@ -44,21 +44,17 @@ const LoginForm = ({ setToken }) => {
       const token = response.data.token;
       localStorage.setItem("jwtToken", token);
       setToken(token);
-      console.log("Login Successful!", response);
 
       const userId = response.data.userId;
       localStorage.setItem("userId", userId);
-      console.log("User ID:", userId);
-
       const userRole = response.data.role;
-      console.log("User role:", userRole);
+
 
       if (userRole === "admin") {
-        console.log("Redirecting to admin page...");
         navigate("/users/account");
       } else {
         await createOrderForUser(userId);
-        console.log("Redirecting to user account page...");
+
         navigate("/users/account");
       }
     } catch (err) {
@@ -72,7 +68,6 @@ const LoginForm = ({ setToken }) => {
     try {
       await axios.post("http://localhost:3000/api/orders", {
         userId: userId,
-        // You may include other order details here
       });
     } catch (error) {
       console.error("Error creating order for user:", error.message);

@@ -78,7 +78,7 @@ usersRouter.post("/register", async (req, res, next) => {
       email,
       password,
     });
-console.log(process.env.JWT_SECRET)
+
     const token = jwt.sign(
       {
         id: user.id,
@@ -108,7 +108,6 @@ usersRouter.get("/account", requireToken, async (req, res, next) => {
     if (!user) {
       res.status(404).send("No user found");
     } else {
-      console.log('send that user', user)
       res.send(user);
     }
   } catch (err) {
@@ -116,9 +115,20 @@ usersRouter.get("/account", requireToken, async (req, res, next) => {
   }
 });
 
-// usersRouter.get("/orders", require("./orders"));
-usersRouter.use("/orders", require("./orders"));
+usersRouter.get("/role", requireToken, async (req, res, next) => {
+  try {
+    const { id } = req.user;
+    const user = await getUserById(id);
+    if (!user) {
+      res.status(404).send("No user found");
+    } else {
+      res.send({ role: user.role });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
 
-// usersRouter.post("/orders", require("./orders"));
+usersRouter.use("/orders", require("./orders"));
 
 module.exports = usersRouter;

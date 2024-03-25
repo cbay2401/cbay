@@ -1,21 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Success = () => {
   const navigate = useNavigate();
+  const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/");
-    }, 5000);
+    const timer = setInterval(() => {
+      setCountdown((prevCount) => prevCount - 1);
+    }, 1000);
 
-    return () => clearTimeout(timer);
-  }, [navigate]);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate("/");
+    }
+  }, [countdown, navigate]);
 
   return (
     <div>
       <h1>Thank you for your purchase!</h1>
-      <p>You will be redirected to the homepage in 5 seconds...</p>
+      <p>You will be redirected to the homepage in {countdown} seconds...</p>
     </div>
   );
 };

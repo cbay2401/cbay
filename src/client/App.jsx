@@ -1,4 +1,5 @@
 // app.jsx
+
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/Login";
@@ -9,26 +10,13 @@ import Register from "./components/Register";
 import SingleRecord from "./components/SingleRecord";
 import AccountInfo from "./components/Account";
 import Cart from "./components/Cart";
-// import PrivateRoute from './components/PrivateRoute';
 import AdminDashboard from "./components/Admin";
-import Footer from "./components/Footer.jsx";
 import CheckoutForm from "./components/Checkout.jsx";
 import Success from "./components/Success.jsx";
 import './style.css';
 
 function App() {
-  const [count, setCount] = useState(0);
   const [token, setToken] = useState(localStorage.getItem("jwtToken"));
-
-  
-
-  // useEffect(() => {
-  //   // Check if token exists in localStorage when component mounts
-  //   const storedToken = localStorage.getItem('jwtToken');
-  //   if (storedToken) {
-  //     setToken(storedToken);
-  //   }
-  // }, []);
 
   return (
     <>
@@ -50,7 +38,6 @@ function App() {
           <Route path="/success" element={<Success/>}/>
         </Routes>
       </main>
-      {/* <Footer /> */}
     </>
   );
 }
