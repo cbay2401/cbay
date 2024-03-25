@@ -58,7 +58,7 @@ function Register({ setToken }) {
       console.error("Error creating order for user:", error.message);
     }
   }
-
+  
   return (
     <>
       <main className="register">

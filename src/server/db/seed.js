@@ -30,6 +30,13 @@ const users = [
     email: "john@example.com",
     password: "password123",
   },
+
+  {
+    name: "Guest",
+    email: "null@example.com",
+    password: "null",
+  },
+
 ];
 
 const dropTables = async () => {
