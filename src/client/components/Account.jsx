@@ -13,7 +13,7 @@ function AccountInfo({ token }) {
         const response = await axios.get(`/api/users/account`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setUserData(response.data); // Set user data received from the API
+        setUserData(response.data);
         if (response.data.order && response.data.order.id) {
           setOrderId(response.data.order.id);
         }
@@ -22,7 +22,7 @@ function AccountInfo({ token }) {
       }
     }
     if (token) {
-      fetchUserData(); // Fetch user data only if token is present
+      fetchUserData();
     }
   }, [token]);
 
@@ -46,7 +46,6 @@ function AccountInfo({ token }) {
       <h1 className="accountInfoH1">Account Information</h1>
       {userData ? (
         <div className="accountInfoCard">
-          {/* <h4>ID: {userData.id}</h4> */}
           <h4>Name: {userData.name}</h4>
           <h4>Email: {userData.email}</h4>
           {userData.role === "admin" && (

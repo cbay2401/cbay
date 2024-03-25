@@ -1,6 +1,8 @@
 // components/Admin.jsx
-import React, { useState, useEffect } from "react";
+
+import React, { useState } from "react";
 import axios from "axios";
+
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [records, setRecords] = useState([]);
@@ -21,7 +23,7 @@ const AdminDashboard = () => {
       })
       .then((response) => {
         if (Array.isArray(response.data.users)) {
-          setUsers(response.data.users); // Access "users" key
+          setUsers(response.data.users); 
           setShowUsers(true);
         } else {
           console.error("Invalid users data format:", response.data);
@@ -50,7 +52,7 @@ const AdminDashboard = () => {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {
-        // Remove the deleted record from the state
+
         setRecords(records.filter((record) => record.id !== recordId));
       })
       .catch((error) => {
@@ -58,15 +60,15 @@ const AdminDashboard = () => {
       });
   };
   const handleAddRecord = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault(); 
     axios
       .post("/api/records", newRecord, {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {
-        // Add the new record to the state
+
         setRecords([...records, response.data]);
-        // Clear the new record data
+
         setNewRecord({
           artist: "",
           albumname: "",
@@ -119,7 +121,6 @@ const AdminDashboard = () => {
             />
           </section>
           <section className="records-container">
-            {/* Form for adding new record */}
 
             <form className="add-record-form" onSubmit={handleAddRecord}>
               <h2>Add New Record</h2>
@@ -187,7 +188,6 @@ const AdminDashboard = () => {
                 Add Record
               </button>
             </form>
-            {/* Display existing records */}
             {filteredRecords.map((record) => (
               <div key={record.id} className="records">
                 <img

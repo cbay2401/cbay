@@ -5,8 +5,8 @@ const { createUser } = require("./users");
 
 const users = [
   {
-    name: "Emily Johnson",
-    email: "emily@example.com",
+    name: "Admin Account",
+    email: "admin@example.com",
     password: "securepass",
     role: "admin"
   },
@@ -30,12 +30,6 @@ const users = [
     email: "john@example.com",
     password: "password123",
   },
-  {
-    name: "Admin3",
-    email: "admin3@example.com",
-    password: "admin3",
-    role: "admin"
-  }
 ];
 
 const dropTables = async () => {

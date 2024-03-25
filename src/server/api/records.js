@@ -21,7 +21,6 @@ recordsRouter.post('/records', async (req, res, next) => {
     const recordData = {}
 
     try {
-    //    recordData.recordId = req.records.id
        recordData.artist = artist
        recordData.albumname = albumname
        recordData.year = year
@@ -62,7 +61,7 @@ recordsRouter.delete('/:id', async (req, res, next) => {
   try {
       const { id } = req.params;
       await deleteRecord(id);
-      res.sendStatus(204); // No content
+      res.sendStatus(204);
   } catch (err) {
       next(err);
   }
