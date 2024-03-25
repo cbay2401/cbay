@@ -1,5 +1,5 @@
 // components/Admin.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
