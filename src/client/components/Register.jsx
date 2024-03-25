@@ -7,8 +7,9 @@ function Register({ setToken }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
 
   async function handleSubmit(event) {
@@ -28,21 +29,22 @@ function Register({ setToken }) {
       });
 
       const result = await response.json();
-      if (response.ok){
-      setToken(result.token);
-      localStorage.setItem("jwtToken", result.token);
-      setSuccessMessage("Registration successful! Please Login!");
-      await createOrderForUser(result.id)
-      navigate('/login');
-    } else {  
-        setError ("User with this email already exists. Please use a different email.");
-    } 
-    }   catch (error) {
+      if (response.ok) {
+        setToken(result.token);
+        localStorage.setItem("jwtToken", result.token);
+        setSuccessMessage("Registration successful! Please Login!");
+        await createOrderForUser(result.id);
+        navigate("/login");
+      } else {
+        setError(
+          "User with this email already exists. Please use a different email."
+        );
+      }
+    } catch (error) {
       console.error(error.message);
     }
   }
-  
-  
+
   async function createOrderForUser(userId) {
     try {
       await fetch("http://localhost:3000/api/orders", {
@@ -91,11 +93,18 @@ function Register({ setToken }) {
             <label>
               Password:
               <input
-                type="text"
+                type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
+            <label for="check">Show Password</label>
+            <input
+              id="check"
+              type="checkbox"
+              value={showPassword}
+              onChange={() => setShowPassword((prev) => !prev)}
+            />
           </div>
 
           <button className="btn4" type="submit">
