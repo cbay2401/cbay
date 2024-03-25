@@ -115,6 +115,20 @@ usersRouter.get("/account", requireToken, async (req, res, next) => {
   }
 });
 
+usersRouter.get("/role", requireToken, async (req, res, next) => {
+  try {
+    const { id } = req.user;
+    const user = await getUserById(id);
+    if (!user) {
+      res.status(404).send("No user found");
+    } else {
+      res.send({ role: user.role });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 usersRouter.use("/orders", require("./orders"));
 
 module.exports = usersRouter;
