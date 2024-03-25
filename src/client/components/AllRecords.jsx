@@ -7,19 +7,28 @@ import axios from "axios";
 function AllRecords() {
   const [records, setRecords] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [sortBy, setSortBy] = useState("");
   useEffect(() => {
-    async function fetchRecords() {
+    async function fetchData() {
       try {
-        const { data } = await axios.get("/api/records/records");
+        const { data } = await axios.get('/api/records/records');
         setRecords(data);
+
+        // Sort records based on the selected option
+        if (sortBy === 'price') {
+          data.sort((a, b) => a.price - b.price);
+        } else if (sortBy === 'genre') {
+          data.sort((a, b) => a.genre.localeCompare(b.genre));
+        } else if (sortBy === 'year') {
+          data.sort((a, b) => a.year - b.year);
+        }
       } catch (error) {
-        console.error("Error fetching records:", error);
+        console.error('Error fetching records:', error);
       }
     }
 
-    fetchRecords();
-  }, []);
+    fetchData();
+  }, [sortBy]);
 
   if (records.length === 0) return <p>Loading Records...</p>;
 
@@ -28,7 +37,20 @@ function AllRecords() {
       record.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
       record.albumname.toLowerCase().includes(searchQuery.toLowerCase())
   );
+  const sortRecords = () => {
+    if (sortBy === "price") {
+      // Sort records by price
+      filteredRecords.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "genre") {
+      // Sort records by genre
+      filteredRecords.sort((a, b) => a.genre.localeCompare(b.genre));
+    } else if (sortBy === "year") {
+      // Sort records by year released
+      filteredRecords.sort((a, b) => a.year - b.year);
+    }
+  };
 
+  
   return (
     <>
       <section className="searchbar-container">
@@ -39,6 +61,11 @@ function AllRecords() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="price">Sort by Price</option>
+          <option value="genre">Sort by Genre</option>
+          <option value="year">Sort by Year Released</option>
+        </select>
       </section>
       <div className="main-container">
         <div className="records-container">
