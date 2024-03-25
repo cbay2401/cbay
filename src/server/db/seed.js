@@ -31,10 +31,14 @@ const users = [
     password: "password123",
   },
   {
-    name: "Admin3",
-    email: "admin3@example.com",
-    password: "admin3",
-    role: "admin"
+    name: "Guest",
+    email: "null@example.com",
+    password: "null",
+  },
+  {
+    name: "Guest",
+    email: "null@example.com",
+    password: "null",
   }
 ];
 

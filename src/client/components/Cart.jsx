@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import CheckoutForm from './Checkout';
 
+
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
     const [recordDetails, setRecordDetails] = useState({});

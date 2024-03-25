@@ -22,7 +22,7 @@ body {
   padding-top: 68px;
   padding-bottom: 50px;
   margin-bottom: 50px;
-  background: url("../media/background.jpg"); 
+  background: url("../media/background.jpg");
 }
 
 header {
@@ -858,7 +858,7 @@ h2 {
   margin: 10px;
 }
 
-.filter{
+.filter {
   background-color: #61a9dcb4;
   color: #f8f8f8;
   display: flex;
@@ -868,3 +868,13 @@ h2 {
   flex-wrap: wrap;
   font-size: 1em;
 }
+
+.guest {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 45px;
+  position: relative;
+  top: -20px;
+}
+
