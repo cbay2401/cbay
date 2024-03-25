@@ -37,18 +37,7 @@ function AllRecords() {
       record.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
       record.albumname.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  const sortRecords = () => {
-    if (sortBy === "price") {
-      // Sort records by price
-      filteredRecords.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "genre") {
-      // Sort records by genre
-      filteredRecords.sort((a, b) => a.genre.localeCompare(b.genre));
-    } else if (sortBy === "year") {
-      // Sort records by year released
-      filteredRecords.sort((a, b) => a.year - b.year);
-    }
-  };
+  
 
   
   return (
@@ -61,7 +50,8 @@ function AllRecords() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+        <select className="filter" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option>Filter Records</option>
           <option value="price">Sort by Price</option>
           <option value="genre">Sort by Genre</option>
           <option value="year">Sort by Year Released</option>

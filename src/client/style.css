@@ -857,3 +857,14 @@ h2 {
 .add-record-form input {
   margin: 10px;
 }
+
+.filter{
+  background-color: #61a9dcb4;
+  color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  padding: 3px 3px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  font-size: 1em;
+}
