@@ -406,10 +406,13 @@ header nav > a {
 
 .textfield {
   width: 100%;
-  margin-bottom: 15px;
+  border: 2px solid red;
   background-color: white;
 }
 
+.textfield-all {
+  margin-bottom: 15px;
+}
 /* -------------ALL RECORDS-------------  */
 
 .records-container {

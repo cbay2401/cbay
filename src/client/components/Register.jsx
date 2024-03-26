@@ -74,7 +74,7 @@ function Register({ setToken }) {
         {error && <p>{error}</p>}
         {successMessage && <p>{successMessage}</p>}
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="textfield-all">
             <TextField
               className="textfield"
               size="small"
@@ -85,7 +85,7 @@ function Register({ setToken }) {
             />
           </div>
 
-          <div>
+          <div className="textfield-all">
             <TextField
               className="textfield"
               size="small"
@@ -96,7 +96,7 @@ function Register({ setToken }) {
             />
           </div>
 
-          <div>
+          <div className="textfield-all">
             <TextField
               className="textfield"
               size="small"

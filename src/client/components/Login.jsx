@@ -62,7 +62,7 @@ const LoginForm = ({ setToken }) => {
     <div className="login-form">
       <h2 className="login-text">Login</h2>
       <form onSubmit={handleLogin}>
-        <div>
+        <div className="textfield-all">
           <TextField
             className="textfield"
             size="small"
@@ -72,7 +72,7 @@ const LoginForm = ({ setToken }) => {
             required
           />
         </div>
-        <div>
+        <div className="textfield-all">
           <TextField
             className="textfield"
             size="small"
@@ -96,7 +96,9 @@ const LoginForm = ({ setToken }) => {
             }}
           />
         </div>
-        <button className="login-btn" type="submit">Login</button>
+        <button className="login-btn" type="submit">
+          Login
+        </button>
       </form>
       <p>{message}</p>
     </div>
