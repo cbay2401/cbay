@@ -6,7 +6,7 @@ import HamburgerMenu from "./HamburgerMenu";
 import Account from "./Account";
 import axios from "axios";
 
-function Navbar() {
+function Navbar({token}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -35,7 +35,6 @@ function Navbar() {
     };
     async function getUserAccount() {
       try {
-        const token = localStorage.getItem("jwtToken");
         if (!token) {
           throw new Error("Sorry, Not Logged In, Bud!");
         }
@@ -68,7 +67,7 @@ function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [token]);
 
   return (
     <header>

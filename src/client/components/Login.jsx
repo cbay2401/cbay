@@ -64,7 +64,6 @@ const LoginForm = ({ setToken }) => {
         navigate("/users/account");
       }
 
-      window.location.reload()
     } catch (err) {
       console.error("Error in login:", err.message);
       setMessage("Invalid email or password. Please try again.");

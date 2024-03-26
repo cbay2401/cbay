@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar token={token}/>
       <main>
         <Routes>
           <Route path="/" element={<Homepage />} />

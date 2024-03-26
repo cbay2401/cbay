@@ -39,28 +39,28 @@ const users = [
 
   {
     name: "John Perkins",
-    email: "johnadmin@example.com",
-    password: "johnadmin",
+    email: "john@example.com",
+    password: "john",
   },
   {
     name: "Mitch Wells",
-    email: "mitchadmin@example.com",
-    password: "mitchadmin",
+    email: "mitch@example.com",
+    password: "mitch",
   },
   {
     name: "Carly Zimmerman",
-    email: "carlyadmin@example.com",
-    password: "carlyadmin",
+    email: "carly@example.com",
+    password: "carly",
   },
   {
     name: "Erik Rodriguez",
-    email: "erikadmin@example.com",
-    password: "erikadmin",
+    email: "erikn@example.com",
+    password: "erik",
   },
   {
     name: "Johnathan Bushapa",
-    email: "johnathanadmin@example.com",
-    password: "johnathanadmin",
+    email: "johnathan@example.com",
+    password: "johnathan",
   },
 ];
 
