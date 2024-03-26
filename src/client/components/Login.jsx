@@ -131,6 +131,7 @@ const LoginForm = ({ setToken }) => {
     </div>
   );
 };
+}
 
 export default LoginForm;
 
