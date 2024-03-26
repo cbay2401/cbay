@@ -15,6 +15,7 @@ import CheckoutForm from "./components/Checkout.jsx";
 import Success from "./components/Success.jsx";
 import './style.css';
 
+
 function App() {
   const [token, setToken] = useState(localStorage.getItem("jwtToken"));
 
@@ -37,7 +38,9 @@ function App() {
           <Route path="/checkout/:cartId" element={<CheckoutForm />} />
           <Route path="/success" element={<Success/>}/>
         </Routes>
+          
       </main>
+
     </>
   );
 }

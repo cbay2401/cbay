@@ -125,6 +125,7 @@ header nav > a {
   min-height: calc(100vh - 100px);
   bottom: 68px;
   margin-bottom: 100px;
+ 
 }
 
 .slideshow-container {
@@ -328,8 +329,12 @@ header nav > a {
   margin: 50px auto;
   padding: 20px;
   width: 300px;
+
   border: 1.5px solid rgb(92, 82, 82);
   border-radius: 8px;
+
+ 
+ 
 }
 
 .login-form input {
@@ -339,6 +344,7 @@ header nav > a {
   box-sizing: border-box;
   border: 1px solid rgb(10, 10, 10);
   border-radius: 4px;
+
 }
 .login-form button {
   background-color: #86b817;
@@ -355,6 +361,7 @@ header nav > a {
 
 .login-form label {
   color: black;
+
 }
 
 /* ------------- REGISTER PAGE ------------- */
@@ -688,18 +695,25 @@ h2 {
 /* --------------FOOTER--------------  */
 
 .footer {
-  position: fixed;
+  
+  background-color: #f8f8f8;
   width: 100%;
+
   bottom: 0;
+
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .footer-container {
+  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
 
   padding: 10px;
+
+ 
+
 }
 
 #iglogo {
@@ -765,27 +779,111 @@ h2 {
   transition: background-color 0.3s ease;
   margin: 0.5em;
 }
+/*----------ADMIN-------*/
 
+.admin-records {
+  /* border: 1px solid #0f0f10fc; */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  width: 200px;
+  /* height: auto; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  padding: 5px 5px 0px 5px;
+
+  backdrop-filter: blur(3px);
+  border-radius: 17px 0 17px 17px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+}
+
+.admin-records:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+.admin-records:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+.admin-dashboard {
+  /* border: 3px solid red; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+ 
+}
+
+#all-records-header {
+  /* border: 2px solid rgba(60, 132, 79, 0.507); */
+
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 10px 0;
+  color: #555555;
+
+}
+
+.admin-dashboard > h2 {
+  /* border: 1px solid red; */
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px;
+  font-size: 40px;
+}
+
+.admin-bttn-container {
+  /* border: 2px solid rgb(102, 33, 33); */
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #f2f1f1;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  border-radius: 15px 0 15px 15px;
+
+
+}
 .admin-btn {
-  background-color: #007bff;
+  background-color:  #b4d2e7;
   color: #fff;
   border: none;
   padding: 5px 10px;
-  border-radius: 4px;
+  border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 0.5em;
+  padding: 10px;
+
+}
+
+.admin-btn:hover {
+  border: 1px solid #4a8cf6fc;
+  border-radius: 15px 0 15px 15px;
+
+}
+
+.admin-btn > span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+
 }
 
 .admin-del {
   background-color: #ff4632;
   color: #fff;
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 5px 50px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 0.5em;
+  bottom: 0;
 }
 
 .admin-sub {
@@ -799,39 +897,133 @@ h2 {
   margin: 0.5em;
 }
 
-.users-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  font-weight: bold;
+
+.table-container, th, td {
+    border-bottom: 2px solid rgb(166, 24, 24);
+    width: 800px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.users-list {
-  display: flex;
-  flex-direction: column;
-  bottom: auto 0;
+.table-container {
+  background-color: #ffffff;
+  border-collapse: collapse;
+
 }
+
+th, td {
+  /* border-bottom: 2px solid rgb(166, 24, 24); */
+  align-items: center;
+  text-align: center;
+  width: 0 auto;
+
+}
+
+th {
+  background-color:#e9f2f2;
+}
+
+.admin-svg {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 50%;
+
+}
+.admin-content > h3 {
+  border: 1px solid rgba(139, 185, 212, 0.409);
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #555555;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  padding: 10px 0;
+
+
+
+}
+.admin-content {
+  border: 1px solid rgb(125, 125, 159);
+  padding: 25px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+
+
+ 
+}
+.admin-container{
+  /* border: 3px dotted red; */
+  width: 900px;
+  height: 500px;
+}
+
+.admin-name {
+  /* border: 1px dotted rgb(101, 158, 160); */
+  align-content: center;
+  padding-left: 5px;
+}
+
+
+
+/*-------ADD/DELETE/FILTER REC-----------*/
 
 .add-record-form {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   width: 100vw;
   border: 1.5px solid rgb(92, 82, 82);
-  border-radius: 8px;
+  border-radius: 8px 0 8px 8px;
+  justify-content: center;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.add-record-form-content {
+  /* border: 1px solid red; */
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+
+
+  
+}
+
+input {
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.add-record-form-content, .admin-sub {
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+}
+
+.add-record-form-content > label {
+  margin: 10px;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.admin-sub {
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .add-record-form h2 {
   text-align: center;
+  
 }
 
 .add-record-form input {
   margin: 10px;
+
 }
 
 .filter {
@@ -843,6 +1035,7 @@ h2 {
   border-radius: 10px;
   flex-wrap: wrap;
   font-size: 1em;
+  margin-left: 10px;
 }
 
 .guest {
