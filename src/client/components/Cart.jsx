@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
+
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
     const [recordDetails, setRecordDetails] = useState({});

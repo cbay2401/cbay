@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
 const Slideshow = () => {
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
@@ -30,7 +31,8 @@ const Slideshow = () => {
   }, [images.length]);
 
   return (
-    <>
+    <> 
+    {/* <div className='home-body'></div> */}
       <div className="home-container">
         <div className="slideshow-container">
           {images.map((image, index) => (
@@ -63,6 +65,7 @@ const Slideshow = () => {
     <input type="email" placeholder="Your Email Address"/>
     <button type="submit">Submit</button>
   </form>
+  
   <br></br>
 </div>
 

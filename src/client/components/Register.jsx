@@ -66,7 +66,7 @@ function Register({ setToken }) {
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
-
+  
   return (
     <>
       <main className="register">

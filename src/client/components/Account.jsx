@@ -34,9 +34,18 @@ function AccountInfo({ token }) {
     navigate(`/cart/${orderId}`);
   };
 
-  const handleLogout = () => {
+    const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     setUserData(null);
+    if (userData && userData.email === "null@example.com") {
+      try {
+        // Delete the cart if the user is a guest
+        axios.delete(`/api/orders/cart/ck/${orderId}`);
+        console.log("Guest cart deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting guest cart:", error);
+      }
+    }
     navigate("/login");
     window.location.reload();
   };
