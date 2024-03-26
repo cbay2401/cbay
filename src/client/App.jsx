@@ -18,10 +18,12 @@ import './style.css';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("jwtToken"));
+  
+  
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <main>
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -31,7 +33,7 @@ function App() {
           <Route path="/records/:id" element={<SingleRecord />} />
           <Route
             path="/users/account"
-            element={<AccountInfo token={token} />}
+            element={<AccountInfo token={token}  />}
           />
           <Route path="/cart/:cartId" element={<Cart />} />
           <Route path="/admin" element={<AdminDashboard token={token} />} />
