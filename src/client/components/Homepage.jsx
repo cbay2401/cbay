@@ -67,6 +67,9 @@ const Slideshow = () => {
   </form>
   
   <br></br>
+  <a href="https://www.instagram.com/cbayrecords" target="_blank">
+  <img className="iglogo" src="../media/igLogo 2.png" alt="Instagram Logo" />
+</a>
 </div>
 
 

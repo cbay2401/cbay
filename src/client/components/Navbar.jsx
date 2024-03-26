@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import HamburgerMenu from "./HamburgerMenu";
 import Account from "./Account";
 import axios from "axios";
+import {Link}  from 'react-router-dom'
 
 function Navbar({token}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,17 +50,22 @@ function Navbar({token}) {
         if (response.data && response.data.cartId) {
           setCartId(response.data.cartId);
         }
+        console.log("CART ID:", cartId)
         if (response.data && response.data.order && response.data.order.id) {
-          setOrderId(response.data.order.id); // Setting orderId
+          setOrderId(response.data.order.id); 
         }
+
+        console.log("ORDER ID:", orderId)
       } catch (err) {
         console.error("Error fetching user account:", err);
+        
       }
+      
     }
     getUserAccount();
 
-    handleResize(); // Check initial screen size
-    window.addEventListener("resize", handleResize); // Listen for window resize
+    handleResize(); 
+    window.addEventListener("resize", handleResize); 
 
     document.addEventListener("mousedown", handleClickOutside);
 
@@ -93,9 +99,9 @@ function Navbar({token}) {
                 </div>
               )}
             </div>
-            <NavLink to={`/cart/${orderId}`}>
+            <Link to={`/cart/${orderId}`}>
               <span className="nav-cart">&#x1F6D2;</span>
-            </NavLink>
+            </Link>
           </nav>
         )}
       </div>

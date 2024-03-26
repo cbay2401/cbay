@@ -39,10 +39,11 @@ function SingleRecord() {
         const response = await axios.get(`/api/users/account`, config);
         if (response.data && response.data.cartId) {
           setCartId(response.data.cartId);
+          
         }
         if (response.data && response.data.order && response.data.order.id) {
           setOrderId(response.data.order.id); // Setting orderId
-        }
+        }console.log("ORDER ID:", orderId)
       } catch (err) {
         console.error("Error fetching user account:", err);
       }
