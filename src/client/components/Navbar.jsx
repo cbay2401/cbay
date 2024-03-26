@@ -1,3 +1,4 @@
+
 // components/Navbar.jsx
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -53,3 +54,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
