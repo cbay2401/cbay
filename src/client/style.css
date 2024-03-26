@@ -475,9 +475,12 @@ header nav > a {
 .main-container {
   display: flex;
   justify-content: center;
+  margin: 0 auto;
+  width: 80vw;
 }
 
 .records {
+  
   display: flex;
   flex-direction: column;
   gap: 10px;

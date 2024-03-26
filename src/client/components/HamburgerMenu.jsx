@@ -14,6 +14,7 @@ const HamburgerMenu = ({ isOpen, toggleMenu }) => {
           <NavLink to="/register" className="dropdown-item">Register</NavLink>
           <NavLink to="/login" className="dropdown-item">Login</NavLink>
           <NavLink to="/users/account" className="dropdown-item">Account</NavLink>
+          <NavLink to="/cart" className="dropdown-item">Cart</NavLink>
         </div>
       )}
     </div>
