@@ -372,25 +372,25 @@ display: inline-block;
  
 }
 
-.login-form input {
+/* .login-form input {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
   box-sizing: border-box;
   border: 1px solid rgb(10, 10, 10);
   border-radius: 4px;
-
-}
-.login-form button {
+} */
+.login-btn {
   background-color: #86b817;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 15px;
 }
 
-.login-form button:hover {
+.login-btn:hover {
   background-color: #eec759;
 }
 
@@ -412,24 +412,25 @@ display: inline-block;
   border-radius: 8px;
 }
 
-.register input {
+/* .register input {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
   box-sizing: border-box;
   border: 1px solid rgb(10, 10, 10);
   border-radius: 4px;
-}
-.register button {
+} */
+.btn4 {
   background-color: #86b817;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 16px;
 }
 
-.register button:hover {
+.btn4:hover {
   background-color: #eec759;
 }
 
@@ -445,6 +446,15 @@ display: inline-block;
   color: black;
 }
 
+.textfield {
+  width: 100%;
+  border: 2px solid red;
+  background-color: white;
+}
+
+.textfield-all {
+  margin-bottom: 15px;
+}
 /* -------------ALL RECORDS-------------  */
 
 .records-container {

@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 
 function Register({ setToken }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
 
   async function handleSubmit(event) {
@@ -28,21 +31,22 @@ function Register({ setToken }) {
       });
 
       const result = await response.json();
-      if (response.ok){
-      setToken(result.token);
-      localStorage.setItem("jwtToken", result.token);
-      setSuccessMessage("Registration successful! Please Login!");
-      await createOrderForUser(result.id)
-      navigate('/login');
-    } else {  
-        setError ("User with this email already exists. Please use a different email.");
-    } 
-    }   catch (error) {
+      if (response.ok) {
+        setToken(result.token);
+        localStorage.setItem("jwtToken", result.token);
+        setSuccessMessage("Registration successful! Please Login!");
+        await createOrderForUser(result.id);
+        navigate("/login");
+      } else {
+        setError(
+          "User with this email already exists. Please use a different email."
+        );
+      }
+    } catch (error) {
       console.error(error.message);
     }
   }
-  
-  
+
   async function createOrderForUser(userId) {
     try {
       await fetch("http://localhost:3000/api/orders", {
@@ -58,6 +62,10 @@ function Register({ setToken }) {
       console.error("Error creating order for user:", error.message);
     }
   }
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   
   return (
     <>
@@ -66,36 +74,51 @@ function Register({ setToken }) {
         {error && <p>{error}</p>}
         {successMessage && <p>{successMessage}</p>}
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              Full Name:
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
+          <div className="textfield-all">
+            <TextField
+              className="textfield"
+              size="small"
+              label="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
           </div>
 
-          <div>
-            <label>
-              Email:
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
+          <div className="textfield-all">
+            <TextField
+              className="textfield"
+              size="small"
+              label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
-          <div>
-            <label>
-              Password:
-              <input
-                type="text"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
+
+          <div className="textfield-all">
+            <TextField
+              className="textfield"
+              size="small"
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
           </div>
 
           <button className="btn4" type="submit">

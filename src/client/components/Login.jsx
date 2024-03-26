@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 
 const LoginForm = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   // Function to handle changes in the email input
@@ -18,6 +21,11 @@ const LoginForm = ({ setToken }) => {
     setPassword(e.target.value);
   };
 
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  async function handleLogin(event) {
   // Function to handle login form submission
   const handleLogin = async (event, isGuest = false) => {
     event.preventDefault();
@@ -78,27 +86,43 @@ const LoginForm = ({ setToken }) => {
     <div className="login-form">
       <h2 className="login-text">Login</h2>
       <form onSubmit={(e) => handleLogin(e, false)}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
+        <div className="textfield-all">
+          <TextField
+            className="textfield"
+            size="small"
+            label="Email"
             value={email}
             onChange={handleEmailChange}
             required
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
+        <div className="textfield-all">
+          <TextField
+            className="textfield"
+            size="small"
+            label="Password"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={handlePasswordChange}
             required
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
         </div>
-        <button type="submit">Login</button>
+        <button className="login-btn" type="submit">
+          Login
+        </button>
       </form>
       <span className="guest" onClick={(e) => handleLogin(e, true)}>
         Continue as Guest
