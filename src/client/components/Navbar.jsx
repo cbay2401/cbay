@@ -3,13 +3,17 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
+import HamburgerMenu from './HamburgerMenu' 
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+        setIsOpen(!isOpen);
     };
 
     const handleClickOutside = (event) => {
@@ -19,10 +23,23 @@ function Navbar() {
     };
 
     useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+              setIsMobile(true);
+            } else {
+              setIsMobile(false);
+            }
+          };
+      
+          handleResize(); // Check initial screen size
+          window.addEventListener("resize", handleResize); // Listen for window resize
+      
+        
         document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
@@ -32,7 +49,9 @@ function Navbar() {
                 <div className="logo-container">
                     <img id='logo' src='../../../media/cbay.png' alt="Logo" />
                 </div>
-
+                {isMobile ? (
+          <HamburgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />
+        ) : (
                 <nav className="nav-container">
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/records">Records</NavLink>
@@ -47,7 +66,7 @@ function Navbar() {
                         )}
                     </div>
                     <NavLink to="/cart/:cartid"><span className="nav-cart">&#x1F6D2;</span></NavLink>
-                </nav>
+                </nav>)}
             </div>
         </header>
     );
