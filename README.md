@@ -1,13 +1,13 @@
-Vinyl Records Store
+Cbay
 
-Vinyl Records Store is a web application for managing and selling vinyl records. It allows users to browse a collection of vinyl records, add new records to the inventory, delete records, and manage user accounts. The application also includes an admin dashboard for administrators to view and manage users and records.
+Cbay is a web application for managing and selling vinyl records. It allows users to browse a collection of vinyl records and purchase them. The application also includes an admin dashboard for administrators to view and manage users and records, add new records to the inventory, delete records, and manage user accounts.
 
 Features
 
 User Authentication: Users can sign up, log in, and log out securely.
 Record Management: Admins can add new vinyl records to the inventory, delete records, and view existing records.
 User Management: Admins can view all users, including their details such as name, email, and role.
-Search Functionality: Users can search for records by artist, album name, or genre.
+Search Functionality: Users can search for records by artist and album name. Users can also filter between price, genre, and year released.
 Responsive Design: The application is responsive and works well on desktop and mobile devices.
 
 
