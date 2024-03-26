@@ -1,7 +1,9 @@
 // components/Admin.jsx
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-const AdminDashboard = () => {
+
+const AdminDashboard = ({ token }) => {
   const [users, setUsers] = useState([]);
   const [records, setRecords] = useState([]);
   const [showUsers, setShowUsers] = useState(null);
@@ -14,14 +16,33 @@ const AdminDashboard = () => {
     imageurl: "",
     price: "",
   });
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    async function fetchUserRole() {
+      try {
+        const response = await axios.get(`/api/users/role`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setUserRole(response.data.role);
+      } catch (error) {
+        console.error("Error fetching user role:", error);
+      }
+    }
+
+    if (token) {
+      fetchUserRole();
+    }
+  }, [token]);
+
   const handleViewUsers = () => {
     axios
       .get("/api/users", {
-        headers: { Authorization: localStorage.getItem("token") },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         if (Array.isArray(response.data.users)) {
-          setUsers(response.data.users); // Access "users" key
+          setUsers(response.data.users);
           setShowUsers(true);
         } else {
           console.error("Invalid users data format:", response.data);
@@ -31,10 +52,11 @@ const AdminDashboard = () => {
         console.error("Error fetching users:", error);
       });
   };
+
   const handleViewRecords = () => {
     axios
       .get("/api/records", {
-        headers: { Authorization: localStorage.getItem("token") },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setRecords(response.data);
@@ -44,29 +66,28 @@ const AdminDashboard = () => {
         console.error("Error fetching records:", error);
       });
   };
+
   const handleDeleteRecord = (recordId) => {
     axios
       .delete(`/api/records/${recordId}`, {
-        headers: { Authorization: localStorage.getItem("token") },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        // Remove the deleted record from the state
         setRecords(records.filter((record) => record.id !== recordId));
       })
       .catch((error) => {
         console.error("Error deleting record:", error);
       });
   };
+
   const handleAddRecord = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault();
     axios
       .post("/api/records", newRecord, {
-        headers: { Authorization: localStorage.getItem("token") },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        // Add the new record to the state
         setRecords([...records, response.data]);
-        // Clear the new record data
         setNewRecord({
           artist: "",
           albumname: "",
@@ -80,11 +101,17 @@ const AdminDashboard = () => {
         console.error("Error adding record:", error);
       });
   };
+
   const filteredRecords = records.filter(
     (record) =>
       record.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
       record.albumname.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (!token || userRole !== "admin") {
+    return <div>You need to be logged in as Admin to view this page.</div>;
+  }
+
   return (
     <div>
         <div className="admin-dashboard">
@@ -142,7 +169,6 @@ const AdminDashboard = () => {
             />
           </section>
           <section className="records-container">
-            {/* Form for adding new record */}
 
             <form className="add-record-form" onSubmit={handleAddRecord}>
               <h2>Add New Record</h2>
@@ -213,7 +239,6 @@ const AdminDashboard = () => {
               </button>
               </div>
             </form>
-            {/* Display existing records */}
             {filteredRecords.map((record) => (
               <div key={record.id} className="admin-records">
                 <img className="albumcover" src={record.imageurl} alt="Album Cover" />

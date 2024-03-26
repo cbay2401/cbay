@@ -1,4 +1,4 @@
-// server/api/orders.js
+
 
 const express = require("express");
 const ordersRouter = express.Router();
@@ -9,9 +9,9 @@ const {
   createCart,
   updateCartItem,
   getCartItems,
+
   deleteCartItem,
-  deleteAllCartItems
-  
+  deleteAllCartItems,
 } = require("../db/orders");
 
 ordersRouter.get("/admin/orders", async (req, res, next) => {
@@ -24,8 +24,8 @@ ordersRouter.get("/admin/orders", async (req, res, next) => {
 });
 
 ordersRouter.post("/", async (req, res, next) => {
-  const { userId} = req.body;
-  console.log("Received userId:", userId)
+  const { userId } = req.body;
+  console.log("Received userId:", userId);
   try {
     const order = await createOrder(userId);
     res.status(201).json(order);
@@ -61,13 +61,12 @@ ordersRouter.get("/cart/:cartId", async (req, res, next) => {
   const cartId = req.params.cartId;
   try {
     const cartItems = await getCartItems(cartId);
-    console.log(cartId)
+    console.log(cartId);
     res.json(cartItems);
   } catch (error) {
     next(error);
   }
 });
-
 
 ordersRouter.delete("/cart/:cartItemId", async (req, res, next) => {
   const cartItemId = req.params.cartItemId;
@@ -80,21 +79,22 @@ ordersRouter.delete("/cart/:cartItemId", async (req, res, next) => {
 });
 
 //ordersRouter.delete("/cart/:orderId", async (req, res, next) => {
-  ordersRouter.delete("/cart/ck/:orderId", async (req, res, next) => {
-    const orderId = req.params.orderId;
-    try {
-      const result = await deleteAllCartItems(orderId);
-      if (result.deletedCount === 0) {
-        // No items deleted, return a message or status code accordingly
-        return res.status(404).json({ message: "No items found for deletion." });
-      }
-      res.status(200).json({ message: "Cart items deleted successfully." });
-    } catch (error) {
-      console.error("Error deleting cart items:", error);
-      next(error);
+ordersRouter.delete("/cart/ck/:orderId", async (req, res, next) => {
+  const orderId = req.params.orderId;
+  try {
+    const result = await deleteAllCartItems(orderId);
+    if (result.deletedCount === 0) {
+      // No items deleted, return a message or status code accordingly
+      return res.status(404).json({ message: "No items found for deletion." });
     }
-  });
+    res.status(200).json({ message: "Cart items deleted successfully." });
+  } catch (error) {
+    console.error("Error deleting cart items:", error);
+    next(error);
+  }
+});
 
 // Export the ordersRouter
 module.exports = ordersRouter;
 // Add more routes as needed
+

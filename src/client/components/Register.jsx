@@ -29,7 +29,6 @@ function Register({ setToken }) {
 
       const result = await response.json();
       if (response.ok){
-      console.log("Registration successful", result);
       setToken(result.token);
       localStorage.setItem("jwtToken", result.token);
       setSuccessMessage("Registration successful! Please Login!");
@@ -53,14 +52,13 @@ function Register({ setToken }) {
         },
         body: JSON.stringify({
           userId: userId,
-          // You may include other order details here
         }),
       });
     } catch (error) {
       console.error("Error creating order for user:", error.message);
     }
   }
-
+  
   return (
     <>
       <main className="register">

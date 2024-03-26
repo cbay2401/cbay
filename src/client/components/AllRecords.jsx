@@ -14,7 +14,6 @@ function AllRecords() {
         const { data } = await axios.get('/api/records/records');
         setRecords(data);
 
-        // Sort records based on the selected option
         if (sortBy === 'price') {
           data.sort((a, b) => a.price - b.price);
         } else if (sortBy === 'genre') {
@@ -80,6 +79,7 @@ function AllRecords() {
             </Link>
           ))}
         </div>
+        
       </div>
     </>
   );

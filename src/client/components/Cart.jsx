@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import CheckoutForm from './Checkout';
+
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
     const [recordDetails, setRecordDetails] = useState({});
     const navigate = useNavigate()
-    const { cartId } = useParams(); // Destructure cartId from useParams
-    console.log('Cart ID:', cartId);
+    const { cartId } = useParams();
 
     useEffect(() => {
         async function fetchCartItems() {
@@ -37,7 +35,6 @@ function Cart() {
     const fetchRecordDetails = async (recordId) => {
         try {
             const { data } = await axios.get(`/api/records/${recordId}`);
-            console.log("Data::::", data)
             return data;
         } catch (error) {
             console.error(`Error fetching record details for record ID ${recordId}:`, error);
@@ -45,11 +42,9 @@ function Cart() {
         }
     };
 
-    const removeFromCart = async (cartItemId) => { // Update parameter name to cartItemId
+    const removeFromCart = async (cartItemId) => {
         try {
-            console.log('Removing record with ID:', cartItemId); // Log the cartItemId being removed
-            await axios.delete(`/api/orders/cart/${cartItemId}`); // Use cartItemId in the API request
-            console.log('Record removed from cart successfully!')
+            await axios.delete(`/api/orders/cart/${cartItemId}`);
             setCartItems(prevCartItems => prevCartItems.filter(item => item.id !== cartItemId));
             alert('Record removed from cart successfully!');
         } catch (error) {
@@ -60,7 +55,6 @@ function Cart() {
     const updateCartItemQuantity = async (cartItemId, newQuantity) => {
         try {
             await axios.patch(`/api/orders/cart/${cartItemId}`, { quantity: newQuantity });
-            console.log('Quantity updated successfully!');
         } catch (error) {
             console.error('Error updating quantity:', error);
         }

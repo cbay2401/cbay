@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
 const Slideshow = () => {
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
@@ -64,6 +65,7 @@ const Slideshow = () => {
     <input type="email" placeholder="Your Email Address"/>
     <button type="submit">Submit</button>
   </form>
+  
   <br></br>
 </div>
 

@@ -13,7 +13,7 @@ function AccountInfo({ token }) {
         const response = await axios.get(`/api/users/account`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setUserData(response.data); // Set user data received from the API
+        setUserData(response.data);
         if (response.data.order && response.data.order.id) {
           setOrderId(response.data.order.id);
         }
@@ -22,7 +22,7 @@ function AccountInfo({ token }) {
       }
     }
     if (token) {
-      fetchUserData(); // Fetch user data only if token is present
+      fetchUserData();
     }
   }, [token]);
 
@@ -34,9 +34,18 @@ function AccountInfo({ token }) {
     navigate(`/cart/${orderId}`);
   };
 
-  const handleLogout = () => {
+    const handleLogout = () => {
     localStorage.removeItem("jwtToken");
     setUserData(null);
+    if (userData && userData.email === "null@example.com") {
+      try {
+        // Delete the cart if the user is a guest
+        axios.delete(`/api/orders/cart/ck/${orderId}`);
+        console.log("Guest cart deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting guest cart:", error);
+      }
+    }
     navigate("/login");
     window.location.reload();
   };
@@ -46,7 +55,6 @@ function AccountInfo({ token }) {
       <h1 className="accountInfoH1">Account Information</h1>
       {userData ? (
         <div className="accountInfoCard">
-          {/* <h4>ID: {userData.id}</h4> */}
           <h4>Name: {userData.name}</h4>
           <h4>Email: {userData.email}</h4>
           {userData.role === "admin" && (
