@@ -1,55 +1,57 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import HamburgerMenu from "./HamburgerMenu";
+
+// components/Navbar.jsx
+
+import React, { useState, useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
     };
 
-    handleResize(); // Check initial screen size
-    window.addEventListener("resize", handleResize); // Listen for window resize
-
-    return () => {
-      window.removeEventListener("resize", handleResize); // Clean up
+    const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            setIsMenuOpen(false);
+        }
     };
-  }, []);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
 
-  return (
-    <header>
-      <div className="header-content">
-        <div className="logo-container">
-          <img id="logo" src="../../../media/cbay.png" alt="logo" />
-        </div>
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
-        {isMobile ? (
-          <HamburgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />
-        ) : (
-          <nav className="nav-container-nav">
-            <div className="nav-container">
-            <NavLink to ="/">Home</NavLink>
-                <NavLink to ="/records">Records</NavLink>
-                <NavLink to ="/Register"><span>Register</span></NavLink>
-                <NavLink to ="/login"><span>Login</span></NavLink>
-                <NavLink to ="/users/account"><span>Account</span></NavLink>
+    return (
+        <header>
+            <div className="header-content">
+                <div className="logo-container">
+                    <img id='logo' src='../../../media/cbay.png' alt="Logo" />
+                </div>
+
+                <nav className="nav-container">
+                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/records">Records</NavLink>
+                    <div>
+                        <span className="nav-user" onClick={toggleMenu}>&#x1F464; </span>
+                        {isMenuOpen && (
+                            <div className="nav-dropdown" ref={dropdownRef}>
+                                <NavLink to="/register">Register</NavLink>
+                                <NavLink to="/login">Login</NavLink>
+                                <NavLink to="/users/account">Account</NavLink>
+                            </div>
+                        )}
+                    </div>
+                    <NavLink to="/cart/:cartid"><span className="nav-cart">&#x1F6D2;</span></NavLink>
+                </nav>
             </div>
-          </nav>
-        )}
-      </div>
-    </header>
-  );
+        </header>
+    );
 }
 
 export default Navbar;
+
