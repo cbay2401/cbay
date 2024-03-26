@@ -8,7 +8,7 @@ const users = [
     name: "Admin Account",
     email: "admin@example.com",
     password: "securepass",
-    role: "admin"
+    role: "admin",
   },
   {
     name: "Liu Wei",
@@ -79,7 +79,7 @@ const dropTables = async () => {
 
 const createTables = async () => {
   try {
-    console.log("Creating users table...")
+    console.log("Creating users table...");
     await db.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
@@ -164,7 +164,7 @@ async function testOrdersRecords() {
 async function testRecord() {
   await db.query(`
   INSERT INTO records (artist, albumname, genre, year, imageurl, price)
-  VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://f4.bcbits.com/img/a2776528301_10.jpg', 12.99 ),
+  VALUES ('Prince', 'Purple Rain', 'Soul', 1984, 'https://upload.wikimedia.org/wikipedia/en/9/9c/Princepurplerain.jpg', 12.99 ),
   ('Queen', 'Flash Gordon Soundtrack', 'Rock', 1980, 'https://upload.wikimedia.org/wikipedia/en/c/cc/Queen_Flash_Gordon.png', 15.99 ),
   ('Coldplay', 'Parachutes', 'Rock/Punk', 2000, 'https://upload.wikimedia.org/wikipedia/en/f/fd/Coldplay_-_Parachutes.png', 10.99 ), 
   ('Feid', 'Feliz Cumpleanos Ferxxo Te Pirateamos el Album', 'Reggaeton', 2022,'https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Feliz_Cumplea%C3%B1os_Ferxxo_Te_Pirateamos_el_%C3%81lbum.jpg/220px-Feliz_Cumplea%C3%B1os_Ferxxo_Te_Pirateamos_el_%C3%81lbum.jpg', 12.99),
@@ -190,7 +190,7 @@ async function testRecord() {
   ('J. Cole', '2014 Forest Hills Drive', 'Rap', 2014, 'https://upload.wikimedia.org/wikipedia/en/2/2a/2014ForestHillsDrive.jpg', 14.99),
   ('Evanescence', 'Fallen', 'Alt Rock', 2003, 'https://upload.wikimedia.org/wikipedia/en/2/25/Evanescence_-_Fallen.png', 12.99),
   ('Beyonce', 'Lemonade', 'Pop/Hip Hop', 2016, 'https://upload.wikimedia.org/wikipedia/en/5/53/Beyonce_-_Lemonade_%28Official_Album_Cover%29.png', 24.99),
-  ('*NSYNC', 'No Strings Attached', 'Pop', 2000, 'https://www.billboard.com/wp-content/uploads/media/nsync-no-strings-attached-2000-album-cover-billboard-650-hero.jpg?w=650', 12.99),
+  ('*NSYNC', 'No Strings Attached', 'Pop', 2000, 'https://m.media-amazon.com/images/I/812H+OFXlCL._UF1000,1000_QL80_.jpg', 12.99),
   ('Drake', 'Take Care (Deluxe)', 'Rap', 2011, 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Drake_-_Take_Care_cover.jpg/220px-Drake_-_Take_Care_cover.jpg', 19.99),
   ('Lin-Manuel Miranda', 'Hamilton (Original Broadway Cast Recording)', 'Show Tunes', 2015, 'https://upload.wikimedia.org/wikipedia/en/5/5b/Hamilton_cast_recording_cover.jpeg', 14.99),
   ('Aminé', 'Limbo', 'Hip Hop', 2020, 'https://m.media-amazon.com/images/I/71KPxCqrWjL._UF1000,1000_QL80_.jpg', 19.99), 
@@ -215,7 +215,7 @@ const insertUsers = async () => {
         name: user.name,
         email: user.email,
         password: user.password,
-        role: user.role || "user"
+        role: user.role || "user",
       });
     }
     console.log("Seed data inserted successfully.");
