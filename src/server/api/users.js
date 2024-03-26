@@ -1,5 +1,3 @@
-// server/api/users.js
-
 const express = require("express");
 const usersRouter = express.Router();
 const requireToken = require("./requireToken");

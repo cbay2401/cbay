@@ -1,9 +1,6 @@
-// server/api/records.js
-
 const express = require ('express')
 const recordsRouter = express.Router()
 const {getAllRecords, addNewRecord, getRecordById, deleteRecord} = require('../db/records')
-
 
 
 recordsRouter.get('/records', async (req, res, next)=>{

@@ -1,5 +1,3 @@
-// app.jsx
-
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoginForm from "./components/Login";

@@ -11,12 +11,10 @@ const LoginForm = ({ setToken }) => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  // Function to handle changes in the email input
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
-  // Function to handle changes in the password input
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
@@ -25,7 +23,6 @@ const LoginForm = ({ setToken }) => {
     setShowPassword(!showPassword);
   };
 
-  // Function to handle login form submission
   const handleLogin = async (event, isGuest = false) => {
     event.preventDefault();
     try {
@@ -35,7 +32,6 @@ const LoginForm = ({ setToken }) => {
       };
 
       if (isGuest) {
-        // Set email and password for guest login
         loginData = {
           email: "null@example.com",
           password: "null",
@@ -47,7 +43,6 @@ const LoginForm = ({ setToken }) => {
         loginData
       );
 
-      // Handle successful login response
       const token = response.data.token;
       localStorage.setItem("jwtToken", token);
       setToken(token);
@@ -70,7 +65,6 @@ const LoginForm = ({ setToken }) => {
     }
   };
 
-  // Function to create an order for the user
   async function createOrderForUser(userId) {
     try {
       await axios.post("http://localhost:3000/api/orders", {

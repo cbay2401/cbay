@@ -1,5 +1,3 @@
-// components/Homepage.jsx
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -31,10 +29,6 @@ const Slideshow = () => {
 
   return (
     <>
-      
-       
-
-        {/* <div className='home-body'></div> */}
         <div className="home-container">
           <div className="slideshow-container">
             {images.map((image, index) => (

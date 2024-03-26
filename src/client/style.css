@@ -11,10 +11,10 @@
 
 /* ----------Navbar begins---------- */
 
-/* logo img  */
 #logo {
   height: 100%;
 }
+
 body {
   padding-top: 68px;
   padding-bottom: 50px;
@@ -107,7 +107,6 @@ header nav > a {
   text-decoration: none;
   color: inherit;
   padding: 3px;
-  /* border: 2px solid black; */
   margin: 5px;
   width: 90px;
 }
@@ -128,7 +127,6 @@ header nav > a {
   flex-direction: column;
   color: #94c5cc;
   padding: 0 10px;
-  /* border: 2px solid blue; */
   border-radius: 10px;
 }
 
@@ -379,14 +377,6 @@ header nav > a {
   border-radius: 8px;
 }
 
-/* .login-form input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 16px;
-  box-sizing: border-box;
-  border: 1px solid rgb(10, 10, 10);
-  border-radius: 4px;
-} */
 .login-btn {
   background-color: #86b817;
   color: white;
@@ -418,14 +408,6 @@ header nav > a {
   border-radius: 8px;
 }
 
-/* .register input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 16px;
-  box-sizing: border-box;
-  border: 1px solid rgb(10, 10, 10);
-  border-radius: 4px;
-} */
 .btn4 {
   background-color: #86b817;
   color: white;
@@ -488,7 +470,6 @@ header nav > a {
   height: 100%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   padding: 5px 5px 0px 5px;
-
   backdrop-filter: blur(3px);
   border-radius: 17px 0 17px 17px;
   text-align: center;
@@ -751,9 +732,7 @@ h2 {
 .footer {
   background-color: #f8f8f8;
   width: 100%;
-
   bottom: 0;
-
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.08);
 }
 
@@ -832,17 +811,13 @@ h2 {
 /*----------ADMIN-------*/
 
 .admin-records {
-  /* border: 1px solid #0f0f10fc; */
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 5px;
   width: 200px;
-  /* height: auto; */
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   padding: 5px 5px 0px 5px;
-
   backdrop-filter: blur(3px);
   border-radius: 17px 0 17px 17px;
   text-align: center;
@@ -863,7 +838,6 @@ h2 {
 }
 
 .admin-dashboard {
-  /* border: 3px solid red; */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -871,8 +845,6 @@ h2 {
 }
 
 #all-records-header {
-  /* border: 2px solid rgba(60, 132, 79, 0.507); */
-
   font-size: 25px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -881,20 +853,19 @@ h2 {
 }
 
 .admin-dashboard > h2 {
-  /* border: 1px solid red; */
   font-family: Arial, Helvetica, sans-serif;
   padding: 5px;
   font-size: 40px;
 }
 
 .admin-bttn-container {
-  /* border: 2px solid rgb(102, 33, 33); */
   padding: 5px;
   border-radius: 20px;
   background-color: #f2f1f1;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   border-radius: 15px 0 15px 15px;
 }
+
 .admin-btn {
   background-color: #b4d2e7;
   color: #fff;
@@ -956,7 +927,6 @@ td {
 
 th,
 td {
-  /* border-bottom: 2px solid rgb(166, 24, 24); */
   align-items: center;
   text-align: center;
   width: 0 auto;
@@ -990,13 +960,11 @@ th {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 .admin-container {
-  /* border: 3px dotted red; */
   width: 900px;
   height: 500px;
 }
 
 .admin-name {
-  /* border: 1px dotted rgb(101, 158, 160); */
   align-content: center;
   padding-left: 5px;
 }
@@ -1016,7 +984,6 @@ th {
 }
 
 .add-record-form-content {
-  /* border: 1px solid red; */
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
@@ -1081,16 +1048,6 @@ input {
 }
 
 /* ------------HAMBURGER MENU------------ */
-
-/* .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #f2f1f1;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  z-index: 1000;
-} */
 
 .dropdown-menu {
   display: flex;

@@ -1,5 +1,3 @@
-// server/db/client.js
-
 const db = require("./client");
 const { createUser } = require("./users");
 

@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function SingleRecord() {
   const { id } = useParams();
   const [record, setRecord] = useState({});
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
-  const navigate = useNavigate();
   const [cartId, setCartId] = useState(null);
   const [orderId, setOrderId] = useState(null);
 
@@ -42,8 +40,8 @@ function SingleRecord() {
           
         }
         if (response.data && response.data.order && response.data.order.id) {
-          setOrderId(response.data.order.id); // Setting orderId
-        }console.log("ORDER ID:", orderId)
+          setOrderId(response.data.order.id);
+        }
       } catch (err) {
         console.error("Error fetching user account:", err);
       }

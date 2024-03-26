@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import HamburgerMenu from "./HamburgerMenu";
-import Account from "./Account";
 import axios from "axios";
 import {Link}  from 'react-router-dom'
 
@@ -48,12 +47,11 @@ function Navbar({token}) {
         if (response.data && response.data.cartId) {
           setCartId(response.data.cartId);
         }
-        console.log("CART ID:", cartId)
+  
         if (response.data && response.data.order && response.data.order.id) {
           setOrderId(response.data.order.id); 
         }
 
-        console.log("ORDER ID:", orderId)
       } catch (err) {
         console.error("Error fetching user account:", err);
         

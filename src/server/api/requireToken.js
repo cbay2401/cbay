@@ -1,5 +1,3 @@
-// server/api/requireToken.js
-
 const jwt = require('jsonwebtoken')
 
 const requireToken = async (req, res, next) => {

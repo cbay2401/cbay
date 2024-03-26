@@ -1,15 +1,11 @@
-
-
 const express = require("express");
 const ordersRouter = express.Router();
-const requireToken = require("./requireToken");
 const {
   getAllOrders,
   createOrder,
   createCart,
   updateCartItem,
   getCartItems,
-
   deleteCartItem,
   deleteAllCartItems,
 } = require("../db/orders");
@@ -25,7 +21,6 @@ ordersRouter.get("/admin/orders", async (req, res, next) => {
 
 ordersRouter.post("/", async (req, res, next) => {
   const { userId } = req.body;
-  console.log("Received userId:", userId);
   try {
     const order = await createOrder(userId);
     res.status(201).json(order);
@@ -34,7 +29,6 @@ ordersRouter.post("/", async (req, res, next) => {
   }
 });
 
-// Add item to cart
 ordersRouter.post("/cart", async (req, res, next) => {
   const { orderId, recordId, quantity } = req.body;
   try {
@@ -45,7 +39,6 @@ ordersRouter.post("/cart", async (req, res, next) => {
   }
 });
 
-// Update cart item quantity
 ordersRouter.patch("/cart/:cartItemId", async (req, res, next) => {
   const cartItemId = req.params.cartItemId;
   const { quantity } = req.body;
@@ -61,7 +54,6 @@ ordersRouter.get("/cart/:cartId", async (req, res, next) => {
   const cartId = req.params.cartId;
   try {
     const cartItems = await getCartItems(cartId);
-    console.log(cartId);
     res.json(cartItems);
   } catch (error) {
     next(error);
@@ -78,13 +70,11 @@ ordersRouter.delete("/cart/:cartItemId", async (req, res, next) => {
   }
 });
 
-//ordersRouter.delete("/cart/:orderId", async (req, res, next) => {
 ordersRouter.delete("/cart/ck/:orderId", async (req, res, next) => {
   const orderId = req.params.orderId;
   try {
     const result = await deleteAllCartItems(orderId);
     if (result.deletedCount === 0) {
-      // No items deleted, return a message or status code accordingly
       return res.status(404).json({ message: "No items found for deletion." });
     }
     res.status(200).json({ message: "Cart items deleted successfully." });
@@ -94,7 +84,5 @@ ordersRouter.delete("/cart/ck/:orderId", async (req, res, next) => {
   }
 });
 
-// Export the ordersRouter
 module.exports = ordersRouter;
-// Add more routes as needed
 
