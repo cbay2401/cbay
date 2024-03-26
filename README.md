@@ -22,7 +22,7 @@ Authentication: JSON Web Tokens (JWT)
 Installation
 
 Clone the repository: git clone <https://github.com/cbay2401/cbay>
-Navigate to the project directory: cd vinyl-records-store
+Navigate to the project directory: cd cbay
 Install dependencies for the server: npm install
 Navigate to the client directory: cd client
 Install dependencies for the client: npm install
