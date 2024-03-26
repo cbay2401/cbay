@@ -80,7 +80,7 @@ function Navbar({token}) {
           <img id="logo" src="../../../media/cbay.png" alt="Logo" />
         </div>
         {isMobile ? (
-          <HamburgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />
+          <HamburgerMenu token={token} isOpen={isOpen} toggleMenu={toggleMenu} />
         ) : (
           <nav className="nav-container">
             <NavLink to="/">Home</NavLink>
