@@ -1,9 +1,8 @@
 // components/Homepage.jsx
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Slideshow = () => {
   const navigate = useNavigate();
@@ -15,8 +14,8 @@ const Slideshow = () => {
       .get("http://localhost:3000/api/records")
       .then((response) => {
         const shuffledImages = response.data.sort(() => Math.random() - 0.5);
-      setImages(shuffledImages);
-    })
+        setImages(shuffledImages);
+      })
       .catch((error) => {
         console.error("Error fetching images:", error);
       });
@@ -31,24 +30,30 @@ const Slideshow = () => {
   }, [images.length]);
 
   return (
-    <> 
-    {/* <div className='home-body'></div> */}
-      <div className="home-container">
-        <div className="slideshow-container">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={
-                index === currentImageIndex ? "slide active" : "slide inactive"
-              }
-            >
-              <img
-                className="slide-images"
-                src={image.imageurl}
-                alt={`Slide ${index}`}
-              />
-            </div>
-          ))}
+    <>
+      
+       
+
+        {/* <div className='home-body'></div> */}
+        <div className="home-container">
+          <div className="slideshow-container">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={
+                  index === currentImageIndex
+                    ? "slide active"
+                    : "slide inactive"
+                }
+              >
+                <img
+                  className="slide-images"
+                  src={image.imageurl}
+                  alt={`Slide ${index}`}
+                />
+              </div>
+            ))}
+         
           <div className="button-container">
             <button
               className="glow-on-hover"
@@ -58,24 +63,24 @@ const Slideshow = () => {
             </button>
           </div>
         </div>
+
         <div className="newsletter">
-  <h1>Subscribe to Our Newsletter</h1>
-  <h4>Stay up to date on new releases, sales, and in store events.</h4>
-  <form>
-    <input type="email" placeholder="Your Email Address"/>
-    <button type="submit">Submit</button>
-  </form>
-  
-  <br></br>
-  <a href="https://www.instagram.com/cbayrecords" target="_blank">
-  <img className="iglogo" src="../media/igLogo 2.png" alt="Instagram Logo" />
-</a>
-</div>
+          <h1>Subscribe to Our Newsletter</h1>
+          <h4>Stay up to date on new releases, sales, and in store events.</h4>
+          <form>
+            <input type="email" placeholder="Your Email Address" />
+            <button type="submit">Submit</button>
+          </form>
 
-
-
-        
-
+          <br></br>
+          <a href="https://www.instagram.com/cbayrecords" target="_blank">
+            <img
+              className="iglogo"
+              src="../media/igLogo 2.png"
+              alt="Instagram Logo"
+            />
+          </a>
+        </div>
       </div>
     </>
   );

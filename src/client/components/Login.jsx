@@ -123,9 +123,9 @@ const LoginForm = ({ setToken }) => {
           Login
         </button>
       </form>
-      <span className="guest" onClick={(e) => handleLogin(e, true)}>
+      <button className="guest" onClick={(e) => handleLogin(e, true)}>
         Continue as Guest
-      </span>
+      </button>
       <p>{message}</p>
     </div>
   );
