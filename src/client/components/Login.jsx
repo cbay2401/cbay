@@ -25,7 +25,6 @@ const LoginForm = ({ setToken }) => {
     setShowPassword(!showPassword);
   };
 
-  async function handleLogin(event) {
   // Function to handle login form submission
   const handleLogin = async (event, isGuest = false) => {
     event.preventDefault();
@@ -56,7 +55,6 @@ const LoginForm = ({ setToken }) => {
       const userId = response.data.userId;
       localStorage.setItem("userId", userId);
       const userRole = response.data.role;
-
 
       if (userRole === "admin") {
         navigate("/users/account");
@@ -131,7 +129,5 @@ const LoginForm = ({ setToken }) => {
     </div>
   );
 };
-}
 
 export default LoginForm;
-
